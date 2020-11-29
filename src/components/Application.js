@@ -7,7 +7,7 @@ import PasswordReset from "./PasswordReset";
 import NoMatch from "./NoMatch";
 
 function Application() {
-    let user = null;
+    const user = null;
     return (
         user ?
             <Overworld />
