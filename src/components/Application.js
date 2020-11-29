@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -8,7 +7,7 @@ import PasswordReset from "./PasswordReset";
 import NoMatch from "./NoMatch";
 
 function Application() {
-    const user = null;
+    let user = null;
     return (
         user ?
             <Overworld />
