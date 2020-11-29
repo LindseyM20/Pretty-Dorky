@@ -1,5 +1,5 @@
 import React from "react";
-import Character from "./CharAnimation"
+// import Character from "./CharAnimation"
 
 const ProfilePage = () => {
   return (
@@ -16,7 +16,7 @@ const ProfilePage = () => {
           className="border border-blue-300"
         ></div> */}
         <div id="character">
-          <Character />  
+          {/* <Character />   */}
            {/* <p id="image4" onLoad="animateScript()" onLoad="stopAnimate()">
            </p>        */}
           </div>
