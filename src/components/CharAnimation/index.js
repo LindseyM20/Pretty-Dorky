@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function animateScript() {
+function CharAnimation() {
 
   let tID; //we will use this variable to clear the setInterval()
 
@@ -13,7 +13,7 @@ function animateScript() {
   let position = 64; //start position for the image slicer
   const interval = 160; //100 ms of interval for the setInterval()
   const diff = 64; //diff as a variable for position offset
-  
+
   return (
     tID = setInterval(() => {
       document.getElementById("character").style.backgroundPosition =
@@ -33,4 +33,4 @@ function animateScript() {
 
 }
 
-export default animateScript
+export default CharAnimation;
