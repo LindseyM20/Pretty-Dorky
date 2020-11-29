@@ -1,5 +1,6 @@
 import React from "react";
-import Character from "./CharAnimation"
+import Character from "./CharAnimation";
+import Healthbar from "./Healthbar";
 
 const ProfilePage = () => {
   return (
@@ -15,6 +16,9 @@ const ProfilePage = () => {
           }}
           className="border border-blue-300"
         ></div> */}
+        <div id="healthbar">
+          <Healthbar />
+        </div>
         <div id="character">
           <Character />  
            {/* <p id="image4" onLoad="animateScript()" onLoad="stopAnimate()">
