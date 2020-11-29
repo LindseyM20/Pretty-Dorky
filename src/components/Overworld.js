@@ -1,5 +1,5 @@
 import React from "react";
-import Character from "../components/character"
+import Character from "./CharAnimation"
 
 const ProfilePage = () => {
   return (
