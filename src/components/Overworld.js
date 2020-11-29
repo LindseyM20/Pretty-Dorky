@@ -5,7 +5,7 @@ const ProfilePage = () => {
   return (
     <div className = "mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
       <div className="flex border flex-col items-center md:flex-row md:items-start border-blue-400 px-3 py-4">
-        <div
+        {/* <div
           style={{
             background:
                 `url(https://res.cloudinary.com/dqcsk8rsc/image/upload/v1577268053/avatar-1-bitmoji_upgwhc.png)  no-repeat center center`,
@@ -14,11 +14,11 @@ const ProfilePage = () => {
             width: "200px"
           }}
           className="border border-blue-300"
-        ></div>
+        ></div> */}
         <div id="character">
-          <Character/>  
-           <p id="image4" onLoad="animateScript()" onLoad="stopAnimate()">
-           </p>       
+          <Character />  
+           {/* <p id="image4" onLoad="animateScript()" onLoad="stopAnimate()">
+           </p>        */}
           </div>
         <div className = "md:pl-4">
         <h2 className = "text-2xl font-semibold">Name Here</h2>
