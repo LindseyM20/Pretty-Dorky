@@ -5,6 +5,7 @@ import SignUp from "./SignUp";
 import Overworld from "./Overworld";
 import PasswordReset from "./PasswordReset";
 import NoMatch from "./NoMatch";
+import Battle from "./Battle";
 
 function Application() {
     const user = null;
@@ -26,6 +27,9 @@ function Application() {
                 <Route exact path="/overworld">
                     <Overworld />
                     {/* <NoMatch /> */}
+                </Route>
+                <Route exact path="/battle">
+                    <Battle />
                 </Route>
             </Switch>
         </Router>

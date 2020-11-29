@@ -2,6 +2,8 @@ import React from "react";
 import Character from "./CharAnimation";
 import Healthbar from "./Healthbar";
 
+
+
 const ProfilePage = () => {
   return (
     <div className = "mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
@@ -20,7 +22,7 @@ const ProfilePage = () => {
           <Healthbar />
         </div>
         <div id="character">
-          <Character />  
+          {/* <Character />   */}
            {/* <p id="image4" onLoad="animateScript()" onLoad="stopAnimate()">
            </p>        */}
           </div>
