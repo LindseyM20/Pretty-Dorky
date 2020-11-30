@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function CharAnimation() {
+const CharAnimation = () => {
 
   let tID; //we will use this variable to clear the setInterval()
 
