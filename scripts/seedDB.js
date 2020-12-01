@@ -1,23 +1,21 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the CreateUser collection and inserts the books below
+// This file empties the CreateCharacter collection and inserts the chracters below
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactcms");
 
 const userSeed = [
   {
-    username: "Brooklynne",
-    password: "S3CR3T"
-  },
-  {
-    username: "Lindsey",
-    password: "asdf"
+    uid: "RWsMGROnxcRo6llE04bbi8fDy1l1",
+    characterName: "Brooklynne",
+    level: 666,
+    health: 100
   }
 ];
 
-db.CreateUser.remove({})
-  .then(() => db.CreateUser.collection.insertMany(userSeed))
+db.CreateCharacter.remove({})
+  .then(() => db.CreateCharacter.collection.insertMany(userSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
