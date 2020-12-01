@@ -1,14 +1,17 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase";
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const signInWithEmailAndPasswordHandler = 
-    // add more later
-            (event,email, password) => {
-                event.preventDefault();
+    const signInWithEmailAndPasswordHandler = (event, email, password) => {
+      event.preventDefault();
+      auth.signInWithEmailAndPassword(email, password).catch(error => {
+        setError("Error signing in with password and email!");
+        console.error("Error signing in with password and email", error);
+      });
     };
 // updates email and password in state variables
       const onChangeHandler = (event) => {
@@ -36,7 +39,7 @@ const SignIn = () => {
             className="my-1 p-1 w-full"
             name="userEmail"
             value = {email}
-            placeholder="emailaddress@email.com"
+            placeholder="fancyWizard@email.com"
             id="userEmail"
             onChange = {(event) => onChangeHandler(event)}
           />
@@ -57,12 +60,12 @@ const SignIn = () => {
           </button>
         </form>
         <p className="text-center my-3">or</p>
-        <button
+        {/* <button
           className="bg-red-500 hover:bg-red-600 w-full py-2 text-white">
           Sign in with Google
-        </button>
+        </button> */}
         <p className="text-center my-3">
-          Don't have an account?{" "}
+          Wanting to embark on a new adventure?{" "}
           <Link to="signUp" className="text-blue-500 hover:text-blue-600">
             Sign up here
           </Link>{" "}

@@ -1,3 +1,3 @@
 module.exports = {
-  CreateUser: require("./createUser")
+  CreateCharacter: require("./createCharacter")
 };

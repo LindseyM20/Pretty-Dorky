@@ -1,5 +1,9 @@
 import React from "react";
-// import Character from "./CharAnimation"
+// import Character from "./CharAnimation";
+import Healthbar from "./Healthbar";
+import { auth } from "../firebase";
+
+
 
 const ProfilePage = () => {
   return (
@@ -15,6 +19,9 @@ const ProfilePage = () => {
           }}
           className="border border-blue-300"
         ></div> */}
+        <div id="healthbar">
+          <Healthbar />
+        </div>
         <div id="character">
           {/* <Character />   */}
            {/* <p id="image4" onLoad="animateScript()" onLoad="stopAnimate()">
@@ -25,7 +32,10 @@ const ProfilePage = () => {
         <h3 className = "italic">emailaddress@gmail.com</h3>
         </div>
       </div>
-      <button className = "w-full py-3 bg-red-600 mt-4 text-white">Sign out</button>
+      <button className = "w-full py-3 bg-red-600 mt-4 text-white" onClick = {() => {auth.signOut()}}>Sign out</button>
+
+    
+
     </div>
   ) 
 };

@@ -1,14 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import Overworld from "./Overworld";
+import { UserContext } from "../providers/UserProvider";
 import PasswordReset from "./PasswordReset";
 import NoMatch from "./NoMatch";
 import Battle from "./Battle";
 
 function Application() {
-    const user = null;
+    const user = useContext(UserContext);
+    console.log(user)
     return (
         user ?
             <Overworld />
