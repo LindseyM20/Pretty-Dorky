@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 // import Character from "./CharAnimation";
 import Healthbar from "./Healthbar";
 import { auth } from "../firebase";
+import CharContext from "../utils/CharContext";
 
 
 
 const ProfilePage = () => {
+  const [health, setHealth] = useState(100);
+
+  //Pass a function that calls setCharacterState
+  
   return (
     <div className = "mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
       <div className="flex border flex-col items-center md:flex-row md:items-start border-blue-400 px-3 py-4">
@@ -20,8 +25,12 @@ const ProfilePage = () => {
           className="border border-blue-300"
         ></div> */}
         <div id="healthbar">
-          <Healthbar />
+          <Healthbar 
+          current={health}
+          max={100}
+          />
         </div>
+        <button onClick={() => setHealth(health - 10)}>Ouch</button>
         <div id="character">
           {/* <Character />   */}
            {/* <p id="image4" onLoad="animateScript()" onLoad="stopAnimate()">
