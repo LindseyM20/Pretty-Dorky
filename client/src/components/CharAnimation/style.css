@@ -1,7 +1,9 @@
 #character {
   height:64px;
   width: 64px;
-  background: url('https://i.ibb.co/NZBGYH4/ba-spritesheet.png') 0px 0px;
+  /* background: url('https://i.ibb.co/NZBGYH4/ba-spritesheet.png') 0px 0px; */
+  background: url('https://i.ibb.co/X7xbVZd/dm-spritesheet.png') 0px 128px;
+
   position: relative;
   top: 266px;
   left: 50px;
