@@ -1,6 +1,7 @@
-import React, { useEffect , useState } from "react";
+import React, { useContext, useEffect , useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import CharContext from "../utils/CharContext";
 
 // import { Container } from "react-bootstrap/lib/Tab";
 
@@ -14,6 +15,9 @@ function Battle() {
         this.hitpoints = hitpoints;
     }
     
+    // useContext
+    const activeCharacter = useContext(CharContext)
+
         // method which takes in a second object and decreases their "hitpoints" by this character's strength
     Character.prototype.attack = function(character2) {
         console.log(`${this.name} readies an attack at ${character2.name}`);
