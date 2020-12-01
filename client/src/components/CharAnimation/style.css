@@ -1,8 +1,50 @@
 #character {
   height:64px;
   width: 64px;
-  background: url('https://i.ibb.co/NZBGYH4/ba-spritesheet.png') 0px 0px;
+  /* background: url('https://i.ibb.co/NZBGYH4/ba-spritesheet.png') 0px 0px; */
+  background: url('https://i.ibb.co/X7xbVZd/dm-spritesheet.png') 0px 128px;
+
   position: relative;
   top: 266px;
   left: 50px;
+}
+
+
+/* These are for landingn page on character select */
+.deviantIcon2 {
+  background: url('https://i.ibb.co/DpFjML4/deviant2.png');
+}
+.devianticon {
+  background: url('https://i.ibb.co/LJ8NCzw/deviant.png');
+}
+.weebIcon {
+  background: url('https://i.ibb.co/VN7cG4b/weeb.png');
+}
+.catskinnerIcon {
+  background: url('https://i.ibb.co/YZd8FLC/catskinner.png');
+}
+.wildcardIcon {
+  background: url('https://i.ibb.co/Yy69NHN/wildcard.png');
+}
+
+
+/* these are full spritesheets for future animation */
+.weeb {
+  background: url('https://i.ibb.co/xjMHkcy/ka-spritesheet.png') 0px 384px;
+}
+
+.deviant {
+  background: url('https://i.ibb.co/jbDG4HF/mj-spritesheet.png') 0px 384px;
+}
+
+.deviant2 {
+  background: url('https://i.ibb.co/8d7H0pq/mj-spritesheet2.png') 0px 384px;
+}
+
+.catskinner {
+  background: url('https://i.ibb.co/X7xbVZd/dm-spritesheet.png') 0px 384px;
+}
+
+.wildcard {
+  background: url('https://i.ibb.co/yg3Vrjg/ge-spritesheet.png') 0px 384px;
 }

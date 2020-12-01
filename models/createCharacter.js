@@ -8,6 +8,6 @@ const newCharacterSchema = new Schema({
   health: {type: Number, required: true}
 });
 
-const CreateCharacter = mongoose.model("Characters", newCharacterSchema);
+const CreateCharacter = mongoose.model("Character", newCharacterSchema);
 
 module.exports = CreateCharacter;
