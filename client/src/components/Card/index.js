@@ -8,7 +8,7 @@ import CharContext from "../../utils/CharContext";
 
 
 
-function cardGroups(props) {
+function CardGroups(props) {
 const {setCharacterState} = useContext(CharContext)
 
   function captureStats() {
@@ -52,4 +52,4 @@ const {setCharacterState} = useContext(CharContext)
   );
 }
 
-export default cardGroups;
+export default CardGroups;

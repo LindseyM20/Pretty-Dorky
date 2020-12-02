@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 // import Character from "./CharAnimation";
-import Healthbar from "../components/Healthbar";
-import { auth } from "../firebase";
-import CharContext from "../utils/CharContext";
+import Healthbar from "../../components/Healthbar";
+import { auth } from "../../firebase";
+import CharContext from "../../utils/CharContext";
 
 
 const Overworld = () => {
