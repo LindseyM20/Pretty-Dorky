@@ -2,6 +2,7 @@ import React, { useContext, useEffect , useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CharContext from "../utils/CharContext";
+import Healthbar from "../components/Healthbar";
 
 // import { Container } from "react-bootstrap/lib/Tab";
 
