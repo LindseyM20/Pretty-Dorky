@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import Overworld from "./Overworld";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
+import Overworld from "../pages/Overworld";
 import { UserContext } from "../providers/UserProvider";
 import PasswordReset from "./PasswordReset";
-import NoMatch from "./NoMatch";
+import NoMatch from "../pages/NoMatch";
 import Battle from "../pages/Battle";
 import CharContext from "../utils/CharContext";
 
