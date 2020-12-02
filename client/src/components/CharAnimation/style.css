@@ -10,24 +10,6 @@
 }
 
 
-/* These are for landingn page on character select */
-.deviantIcon2 {
-  background: url('https://i.ibb.co/DpFjML4/deviant2.png');
-}
-.devianticon {
-  background: url('https://i.ibb.co/LJ8NCzw/deviant.png');
-}
-.weebIcon {
-  background: url('https://i.ibb.co/VN7cG4b/weeb.png');
-}
-.catskinnerIcon {
-  background: url('https://i.ibb.co/YZd8FLC/catskinner.png');
-}
-.wildcardIcon {
-  background: url('https://i.ibb.co/Yy69NHN/wildcard.png');
-}
-
-
 /* these are full spritesheets for future animation */
 .weeb {
   background: url('https://i.ibb.co/xjMHkcy/ka-spritesheet.png') 0px 384px;

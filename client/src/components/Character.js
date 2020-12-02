@@ -1,6 +1,6 @@
 // import React, {useState} from "react";
 
-// const Character = () => {
+// const CreateChar = () => {
 //   const [newCharacter, setNewCharacter] = useState({
 //     CharName: "",
 //     HitPoints: 100, // Default value if the user doesn't enter a number
@@ -23,4 +23,4 @@
 
 // }
 
-// export default Character;
+// export default CreateChar;
