@@ -25,7 +25,7 @@ const CreateChar = () => {
     userID: user.uid,
     name: "",
     level: 1,
-    strength: 30,
+    strength: 20,
     maxHealth: 100,
     currentHealth: 100,
   })
@@ -34,7 +34,7 @@ const CreateChar = () => {
     userID: user.uid,
     name: "",
     level: 1,
-    strength: 25,
+    strength: 30,
     maxHealth: 100,
     currentHealth: 100,
   })
@@ -43,7 +43,7 @@ const CreateChar = () => {
     userID: user.uid,
     name: "",
     level: 1,
-    strength: 20,
+    strength: 25,
     maxHealth: 90,
     currentHealth: 90,
   })
@@ -52,7 +52,7 @@ const CreateChar = () => {
     userID: user.uid,
     name: "",
     level: 1,
-    strength: 20,
+    strength: 15,
     maxHealth: 100,
     currentHealth: 100,
   })
