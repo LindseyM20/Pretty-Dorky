@@ -147,9 +147,9 @@ function Battle() {
                 combat();
             } 
             else {
-                console.log("You would like to run away");
+                speedRead(screentext, "You would like to run away");
                 if (Math.floor(Math.random()*2)>0){
-                    console.log("You ran away successfully");
+                    speedRead(screentext, "You ran away successfully");
                     window.location.href="/overworld";
                 };
             };
