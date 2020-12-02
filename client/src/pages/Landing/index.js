@@ -12,31 +12,50 @@ class Landing extends Component {
     characterClasses
   }
   render() {
-    return(
+    return (
       <body>
         <h1>Choose Your Character</h1>
-        <section style={{marginLeft:"5%", marginBottom: "15%"}}>
-           <Row>
-        {this.state.characterClasses.map(characters => (
-        <Card
-        id={characters.id}
-        key={characters.id}
-        name={characters.name}
-        image={characters.image}
-        description={characters.description}
-        level={characters.level}
-       strength={characters.strength}
-       maxHealth={characters.maxHealth}
-       currentHealth={characters.currentHealth}
-       
-        />
-        
-        ))}
+        <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
+          <Row>
+            {this.state.characterClasses.map(characters => (
+              <Card
+                id={characters.id}
+                key={characters.id}
+                name={characters.name}
+                image={characters.image}
+                description={characters.description}
+                level={characters.level}
+                strength={characters.strength}
+                maxHealth={characters.maxHealth}
+                currentHealth={characters.currentHealth}
 
-</Row>
-    </section>
-    </body>
-        )}  
+              />
+
+            ))}
+
+          </Row>
+          <form>
+            <input
+              type="name"
+              className="characterName"
+              name="characterName"
+              // value={characterName}
+              placeholder="Name"
+              id="characterName"
+
+            // future event here to set CharContext
+            // onChange = {(event) => onChangeHandler(event)}
+            />
+            <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white">
+              {/* Set up click event to start game and write name to mongo with character stats pulled in? */}
+              {/* onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}} */}
+            Create Character
+          </button>
+          </form>
+        </section>
+      </body>
+    )
+  }
 }
 export default Landing;
 // const Landing = () => {
