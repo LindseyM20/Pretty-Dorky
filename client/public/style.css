@@ -1,0 +1,7 @@
+/* @font-face{
+    font-family: "west-england.regular";
+    src: url('west-england.regular.ttf');
+    } */
+* {
+   font-family: 'VT323', monospace;
+}
