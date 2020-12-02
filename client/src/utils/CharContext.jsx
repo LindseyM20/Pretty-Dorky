@@ -7,7 +7,7 @@ const CharContext = createContext({
   strength: 0,
   maxHealth: 0,
   currentHealth: 0,
-  handleInputChange: () => {} // for name input when creating a character
+  handleSubmit: () => {} // for name input when creating a character
 });
 
 export default CharContext;

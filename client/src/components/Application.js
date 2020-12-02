@@ -72,6 +72,7 @@ function Application() {
                 {/* this is a development test to see that we have character state on clicks from landig page */}
                 <h1>
                     {characterState.maxHealth}
+                    {characterState.name}
                     
                 </h1>
         </CharContext.Provider>

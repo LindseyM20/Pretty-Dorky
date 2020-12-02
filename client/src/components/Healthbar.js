@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Battle from "../pages/Battle";
+import CharContext from "../utils/CharContext"
+
+
 
 const Healthbar = ({ current, max }) => {
+  
+// const {maxHealth, currentHealth} = useContext(CharContext)
+// let current  = currentHealth;
+// let max = maxHealth;
 
   const fullWidth = 110;
   const percent = current / max;
