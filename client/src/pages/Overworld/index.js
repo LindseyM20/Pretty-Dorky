@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import Healthbar from "../../components/Healthbar";
 import { auth } from "../../firebase";
 import CharContext from "../../utils/CharContext";
-
+import './overworld.css'
 
 const Overworld = () => {
   const [health, setHealth] = useState(100);

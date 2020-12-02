@@ -23,7 +23,7 @@ function Landing() {
   //  post character state values to mongo
   // API.posst (calls the imported API)
   // send player to /Overworld
-  res.redirect("/overworld")
+  window.location.href="/overworld"
 
   }
 
