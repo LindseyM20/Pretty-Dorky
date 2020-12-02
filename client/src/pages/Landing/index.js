@@ -1,35 +1,42 @@
-import React, { useState, Component } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // import CharContext from "../../utils/CharContext";
 // import CreateChar from "../../components/CreateChar";
 import Card from "../../components/Card";
 import Row from 'react-bootstrap/Row'
 import characterClasses from "../../characterClasses.json";
+import Healthbar from "../../components/Healthbar"
 import CharContext from "../../utils/CharContext";
 import "./style.css";
 
 // updates characterName to charContext? Hopefully?
-function handleSubmit(event) {
-  event.preventDefault();
-  const data = new FormData
-  const { name, value } = event.target
- console.log(name)
 
 
-  // setCharacterState(name)e.target.value
-}
-class Landing extends Component {
-  state = {
-    characterClasses
+
+
+
+function Landing() {
+  const {setCharacterState, characterState} = useContext(CharContext)
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    // capture value from input field and set it to name value for charState
+    console.log(event.target.characterName.value);
+    setCharacterState({
+      ...characterState,
+      name: event.target.characterName.value
+    })
+   
+  //  post character state values to mongo
+  // send player to /Overworld
+
   }
 
-
-  render() {
     return (
       <body className="bodyStyle">
         <h1>Choose Your Character</h1>
         <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
           <Row>
-            {this.state.characterClasses.map(characters => (
+            {characterClasses.map(characters => (
               <Card
                 id={characters.id}
                 key={characters.id}
@@ -47,12 +54,12 @@ class Landing extends Component {
 
           </Row>
           <Row>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <input
               type="name"
               className="characterName"
-              // name="characterName"
-              value="characterName"
+              name="characterName"
+              // value={characterState.name}
               placeholder="Name"
               id="characterName"
 
@@ -65,11 +72,11 @@ class Landing extends Component {
           </button>
           </form>
           </Row>
+    
         </section>
       </body>
     )
   }
-}
 export default Landing;
 // const Landing = () => {
 //   const [newCharacter, setNewCharacter] = useState({
