@@ -5,11 +5,11 @@ import { auth } from "../../firebase";
 import CharContext from "../../utils/CharContext";
 import tower from "./images/tower.gif";
 import cat from "./images/cat.png";
-import clippy from "./images/clippy.png";
-import bug from "./images/bug.png";
-import exp from "./images/exp.png";
-import popTart from "./images/popTart.png";
-import bean from "./images/bean.png";
+import clippy from "./images/evilClippy.png";
+import bug from "./images/moth.png";
+import exp from "./images/explorer.png";
+import popTart from "./images/poptart.png";
+import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
 
 const Overworld = () => {
