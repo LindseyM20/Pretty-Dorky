@@ -4,16 +4,28 @@ import React, { useState, Component } from "react";
 import Card from "../../components/Card";
 import Row from 'react-bootstrap/Row'
 import characterClasses from "../../characterClasses.json";
-// import "./style.css";
+import CharContext from "../../utils/CharContext";
+import "./style.css";
+
+// updates characterName to charContext? Hopefully?
+function handleSubmit(event) {
+  event.preventDefault();
+  const data = new FormData
+  const { name, value } = event.target
+ console.log(name)
 
 
+  // setCharacterState(name)e.target.value
+}
 class Landing extends Component {
   state = {
     characterClasses
   }
+
+
   render() {
     return (
-      <body>
+      <body className="bodyStyle">
         <h1>Choose Your Character</h1>
         <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
           <Row>
@@ -34,24 +46,25 @@ class Landing extends Component {
             ))}
 
           </Row>
-          <form>
+          <Row>
+          <form onSubmit={this.handleSubmit}>
             <input
               type="name"
               className="characterName"
-              name="characterName"
-              // value={characterName}
+              // name="characterName"
+              value="characterName"
               placeholder="Name"
               id="characterName"
 
             // future event here to set CharContext
             // onChange = {(event) => onChangeHandler(event)}
             />
-            <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white">
-              {/* Set up click event to start game and write name to mongo with character stats pulled in? */}
-              {/* onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}} */}
+            <button className="createButton">
+            {/* onClick = {(event) => {handleSubmit(event)}} */}
             Create Character
           </button>
           </form>
+          </Row>
         </section>
       </body>
     )
