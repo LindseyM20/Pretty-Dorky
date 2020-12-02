@@ -7,7 +7,7 @@ import { Button, Col, Row } from "react-bootstrap";
 function Battle() {
     //activates button and sets turn over should be false while dialogue is displaying
     const [turnbase, setTurnbase] = useState(false);
-    const [screentext, setScreentext] =useState("");    
+    const [screentext, setScreentext] = useState("");    
     // const [player, setTurnbase] = useState();
     // const [playerState, setDeveloperState] = useState({
     //     maxHealth: 1000,

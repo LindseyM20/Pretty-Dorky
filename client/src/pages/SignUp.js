@@ -35,7 +35,7 @@ const SignUp = () => {
   return (
     <div className="mt-8">
       <h1 className="text-3xl mb-2 text-center font-bold">Welcome, Traveler!</h1>
-      <h2 classname="text-3xl mb-2 text-center font-bold">Sign up to begin your adventure. . .</h2>
+      <h2 className="text-3xl mb-2 text-center font-bold">Sign up to begin your adventure. . .</h2>
       <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
         {error !== null && (
           <div className="py-4 bg-red-600 w-full text-white text-center mb-3">

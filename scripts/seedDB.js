@@ -3,7 +3,7 @@ const db = require("../models");
 
 // This file empties the CreateCharacter collection and inserts the chracters below
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactcms");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/character");
 
 const userSeed = [
   {

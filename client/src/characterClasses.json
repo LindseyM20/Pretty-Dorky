@@ -1,0 +1,45 @@
+
+    [
+    {
+        "id": 1,
+        "name": "",
+        "image": "https://i.ibb.co/YZd8FLC/catskinner.png",
+        "description": "Rogue",
+        "level": 1,
+        "strength": 30,
+        "maxHealth": 100,
+        "currentHealth": 100
+      },
+      {
+        "id": 2,
+        "name": "",
+        "image": "https://i.ibb.co/DpFjML4/deviant2.png",
+        "description": "Warrior",
+        "level": 1,
+        "strength": 25,
+        "maxHealth": 100,
+        "currentHealth": 100
+      },
+      
+    {
+        "id": 3,
+        "name": "",
+        "image": "https://i.ibb.co/VN7cG4b/weeb.png",
+        "description": "Wizard",
+        "level": 1,
+        "strength": 20,
+        "maxHealth": 90,
+        "currentHealth": 90
+      },
+      
+    {
+        "id": 4,
+        "name": "",
+        "image": "https://i.ibb.co/Yy69NHN/wildcard.png",
+        "description": "Ranger",
+        "level": 1,
+        "strength": 20,
+        "maxHealth": 100,
+        "currentHealth": 100
+      }
+    ]
