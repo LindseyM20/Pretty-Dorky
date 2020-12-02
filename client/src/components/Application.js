@@ -8,6 +8,7 @@ import PasswordReset from "./PasswordReset";
 import NoMatch from "../pages/NoMatch";
 import Battle from "../pages/Battle";
 import CharContext from "../utils/CharContext";
+import Landing from "../pages/Landing/index"
 
 function Application() {
     const user = useContext(UserContext);
@@ -46,8 +47,10 @@ function Application() {
                         <Route exact path="/signUp">
                             <SignUp />
                         </Route>
-                        <Route exact path="/passwordReset">
-                            <PasswordReset />
+                        <Route exact path="/landing">
+                            <Landing />
+                        {/* <Route exact path="/passwordReset">
+                            <PasswordReset /> */}
                         </Route>
                         <Route exact path="/overworld">  
                             {/* <Navbar /> */}

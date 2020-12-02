@@ -21,7 +21,7 @@ The signin generates a unnique UID that will be passed to Mongo to retrieve the 
 
 * GET reads the character data.
 
-* PUT will update when the state changes for a character during gameplay.
+* UPDATE will update when the state changes for a character during gameplay.
 
 ## Set up
 
