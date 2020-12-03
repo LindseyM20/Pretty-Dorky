@@ -6,13 +6,13 @@ import { auth, generateUserDocument } from "../firebase";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
+  // const [displayName, setDisplayName] = useState("");  I think this was for character name? -Lindsey
   const [error, setError] = useState(null);
   const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
     try {
       const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, { displayName });
+      // generateUserDocument(user, { displayName });
     }
     catch (error) {
       setError('Error Signing up with email and password');
@@ -20,7 +20,7 @@ const SignUp = () => {
 
     setEmail("");
     setPassword("");
-    setDisplayName("");
+    // setDisplayName("");
   };
   const onChangeHandler = event => {
     const { name, value } = event.currentTarget;
@@ -28,8 +28,8 @@ const SignUp = () => {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
-    } else if (name === "displayName") {
-      setDisplayName(value);
+    // } else if (name === "displayName") {
+    //   setDisplayName(value);
     }
   };
   return (
