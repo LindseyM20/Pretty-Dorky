@@ -32,7 +32,7 @@ function Landing() {
   // API.posst (calls the imported API)
 
   // send player to /Overworld
-  window.location.href='/overworld'
+  window.location.href="/overworld"
 
   }
 
