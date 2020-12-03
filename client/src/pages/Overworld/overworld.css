@@ -107,7 +107,6 @@ body {
     height: 50px;
     background-color: blue;
     position: relative;
-    top: -1000px;
     animation: health 5s infinite;
 }
 #tartImg {
@@ -118,7 +117,6 @@ body {
     height: 35px;
     background-color: blue;
     position: relative;
-    top: -347px;
     animation: health 5s infinite;
 }
 #beanImg {

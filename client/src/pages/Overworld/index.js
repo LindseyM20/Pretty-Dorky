@@ -8,10 +8,7 @@ import exp from "./images/explorer.png";
 import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
-import "/"
 const Overworld = () => {
-  const [health, setHealth] = useState(100);
-
   //Pass a function that calls setCharacterState
 
   return (
