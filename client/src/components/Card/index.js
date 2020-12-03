@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./style.css";
 import Button from "react-bootstrap/Button"
 import CharContext from "../../utils/CharContext";
@@ -8,7 +8,7 @@ import CharContext from "../../utils/CharContext";
 
 
 
-function cardGroups(props) {
+function CardGroups(props) {
 const {setCharacterState} = useContext(CharContext)
 
   function captureStats() {
@@ -52,4 +52,4 @@ const {setCharacterState} = useContext(CharContext)
   );
 }
 
-export default cardGroups;
+export default CardGroups;
