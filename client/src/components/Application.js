@@ -70,11 +70,11 @@ function Application() {
                     </Switch>
                 </Router>}
                 {/* this is a development test to see that we have character state on clicks from landig page */}
-                <h1>
+                {/* <h1>
                     {characterState.maxHealth}
                     {characterState.name}
                     
-                </h1>
+                </h1> */}
         </CharContext.Provider>
     );
 }

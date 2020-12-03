@@ -22,7 +22,7 @@ body {
     height: 100px;
     background-color: red;
     position: relative;
-    top: 452px;
+    top: 455px;
     left: 50px;
 }
 .animate{
@@ -59,8 +59,8 @@ body {
     animation: move 7s infinite linear; 
 }
 #cat {
-    width: 77px;
-    height: 40px;
+    width: 100px;
+    height: 86px;
     background-color: blue;
     position: relative;
     top: 395px;
@@ -70,11 +70,11 @@ body {
     height: 84px;
 }
 #clippy {
-    width: 42px;
-    height: 80px;
+    width: 49px;
+    height: 98px;
     background-color: blue;
     position: relative;
-    top: 352px;
+    top: 267px;
     animation: block 7s infinite linear;
 }
 #clippyImg {
@@ -85,7 +85,7 @@ body {
     height: 80px;
     background-color: blue;
     position: relative;
-    top: 292px;
+    top: 100px;
     animation: block 3s infinite linear;
 }
 #bugImg {
@@ -96,7 +96,7 @@ body {
     height: 80px;
     background-color: blue;
     position: relative;
-    top: 369px;
+    top: 109px;
     animation: block 3s infinite linear;
 }
 #expImg {
