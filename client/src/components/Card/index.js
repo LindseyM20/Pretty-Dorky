@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext, useState } from "react";
 import "./style.css";
 import Button from "react-bootstrap/Button"
 import CharContext from "../../utils/CharContext";
@@ -10,7 +10,7 @@ import CharContext from "../../utils/CharContext";
 
 function CardGroups(props) {
 const {setCharacterState} = useContext(CharContext)
-
+const [checked, setChecked] = useState(false);
   function captureStats() {
     setCharacterState({
       name: "",
@@ -35,7 +35,9 @@ const {setCharacterState} = useContext(CharContext)
           {/* <li>{props.description} 
           </li> */}
         </ul>
-        <Button variant="secondary" 
+        <Button variant="outline-light"
+        checked={checked}
+        onChange={(e) => setChecked(e.currentTarget.checked)}
           type="submit" 
           onClick = {captureStats}
           className="cardBtn" >

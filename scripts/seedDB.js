@@ -8,9 +8,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/character");
 const userSeed = [
   {
     uid: "RWsMGROnxcRo6llE04bbi8fDy1l1",
-    characterName: "Brooklynne",
-    level: 666,
-    health: 100
+    name: "TestCharacter1",
+    level: 13,
+    strength: 30,
+    maxHealth: 100,
+    currentHealth: 100
   }
 ];
 
