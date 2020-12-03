@@ -25,8 +25,13 @@ body {
     top: 455px;
     left: 50px;
 }
+button.jump {
+    position: relative;
+    top: -493px;
+    left: 10px;
+}
 .animate{
-    animation: jump 450ms;
+    animation: jump 475ms;
 }
 @keyframes jump {
     0% {top: 150px}

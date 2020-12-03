@@ -16,9 +16,21 @@ const Overworld = () => {
 
   const data = {
     y: -768,
-    x:0,
+    x: 0,
     h: 64,
     w: 64,
+  }
+
+  const character = document.getElementById("character");
+  // const block = document.getElementById("block");
+
+  function jump() {
+    console.log(character)
+    character.classList.add("animate");
+
+    setTimeout(function () {
+      character.classList.remove("animate");
+    }, 500);
   }
 
   //Pass a function that calls setCharacterState
@@ -30,13 +42,13 @@ const Overworld = () => {
       <div id="game">
 
         <div id="character">
-        <div className="zone-container">
-      <Player
-      sprite={"url(https://i.ibb.co/yg3Vrjg/ge-spritesheet.png)"}
-      data ={data}
-      />
-      </div>
-</div>
+          <div className="zone-container">
+            <Player
+              sprite={"url(https://i.ibb.co/yg3Vrjg/ge-spritesheet.png)"}
+              data={data}
+            />
+          </div>
+        </div>
         <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
         <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
         <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
@@ -47,6 +59,8 @@ const Overworld = () => {
 
         <div id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div>
         <div id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
+        <button class="jump" value="jump" onClick={e => jump(e.target.value)}>
+          Jump! </button>
 
       </div>
 
@@ -60,7 +74,7 @@ const Overworld = () => {
     //      <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { auth.signOut() }}>Sign out</button>
     //    </div>
     //  </div>
-    
+
   )
 }
 
