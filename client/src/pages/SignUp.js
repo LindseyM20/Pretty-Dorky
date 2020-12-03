@@ -31,6 +31,7 @@ const SignUp = () => {
     // } else if (name === "displayName") {
     //   setDisplayName(value);
     }
+    // window.location.href="/landing";
   };
   return (
     <div className="mt-8">

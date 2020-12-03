@@ -10,16 +10,18 @@ import exp from "./images/explorer.png";
 import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
-const Overworld = () => {
-
 
 const Overworld = () => {
+
   //Pass a function that calls setCharacterState
 
   return (
+    <div>
+      <Header />
+
       <div id="game">
 
-     <div id="character"></div>
+        <div id="character"></div>
         <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
         <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
         <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
@@ -33,20 +35,18 @@ const Overworld = () => {
 
       </div>
 
+    </div >
 
-      {/* <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
-
-        <div className="overworld">
-          <div className="md:pl-4">
-            <h3 className="italic">Instructions placeholder</h3>
-          </div>
-
-          <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { auth.signOut() }}>Sign out</button>
-
-        </div>
-      </div> */}
+    //  <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
+    //    <div className="overworld">
+    //      <div className="md:pl-4">
+    //        <h3 className="italic">Instructions placeholder</h3>
+    //      </div>
+    //      <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { auth.signOut() }}>Sign out</button>
+    //    </div>
+    //  </div>
     
-    </div>
   )
-};
+}
+
 export default Overworld;

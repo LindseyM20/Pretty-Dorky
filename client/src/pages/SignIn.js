@@ -23,6 +23,8 @@ const SignIn = () => {
           else if(name === 'userPassword'){
             setPassword(value);
           }
+          // !!! Change this later to only route to landing if dead! Otherwise, go to overworld!!!
+          window.location.href="/landing";
       };
 
   return (
