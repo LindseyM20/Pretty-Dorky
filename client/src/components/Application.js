@@ -37,6 +37,16 @@ function Application() {
                             <Overworld />
                             {/* <NoMatch /> */}
                         </Route>
+          {/* the next 3 routes are for development purposes only. take them out later! */}
+                        <Route exact path="/overworld">  
+                            <Overworld />
+                        </Route>
+                        <Route exact path="/signUp">
+                            <SignUp />
+                        </Route>
+                        <Route exact path="/signin">
+                            <SignIn />
+                        </Route>
                         <Route exact path="/battle">
                             {/* <Navbar /> */}
                             <Battle />
