@@ -40,7 +40,11 @@ function Application() {
                         <Route exact path="/battle">
                             {/* <Navbar /> */}
                             <Battle />
+                        
                         </Route>
+                        <Route exact path="/landing">
+                            <Landing />
+                            </Route>
                     </Switch>
                 </Router>
 
