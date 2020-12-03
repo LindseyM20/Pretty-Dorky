@@ -23,6 +23,7 @@ const Header = () => {
             <Healthbar current={health} max={100} />
           </div>
           <button onClick={() => setHealth(health - 10)}>Ouch</button>
+          
         </Col>
       </Row>
     </Container>
