@@ -32,33 +32,33 @@ function Landing() {
   // API.posst (calls the imported API)
 
   // send player to /Overworld
-  // res.redirect("/overworld")
+  window.location.href='/overworld'
 
   }
 
-    return (
-      <body className="bodyStyle">
-        <h1>Choose Your Character</h1>
-        <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
-          <Row>
-            {characterClasses.map(characters => (
-              <Card
-                id={characters.id}
-                key={characters.id}
-                name={characters.name}
-                image={characters.image}
-                description={characters.description}
-                level={characters.level}
-                strength={characters.strength}
-                maxHealth={characters.maxHealth}
-                currentHealth={characters.currentHealth}
+  return (
+    <body className="bodyStyle">
+      <h1>Choose Your Character</h1>
+      <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
+        <Row>
+          {characterClasses.map(characters => (
+            <Card
+              id={characters.id}
+              key={characters.id}
+              name={characters.name}
+              image={characters.image}
+              description={characters.description}
+              level={characters.level}
+              strength={characters.strength}
+              maxHealth={characters.maxHealth}
+              currentHealth={characters.currentHealth}
 
-              />
+            />
 
-            ))}
+          ))}
 
-          </Row>
-          <Row>
+        </Row>
+        <Row>
           <form onSubmit={handleSubmit}>
             <input
               type="name"
@@ -68,13 +68,13 @@ function Landing() {
               id="characterName"
             />
             <button className="createButton">
-            Create Character
+              Create Character
           </button>
           </form>
-          </Row>
-    
-        </section>
-      </body>
-    )
-  }
+        </Row>
+
+      </section>
+    </body>
+  )
+}
 export default Landing;
