@@ -43,7 +43,7 @@ const SignUp = () => {
           </div>
         )}
         <form className="">
-          <label htmlFor="displayName" className="block">
+          {/* <label htmlFor="displayName" className="block">
             Character Name:
           </label>
           <input
@@ -54,7 +54,7 @@ const SignUp = () => {
             placeholder="Character Name"
             id="displayName"
             onChange={event => onChangeHandler(event)}
-          />
+          /> */}
           <label htmlFor="userEmail" className="block">
             Email:
           </label>
