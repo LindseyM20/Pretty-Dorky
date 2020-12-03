@@ -22,17 +22,20 @@ function Landing() {
       ...characterState,
       name: event.target.characterName.value
     })
-    event.target.characterName.value = "";
+    // event.target.characterName.value = ""; 
+    console.log(characterState)
+    //  post character state values to mongo
+  // API.posst (calls the imported API)
     API.createCharacter({
       ...characterState,
       name: event.target.characterName.value,
       uid: user.uid
+      // send player to /Overworld (res call below threw an error, so commented out)
+    }).then(() => {
+       window.location.href="/overworld"
+    }).catch((error) => {
+      console.log(error)
     })
-  //  post character state values to mongo
-  // API.posst (calls the imported API)
-
-  // send player to /Overworld
-  window.location.href="/overworld"
 
   }
 

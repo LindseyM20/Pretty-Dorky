@@ -9,7 +9,6 @@ import NoMatch from "../pages/NoMatch";
 import Battle from "../pages/Battle";
 import CharContext from "../utils/CharContext";
 import Landing from "../pages/Landing/index"
-
 function Application() {
     const user = useContext(UserContext);
     // sets up character state on highest level application - so that it is available to other components.
@@ -37,17 +36,25 @@ function Application() {
                             <Overworld />
                             {/* <NoMatch /> */}
                         </Route>
+          {/* the next 3 routes are for development purposes only. take them out later! */}
+                        <Route exact path="/overworld">  
+                            <Overworld />
+                        </Route>
+                        <Route exact path="/signUp">
+                            <SignUp />
+                        </Route>
+                        <Route exact path="/signin">
+                            <SignIn />
+                        </Route>
                         <Route exact path="/battle">
                             {/* <Navbar /> */}
                             <Battle />
-                        
                         </Route>
                         <Route exact path="/landing">
                             <Landing />
                             </Route>
                     </Switch>
                 </Router>
-
                 :
                 <Router>
                     <Switch>
@@ -77,7 +84,6 @@ function Application() {
                 {/* <h1>
                     {characterState.maxHealth}
                     {characterState.name}
-                    
                 </h1> */}
         </CharContext.Provider>
     );
