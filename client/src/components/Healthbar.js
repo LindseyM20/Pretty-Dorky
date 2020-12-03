@@ -1,18 +1,28 @@
-import React, { useContext, useState } from "react";
-// import Battle from "../pages/Battle";
+import React, { useContext, useEffect } from "react";
 import CharContext from "../utils/CharContext"
 
 
-const Healthbar = ({ current, max }) => {
+const Healthbar = () => {
 
-  // const {maxHealth, currentHealth} = useContext(CharContext)
-  // let current  = currentHealth;
-  // let max = maxHealth;
+  // const [health, setHealth] = useState(100);
+  const {characterState} = useContext(CharContext);
+ // const {maxHealth, currentHealth} = useContext(CharContext)
+
+ let current;
+ let max;
+
+  useEffect(() => {
+    current  = characterState.currentHealth;
+    max = characterState.maxHealth;
+
+  }, [characterState.maxHealth, characterState.currentHealth])
+
 
   const fullWidth = 110;
   const percent = current / max;
   const pixelFill = Math.floor(fullWidth * percent);
   let healthbar;
+
 
   const greenSVG = <svg xmlns="http://www.w3.org/2000/svg" width={160} viewBox="0 -0.5 160 160" shapeRendering="crispEdges">
     {/* <metadata> "Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj" </metadata> */}
@@ -36,7 +46,6 @@ const Healthbar = ({ current, max }) => {
     <rect fill="#962f2c" x={25} y={49.5} width={pixelFill} height={5} />
   </svg>
 
-
   healthbar = greenSVG;
   // if (percent > 30) {
   //   healthbar = greenSVG;
@@ -44,11 +53,11 @@ const Healthbar = ({ current, max }) => {
   if (percent < 30) {
     healthbar = redSVG;
   }
-  
 
   return (
     <div>
       {healthbar}
+      {/* <button onClick={() => setHealth(health - 10)}>Ouch</button> */}
     </div>
   )
 

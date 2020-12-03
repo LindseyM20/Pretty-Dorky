@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
 // import CharContext from "../../utils/CharContext";
-// import CreateChar from "../../components/CreateChar";
 import Card from "../../components/Card";
 import Row from 'react-bootstrap/Row'
 import characterClasses from "../../characterClasses.json";
