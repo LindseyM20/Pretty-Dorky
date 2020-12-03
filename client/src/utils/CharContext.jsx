@@ -7,6 +7,7 @@ const CharContext = createContext({
   strength: 0,
   maxHealth: 0,
   currentHealth: 0,
+  spriteImage: "",
   handleSubmit: () => {} // for name input when creating a character
 });
 

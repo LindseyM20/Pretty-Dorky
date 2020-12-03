@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { auth } from "../../firebase";
 import CharContext from "../../utils/CharContext";
+import Player from "../../components/player"
 import Header from "../../components/Header";
 import tower from "./images/tower.gif";
 import cat from "./images/cat.png";
@@ -13,6 +14,13 @@ import "./overworld.css";
 
 const Overworld = () => {
 
+  const data = {
+    y: -768,
+    x:0,
+    h: 64,
+    w: 64,
+  }
+
   //Pass a function that calls setCharacterState
 
   return (
@@ -21,7 +29,14 @@ const Overworld = () => {
 
       <div id="game">
 
-        <div id="character"></div>
+        <div id="character">
+        <div className="zone-container">
+      <Player
+      sprite={"url(https://i.ibb.co/yg3Vrjg/ge-spritesheet.png)"}
+      data ={data}
+      />
+      </div>
+</div>
         <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
         <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
         <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>

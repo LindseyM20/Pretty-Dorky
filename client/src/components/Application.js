@@ -9,6 +9,8 @@ import NoMatch from "../pages/NoMatch";
 import Battle from "../pages/Battle";
 import CharContext from "../utils/CharContext";
 import Landing from "../pages/Landing/index"
+
+
 function Application() {
     const user = useContext(UserContext);
     // sets up character state on highest level application - so that it is available to other components.
@@ -18,7 +20,8 @@ function Application() {
     level: 0,
     strength: 0,
     maxHealth: 0,
-    currentHealth: 0,  
+    currentHealth: 0, 
+    spriteImage: ""
    })
     console.log(user ? user.uid : "User is not set yet");
     return (
