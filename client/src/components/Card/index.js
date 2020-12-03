@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./style.css";
 import Button from "react-bootstrap/Button"
 import CharContext from "../../utils/CharContext";

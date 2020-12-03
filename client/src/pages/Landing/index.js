@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../providers/UserProvider";
 // import CharContext from "../../utils/CharContext";
 // import CreateChar from "../../components/CreateChar";
 import Card from "../../components/Card";
@@ -6,10 +7,12 @@ import Row from 'react-bootstrap/Row'
 import characterClasses from "../../characterClasses.json";
 import Healthbar from "../../components/Healthbar"
 import CharContext from "../../utils/CharContext";
+import API from "../../utils/API";
 import "./style.css";
 
 function Landing() {
-  const { setCharacterState, characterState } = useContext(CharContext)
+  const {setCharacterState, characterState} = useContext(CharContext)
+  const user = useContext(UserContext)
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,10 +23,16 @@ function Landing() {
       name: event.target.characterName.value
     })
     event.target.characterName.value = "";
-    //  post character state values to mongo
-    // API.posst (calls the imported API)
-    // send player to /Overworld
-    window.location.href='/overworld'
+    API.createCharacter({
+      ...characterState,
+      name: event.target.characterName.value,
+      uid: user.uid
+    })
+  //  post character state values to mongo
+  // API.posst (calls the imported API)
+
+  // send player to /Overworld
+  window.location.href='/overworld'
 
   }
 
