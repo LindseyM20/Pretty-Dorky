@@ -25,8 +25,8 @@ const Overworld = () => {
         <div id="exp"><img id="expImg" src={exp} alt="internet"></img></div>
 
         <div id="tower1"><img src={tower} alt="server"></img></div>
-        {/* <div id="tower2"><img src={tower} alt="server"></img></div>
-        <div id="tower3"><img src={tower} alt="server"></img></div> */}
+        <div id="tower2"><img src={tower} alt="server"></img></div>
+        <div id="tower3"><img src={tower} alt="server"></img></div>
 
         <div id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div>
         <div id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>

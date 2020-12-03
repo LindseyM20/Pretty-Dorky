@@ -37,7 +37,7 @@ body {
 #tower1 {
     width: 1000px;
     position: relative;
-    top: 169px;
+    top: -80px;
     left: -103px;
     z-index: -1;
     animation: move 5s infinite linear; 
@@ -45,7 +45,7 @@ body {
 #tower2 {
     width: 1000px;
     position: relative;
-    top: -133px;
+    top: -383px;
     left: -143px;
     z-index: -2;
     animation: move 6s infinite linear; 
@@ -53,7 +53,7 @@ body {
 #tower3 {
     width: 1000px;
     position: relative;
-    top: -432px;
+    top: -686px;
     left: -183px;
     z-index: -3;
     animation: move 7s infinite linear; 
@@ -107,7 +107,7 @@ body {
     height: 50px;
     background-color: blue;
     position: relative;
-    top: -347px;
+    top: -1000px;
     animation: health 5s infinite;
 }
 #tartImg {
@@ -124,38 +124,6 @@ body {
 #beanImg {
     height: 35px;
 }
-#light{
-    width: 67px;
-    height: 35px;
-    position: relative;
-    top: -769px;
-    left: -184px;
-}
-#light2{
-    width: 67px;
-    height: 35px;
-    position: relative;
-    top: -805px;
-    left: 80px;
-}
-#light3{
-    width: 67px;
-    height: 35px;
-    position: relative;
-    top: -840px;
-    left: 322px;
-}
-#light4{
-    width: 67px;
-    height: 35px;
-    position: relative;
-    top: -875px;
-    left: 555px;
-}
-#lightImg {
-    height: 440px;
-}
-
 
 @keyframes block {
     0%{left: 1000px;}
@@ -169,8 +137,8 @@ body {
 @keyframes health {
     from { 
             left: 1100px;
-            top: -800px; }
+            top: -1100px; }
     to   { 
             left: -150px;
-            top: -400px; }
+            top: -550px; }
 }
