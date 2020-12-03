@@ -1,12 +1,27 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./style.css";
 import Button from "react-bootstrap/Button"
+import CharContext from "../../utils/CharContext";
 // import { Link } from "react-router-dom";
 // import Card from 'react-bootstrap/Card';
 // import CardGroup from 'react-bootstrap/CardGroup';
 
 
-function cardGroups(props) {
+
+function CardGroups(props) {
+const {setCharacterState} = useContext(CharContext)
+
+  function captureStats() {
+    setCharacterState({
+      name: "",
+      level: props.level,
+      strength: props.strength,
+      maxHealth: props.maxHealth,
+      currentHealth: props.currentHealth,
+    })
+
+  }
+
     return (
     <div className="card">
       <div className="img-container">
@@ -14,19 +29,19 @@ function cardGroups(props) {
       </div>
       <div className="content">
         <ul>
-          {/* <li>
+          <li>
             <strong>{props.name}</strong> 
-          </li> */}
-          <li>{props.description}
           </li>
+          {/* <li>{props.description} 
+          </li> */}
         </ul>
-        {/* <Button variant="secondary" 
+        <Button variant="secondary" 
           type="submit" 
-          href={props.repository} target="_blank" 
+          onClick = {captureStats}
           className="cardBtn" >
-          Repository
+          Select {props.description}
         </Button>
-        <Button variant="secondary"
+        {/* <Button variant="secondary"
           type="submit" 
           href={props.deployment} target="_blank" 
           className="cardBtn" >
@@ -37,4 +52,4 @@ function cardGroups(props) {
   );
 }
 
-export default cardGroups;
+export default CardGroups;

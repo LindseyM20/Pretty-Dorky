@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: rgb(80, 80, 80);
+}
+
+#game{
+    background-image: url(./images/background1.jpg);
+    margin: 10%;
+    position: absolute;
+    z-index: -5;
+    width: 950px;
+    height: 630px;
+    border: 1px solid black;
+    z-index: -10;
+    overflow: hidden;
+}
+#character {
+    width: 40px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    top: 452px;
+    left: 50px;
+}
+.animate{
+    animation: jump 450ms;
+}
+@keyframes jump {
+    0% {top: 150px}
+    40% {top: 100px}
+    60% {top: 100px}
+    100% {top: 150px}
+}
+#tower1 {
+    width: 1000px;
+    position: relative;
+    top: 169px;
+    left: -103px;
+    z-index: -1;
+    animation: move 5s infinite linear; 
+}
+#tower2 {
+    width: 1000px;
+    position: relative;
+    top: -133px;
+    left: -143px;
+    z-index: -2;
+    animation: move 6s infinite linear; 
+}
+#tower3 {
+    width: 1000px;
+    position: relative;
+    top: -432px;
+    left: -183px;
+    z-index: -3;
+    animation: move 7s infinite linear; 
+}
+#cat {
+    width: 77px;
+    height: 40px;
+    background-color: blue;
+    position: relative;
+    top: 395px;
+    animation: block 4s infinite linear;
+}
+#catImg {
+    height: 84px;
+}
+#clippy {
+    width: 42px;
+    height: 80px;
+    background-color: blue;
+    position: relative;
+    top: 352px;
+    animation: block 7s infinite linear;
+}
+#clippyImg {
+    height: 100px;
+}
+#bug {
+    width: 73px;
+    height: 80px;
+    background-color: blue;
+    position: relative;
+    top: 292px;
+    animation: block 3s infinite linear;
+}
+#bugImg {
+    height: 80px;
+}
+#exp {
+    width: 78px;
+    height: 80px;
+    background-color: blue;
+    position: relative;
+    top: 369px;
+    animation: block 3s infinite linear;
+}
+#expImg {
+    height: 80px;
+}
+#popTart {
+    width: 67px;
+    height: 50px;
+    background-color: blue;
+    position: relative;
+    top: -347px;
+    animation: health 5s infinite;
+}
+#tartImg {
+    height: 50px;
+}
+#bean {
+    width: 67px;
+    height: 35px;
+    background-color: blue;
+    position: relative;
+    top: -347px;
+    animation: health 5s infinite;
+}
+#beanImg {
+    height: 35px;
+}
+#light{
+    width: 67px;
+    height: 35px;
+    position: relative;
+    top: -769px;
+    left: -184px;
+}
+#light2{
+    width: 67px;
+    height: 35px;
+    position: relative;
+    top: -805px;
+    left: 80px;
+}
+#light3{
+    width: 67px;
+    height: 35px;
+    position: relative;
+    top: -840px;
+    left: 322px;
+}
+#light4{
+    width: 67px;
+    height: 35px;
+    position: relative;
+    top: -875px;
+    left: 555px;
+}
+#lightImg {
+    height: 440px;
+}
+
+
+@keyframes block {
+    0%{left: 1000px;}
+    100%{left: -40px;}
+}
+
+@keyframes move {
+    from { left: 0px; }
+    to   { left: -950px; }
+}
+@keyframes health {
+    from { 
+            left: 1100px;
+            top: -800px; }
+    to   { 
+            left: -150px;
+            top: -400px; }
+}
