@@ -10,6 +10,7 @@ import bug from "./images/moth.png";
 import exp from "./images/explorer.png";
 import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
+import Row from 'react-bootstrap/Row';
 import "./overworld.css";
 
 const Overworld = () => {
@@ -25,7 +26,10 @@ const Overworld = () => {
 
   return (
     <div>
-      <Header />
+      <Row>
+        <Header />
+      </Row>
+
 
       <div id="game">
 
