@@ -25,14 +25,10 @@ const Overworld = () => {
     w: 128,
   }
 
-  const character = document.getElementById("character");
-
   function jump() {
-    console.log(character)
-    character.classList.add("animate");
-
+    document.getElementById("character").classList.add("animate");
     setTimeout(function () {
-      character.classList.remove("animate");
+      document.getElementById("character").classList.remove("animate");
     }, 500);
   }
 
