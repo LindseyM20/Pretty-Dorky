@@ -32,8 +32,6 @@ const Overworld = () => {
     }, 500);
   }
 
-  //Pass a function that calls setCharacterState
-
   return (
     <body>
       <div>
@@ -49,15 +47,15 @@ const Overworld = () => {
                 />
               </div>
             </div>
-            <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
+            {/* <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div> */}
             <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
-            <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
-            <div id="exp"><img id="expImg" src={exp} alt="internet"></img></div>
+            {/* <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
+            <div id="exp"><img id="expImg" src={exp} alt="internet"></img></div> */}
             <div id="tower1"><img src={tower} alt="server"></img></div>
             <div id="tower2"><img src={tower} alt="server"></img></div>
             <div id="tower3"><img src={tower} alt="server"></img></div>
 
-            <div id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div>
+            {/* <div id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div> */}
             <div id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
             <Button variant="dark" value="jump" onClick={e => jump(e.target.value)}>
               Jump! </Button>
@@ -69,7 +67,7 @@ const Overworld = () => {
           <div className="card overInst">
             {/* <div className="overworld"> */}
             {/* <div className="md:pl-4"> */}
-            <h3 className="italic">Instructions placeholder</h3>
+            <h3 style= {{ fontSize: 20 }}  className="italic">Use the arrow keys  to run toward the enemy or away if it is too scary. Hint - if you run away you aren't fast enough so it's really best to face your fears. If your timing is right you can use the jump button to jump higher than your enemy, because they can't jump. They are filled with so much rage they can barely see straight, so jumping is hard for them. If your low on health you can jump towards a health item as it passess by. As a coder few things will keep you moving, so hopefully you get a good one.</h3>
             {/* </div> */}
             <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
               onClick={() => {
