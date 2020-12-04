@@ -13,10 +13,10 @@ export default function useWalk(maxSteps) {
 
     function walk(dir) {
         setDir(directions[dir])
-        // this is only cycling through for maxSteps passed in player
+        // this is only cycling through for maxSteps (9 in our case) passed in player
         setStep(prev => prev < maxSteps -1 ? prev +1 : 0)
     }
-
+    //passing these to player
     return {
         walk, dir, step, directions,
     }

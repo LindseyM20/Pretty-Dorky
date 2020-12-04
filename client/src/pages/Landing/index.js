@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
+import { useHistory } from "react-router-dom";
 // import CharContext from "../../utils/CharContext";
 // import CreateChar from "../../components/CreateChar";
+import Header from "../../components/Header";
 import Card from "../../components/Card";
 import Row from 'react-bootstrap/Row'
 import characterClasses from "../../characterClasses.json";
-import Healthbar from "../../components/Healthbar"
+// import Healthbar from "../../components/Healthbar"
 import CharContext from "../../utils/CharContext";
 import API from "../../utils/API";
 import "./style.css";
@@ -14,25 +16,40 @@ function Landing() {
   const {setCharacterState, characterState} = useContext(CharContext)
   const user = useContext(UserContext)
 
+
+  //This is what allows the endUser to navigate through pages while maintaining state
+  let history = useHistory();
+    // if (window.location.pathname !== "/overworld") {
+    //     if (characterState.location === "/overworld") {
+    //     history.push(characterState.location)
+    //     }
+    // }
+    if (characterState.name)
+    history.push(characterState.location)
+
   function handleSubmit(event) {
     event.preventDefault();
     // capture value from input field and set it to name value for charState
     console.log(event.target.characterName.value);
-    setCharacterState({
-      ...characterState,
-      name: event.target.characterName.value
-    })
     // event.target.characterName.value = ""; 
     console.log(characterState)
     //  post character state values to mongo
   // API.posst (calls the imported API)
-    API.createCharacter({
-      ...characterState,
+
+    const nextState = {...characterState,
       name: event.target.characterName.value,
+      location: "/overworld",
+    };
+    API.createCharacter({
+      ...nextState,
       uid: user.uid
       // send player to /Overworld (res call below threw an error, so commented out)
     }).then(() => {
-       window.location.href="/overworld"
+      setCharacterState(nextState)
+      //  window.location.href="/overworld" // this would overwrite state?
+      // need a router to maintain state instead
+      
+      console.log("would move to overworld")
     }).catch((error) => {
       console.log(error)
     })
@@ -41,6 +58,7 @@ function Landing() {
 
   return (
     <body className="bodyStyle">
+      <Header />
       <h1>Choose Your Character</h1>
       <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
         <Row>
@@ -55,7 +73,7 @@ function Landing() {
               strength={characters.strength}
               maxHealth={characters.maxHealth}
               currentHealth={characters.currentHealth}
-
+              spriteImage={characters.spriteImage}
             />
 
           ))}

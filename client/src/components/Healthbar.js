@@ -3,14 +3,15 @@ import React, { useContext, useState } from "react";
 import CharContext from "../utils/CharContext"
 
 
-const Healthbar = ({ current, max }) => {
+const Healthbar = () => {
+  const {characterState} = useContext(CharContext)
 
   // const {maxHealth, currentHealth} = useContext(CharContext)
   // let current  = currentHealth;
   // let max = maxHealth;
 
   const fullWidth = 110;
-  const percent = current / max;
+  const percent = characterState.currentHealth / characterState.maxHealth;
   const pixelFill = Math.floor(fullWidth * percent);
   let healthbar;
 
