@@ -34,6 +34,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 12px;
+    font-family:'VT323'
   }
 
   .card > .content > ul > li {
@@ -44,6 +45,13 @@
     margin-bottom: 8px;
     margin: 5px;
     background: #4d565f;
+    font-family:'VT323'
+  }
+  .createButton {
+    margin-bottom: 8px;
+    margin: 5px;
+    background: #4d565f;
+    font-family:'VT323'
   }
   li {
      list-style: none;
