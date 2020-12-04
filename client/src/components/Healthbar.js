@@ -1,17 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import CharContext from "../utils/CharContext"
+
+
 const Healthbar = () => {
-  // const [health, setHealth] = useState(100);
-  const {characterState} = useContext(CharContext);
- // const {maxHealth, currentHealth} = useContext(CharContext)
- let current;
- let max;
-  useEffect(() => {
-    current  = characterState.currentHealth;
-    max = characterState.maxHealth;
-  }, [characterState.maxHealth, characterState.currentHealth])
+  const {characterState} = useContext(CharContext)
+
+  // const {maxHealth, currentHealth} = useContext(CharContext)
+  // let current  = currentHealth;
+  // let max = maxHealth;
+
   const fullWidth = 110;
-  const percent = current / max;
+  const percent = characterState.currentHealth / characterState.maxHealth;
   const pixelFill = Math.floor(fullWidth * percent);
   let healthbar;
   const greenSVG = <svg xmlns="http://www.w3.org/2000/svg" width={160} viewBox="0 -0.5 160 160" shapeRendering="crispEdges">

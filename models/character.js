@@ -7,7 +7,8 @@ const characterSchema = new Schema({
   level: { type: Number, required: true },
   strength: { type: Number, required: true },
   currentHealth: {type: Number, required: true},
-  maxHealth: {type: Number, required: true}
+  maxHealth: {type: Number, required: true},
+  spriteImage: {type: String, required: false}
 
 
 });

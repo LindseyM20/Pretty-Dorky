@@ -8,7 +8,9 @@ import PasswordReset from "./PasswordReset";
 import NoMatch from "../pages/NoMatch";
 import Battle from "../pages/Battle";
 import CharContext from "../utils/CharContext";
-import Landing from "../pages/Landing/index"
+import Landing from "../pages/Landing/index";
+
+
 function Application() {
     const user = useContext(UserContext);
     // sets up character state on highest level application - so that it is available to other components.
@@ -18,9 +20,20 @@ function Application() {
     level: 0,
     strength: 0,
     maxHealth: 0,
-    currentHealth: 0,  
+    currentHealth: 0, 
+    spriteImage: "",
+    location: ""
    })
-    console.log(user ? user.uid : "User is not set yet");
+    console.log((user ? user.uid : "User is not set yet"), characterState);
+
+    // let history = useHistory();
+    // if (window.location.pathname !== "/overworld") {
+    //     if (characterState.location === "/overworld") {
+    //     history.push(characterState.location)
+    //     }
+    // }
+
+
     return (
         // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
         <CharContext.Provider value={{
