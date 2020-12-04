@@ -48,7 +48,7 @@ body {
     height: 100px;
     /* background-color: red; */
     position: relative;
-    top: 455px;
+    top: 441px;
     left: 50px;
 }
 button.btn.btn-dark {
@@ -59,7 +59,7 @@ button.btn.btn-dark {
     width: 75px;
 }
 .animate{
-    animation: jump 475ms;
+    animation: jump 481ms;
     z-index: 1;
 }
 @keyframes jump {
@@ -113,7 +113,7 @@ button.btn.btn-dark {
     position: relative;
     /* top: 267px; */
     top: 360px; /* for presentation demo*/
-    animation: block 7s infinite linear;
+    animation: block 5s infinite linear;
 }
 #clippyImg {
     height: 100px;
