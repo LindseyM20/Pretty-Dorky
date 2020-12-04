@@ -15,7 +15,7 @@ const SignUp = () => {
       generateUserDocument(user, {displayName});
     }
     catch(error){
-      setError('Error Signing up with email and password');
+      setError('Error Signing up with email and password, please use 8 characters in password, please sign in anyway');
     }
       
     setEmail("");
@@ -46,18 +46,6 @@ const SignUp = () => {
           </div>
         )}
         <form className="">
-          {/* <label htmlFor="displayName" className="block">
-            Display Name:
-          </label> */}
-          {/* <input
-            // type="text"
-            // className="my-1 p-1 w-full "
-            // name="displayName"
-            // value={displayName}
-            // placeholder="E.g: Faruq"
-            // id="displayName"
-            // onChange={event => onChangeHandler(event)}
-          /> */}
           <label htmlFor="userEmail" className="block">
             Email:
           </label>
@@ -94,7 +82,7 @@ const SignUp = () => {
         <p className="text-center my-3">or</p>
         <p className="text-center my-3">
           Already started your adventure?{" "}
-          <Link to="/" className="text-blue-500 hover:text-blue-600">
+          <Link to="/signin" className="text-blue-500 hover:text-blue-600">
             Sign in here
           </Link>{" "}
         </p>
