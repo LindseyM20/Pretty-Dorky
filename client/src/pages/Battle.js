@@ -13,10 +13,10 @@ function Battle() {
     const [turnbase, setTurnbase] = useState(false);
     const [screentext, setScreentext] = useState("");    
     const [enemyState, setEnemystats]= useState({
-        name: "",
-        level: 0,
-        strength: 0,
-        maxHealth: 0,
+        name: "Slime",
+        level: 1,
+        strength: 10,
+        maxHealth: 50,
         currentHealth: 0,
     });
     const {characterState,setCharacterState} = useContext(CharContext);
@@ -35,30 +35,31 @@ function Battle() {
     useEffect(() => {
 
         //this could be redundant
-        // API.getCharacter(characterState.uid
+        API.getCharacter(characterState.uid
             /*...characterState, name: characterState.name,
             level: characterState.level,
             strength: characterState.strength,
             maxHealth: characterState.maxHealth,
             currentHealth: characterState.currentHealth,*/
-        // ).then((res) => {
-        //     setCharacterState(res);
-        //     // window.location.href="/overworld"
-        // }).catch((error) => {
-        //     console.log(error)
-        // });
+        ).then((res) => {
+            setCharacterState(res);
+            // window.location.href="/overworld"
+        }).catch((error) => {
+            console.log(error)
+        });
 
         setEnemystats({
-            name: "Slime",
-            level: 1,
-            strength: 10,
-            maxHealth: 50,
             currentHealth: 50,
         });
         console.log(enemyState);
         speedRead(screentext, `A ${enemyState.name} appears to block your path Click on the options to initiate combat. `)
             .then((res) => {
-                setTurnbase(res);
+                do {
+                    setTimeout(() => {
+                        console.log("wait your turn")
+                    }, 100);
+                } while (res === false);
+                setTurnbase(true);
                 console.log(turnbase);
             });
         // setScreentext(`A ${slime.name} appears to block your path Click on the options to initiate combat. `);
@@ -117,11 +118,15 @@ function Battle() {
             dialogue +=( " You have defeated Slime! You feel a new found power growing within you! " + 
             characterState.name + " is now level " + characterState.age + ". Your Strength is now " + characterState.strength + 
             ". Your Health is now " +  characterState.hitpoints + " out of " + characterState.maxHealth + " total. ");
-            speedRead(screentext,dialogue).then(() => {
-                // setScreentext(screentext, "");
+            speedRead(screentext,dialogue).then((res) => {
+                do {
+                    setTimeout(() => {
+                        console.log("wait your turn")
+                    }, 100);
+                } while (res === false);
                 API.update({...characterState, currentHealth: characterState.currentHealth})
                 .then(() => {
-                    window.location.href="/overworld"
+                    // window.location.href="/overworld"
                  }).catch((error) => {
                    console.log(error)
                  });
@@ -142,14 +147,24 @@ function Battle() {
             // console.log(`${characterState.currentHealth} after damage`);
             if (isAlive(characterState) === false) {
                 dialogue += ("You have been defeated GAME OVER");
-                speedRead(screentext,dialogue).then(() => {
+                speedRead(screentext,dialogue).then((res) => {
+                    do {
+                        setTimeout(() => {
+                            console.log("wait your turn")
+                        }, 100);
+                    } while (res === false);
                     // speedRead(screentext, "You have been defeated GAME OVER")setScreentext(screentext, "You have been defeated GAME OVER");
                     window.location.href="/landing";
                 });
             }
         }; 
         speedRead(screentext,dialogue).then((res) => {
-            setTurnbase(res);
+            do {
+                setTimeout(() => {
+                    console.log("wait your turn")
+                }, 100);
+            } while (res === false);
+            setTurnbase(true);
             console.log(turnbase);
         });
         // console.log(`${characterState.currentHealth} after damage`);
@@ -220,11 +235,20 @@ function Battle() {
             } 
             else {
                 speedRead(screentext,"You would like to run away").then((res)=>{
-                    if (res === true){
-                        if (Math.floor(Math.random()*2)>0){
-                            setScreentext("You ran away successfully");
+                    do {
+                        setTimeout(() => {
+                            console.log("wait your turn")
+                        }, 100);
+                    } while (res === false);
+                    if (Math.floor(Math.random()*2)>0){
+                        speedRead(screentext,"You ran away successfully").then((res) => {
+                            do {
+                                setTimeout(() => {
+                                    console.log("wait your turn")
+                                }, 100);
+                            } while (res === false);
                             window.location.href="/overworld";
-                        };
+                        })
                     };
                 });
             };
@@ -247,7 +271,7 @@ function Battle() {
                 <Button variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
             </Col>
             <Col center-align>
-                <Button variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
+                <Button variant="primary" size="lg" data-value="Defend" onClick={handleBtnClick} >Fight</Button>
             </Col>
             <Col right-align>
                 <Button variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>

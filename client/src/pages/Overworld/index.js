@@ -24,6 +24,8 @@ const Overworld = () => {
     w: 128,
   }
 
+  
+
   //Pass a function that calls setCharacterState
 
   return (

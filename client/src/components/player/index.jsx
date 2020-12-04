@@ -15,6 +15,8 @@ export default function Player() {
         w: 128,
     };
 
+
+
     useKeyPress((e) => {
         const dir = e.key.replace("Arrow", "").toLowerCase()
         walk(dir)
