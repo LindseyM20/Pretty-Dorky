@@ -19,10 +19,10 @@ const Overworld = () => {
   console.log(characterState)
 
   const data = {
-    y: -768,
+    y: -1536,
     x: 0,
-    h: 64,
-    w: 64,
+    h: 128,
+    w: 128,
   }
 
   const character = document.getElementById("character");
