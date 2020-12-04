@@ -3,6 +3,9 @@ import { Button, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CharContext from "../utils/CharContext";
 import Header from "../components/Header";
+import "./Battle.css";
+import enemy from "./Overworld/images/evilClippy.png";
+
 
 // import { Container } from "react-bootstrap/lib/Tab";
 
@@ -78,19 +81,33 @@ function Battle() {
 
     return (
         <div>
+            <Header />
             <Row>
-                <Header />
+                <div className="card" id="fight">
+
+                    <div id="characterFight"></div>
+                    <div id="enemyFight">
+                        <img id="enemy" src={enemy} alt="enemy"></img>
+                    </div>
+
+
+                </div>
             </Row>
-            <h1 className="text-center">A Slime appears to block your path</h1>
-            <p className="text-center h3">Click on the options to initiate combat</p>
 
 
             <Row>
-                <Col>
+                <div className="card" id="fightText">
+                    <h1 className="text-center">A Slime appears to block your path</h1>
+                    <p className="text-center h3">Click on the options to initiate combat</p>
+                </div>
+            </Row>
+
+            <Row>
+                <Col className="col-6">
                     <Button variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
                 </Col>
                 <Col></Col>
-                <Col>
+                <Col className="col-6">
                     <Button variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
                 </Col>
             </Row>

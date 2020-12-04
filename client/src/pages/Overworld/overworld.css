@@ -5,7 +5,18 @@
 body {
     background-color: rgb(80, 80, 80);
 }
-
+#instructions {
+    position: relative;
+    width: 950px;
+    top: 845px;
+    margin: 2%;
+    left: 147px;
+    border: solid 5px black;
+}
+.signOut {
+    position: relative;
+    top: 900px;
+}
 #game{
     background-image: url(./images/background1.jpg);
     margin: 10%;
@@ -25,8 +36,15 @@ body {
     top: 455px;
     left: 50px;
 }
+button.btn.btn-dark {
+    position: relative;
+    top: -497px;
+    left: 10px;
+    width: 60px;
+}
 .animate{
-    animation: jump 450ms;
+    animation: jump 475ms;
+    z-index: 1;
 }
 @keyframes jump {
     0% {top: 150px}
