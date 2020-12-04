@@ -56,10 +56,10 @@ function Landing() {
   return (
     <body className="bodyStyle">
       <h1>Choose Your Character</h1>
-      <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
+      <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
         <Row>
           {characterClasses.map(characters => (
-            <Card
+            <Card 
               id={characters.id}
               key={characters.id}
               name={characters.name}
