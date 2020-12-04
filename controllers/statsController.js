@@ -8,18 +8,24 @@ module.exports = {
   //   //   .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
-  // findById: function(req, res) {
-  //   db.CreateCharacter.findById(req.params.id)
-  //   //   .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  findById: function(req, res) {
+    console.log("getting character here")
+    db.Character.findOne({uid:req.params.uid})
+      .then(dbModel => {
+        console.log(dbModel);
+        console.log(req.params.uid);
+        return res.json(dbModel)
+      }
+        )
+      .catch(err => res.status(422).json(err));
+  },
   create: function (req, res) {
     /*db.Character.find({ uid: req.body.uid })
       .then(dbModel => {
           console.log(dbModel);
         if (dbModel) dbModel.remove()})
       .then(() => {*/
-        console.log("here")
+        console.log("create here")
         db.Character.create(req.body)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));

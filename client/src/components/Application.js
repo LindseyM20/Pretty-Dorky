@@ -62,10 +62,8 @@ function Application() {
                 <Router>
                     <Switch>
                         <Route exact path="/">
-                            <Navbar />
-                            <Overworld />
-                            <NoMatch />
-                        </Route> */}
+                           {rootLocation}
+                        </Route>
           {/* the next 3 routes are for development purposes only. take them out later! */}
                         <Route exact path="/overworld">  
                             <Overworld />

@@ -19,16 +19,14 @@ const Overworld = () => {
   console.log(characterState)
 
   const data = {
-    y: -768,
+    y: -1536,
     x: 0,
-    h: 64,
-    w: 64,
+    h: 128,
+    w: 128,
   }
-
 
   function jump() {
     document.getElementById("character").classList.add("animate");
-
     setTimeout(function () {
       document.getElementById("character").classList.remove("animate");
     }, 500);
