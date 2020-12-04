@@ -8,10 +8,19 @@ const SignIn = () => {
     const [error, setError] = useState(null);
     const signInWithEmailAndPasswordHandler = (event, email, password) => {
       event.preventDefault();
-      auth.signInWithEmailAndPassword(email, password).catch(error => {
+      auth.signInWithEmailAndPassword(email, password)
+      //added in
+      .then(() => {
+        window.location.href="/landing"
+     }).catch((error) => {
+       console.log(error)
+     })
+      //below was previously continued from line 11
+      .catch(error => {
         setError("Error signing in with password and email!");
         console.error("Error signing in with password and email", error);
       });
+      // window.location.href="/landing";
     };
 // updates email and password in state variables
       const onChangeHandler = (event) => {
@@ -24,7 +33,7 @@ const SignIn = () => {
             setPassword(value);
           }
           // !!! Change this later to only route to landing if dead! Otherwise, go to overworld!!!
-          window.location.href="/landing";
+          // window.location.href="/landing";
       };
 
   return (

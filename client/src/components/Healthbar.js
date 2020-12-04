@@ -3,28 +3,12 @@ import CharContext from "../utils/CharContext"
 
 
 const Healthbar = () => {
-
-  // const [health, setHealth] = useState(100);
-  const { characterState } = useContext(CharContext)
- // const {maxHealth, currentHealth} = useContext(CharContext)
-
-  let current;
-  let max;
-  let pixelFill; 
-  let percent;
-
-  useEffect(() => {
-    current  = characterState.currentHealth;
-    max = characterState.maxHealth;
-    console.log(characterState);
-    const fullWidth = 110;
-    percent = current / max;
-    pixelFill = Math.floor(fullWidth * percent);
-    console.log(pixelFill);
-  }, [characterState.maxHealth, characterState.currentHealth])
+  const {characterState} = useContext(CharContext)
 
 
-
+  const fullWidth = 110;
+  const percent = characterState.currentHealth / characterState.maxHealth;
+  const pixelFill = Math.floor(fullWidth * percent);
   let healthbar;
 
 
