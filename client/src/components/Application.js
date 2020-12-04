@@ -19,8 +19,8 @@ function Application() {
     name: "",
     level: 0,
     strength: 0,
-    maxHealth: 0,
-    currentHealth: 0, 
+    maxHealth: 100,
+    currentHealth: 20, 
     spriteImage: ""
    })
     console.log(user ? user.uid : "User is not set yet");

@@ -5,22 +5,26 @@ import CharContext from "../utils/CharContext"
 const Healthbar = () => {
 
   // const [health, setHealth] = useState(100);
-  const {characterState} = useContext(CharContext);
+  const { characterState } = useContext(CharContext)
  // const {maxHealth, currentHealth} = useContext(CharContext)
 
- let current;
- let max;
+  let current;
+  let max;
+  let pixelFill; 
+  let percent;
 
   useEffect(() => {
     current  = characterState.currentHealth;
     max = characterState.maxHealth;
-
+    console.log(characterState);
+    const fullWidth = 110;
+    percent = current / max;
+    pixelFill = Math.floor(fullWidth * percent);
+    console.log(pixelFill);
   }, [characterState.maxHealth, characterState.currentHealth])
 
 
-  const fullWidth = 110;
-  const percent = current / max;
-  const pixelFill = Math.floor(fullWidth * percent);
+
   let healthbar;
 
 
@@ -46,17 +50,17 @@ const Healthbar = () => {
     <rect fill="#962f2c" x={25} y={49.5} width={pixelFill} height={5} />
   </svg>
 
-  healthbar = greenSVG;
+  // healthbar = greenSVG;
   // if (percent > 30) {
   //   healthbar = greenSVG;
   // }
-  if (percent < 30) {
-    healthbar = redSVG;
-  }
+  // if (percent < .30) {
+  //   healthbar = redSVG;
+  // }
 
   return (
     <div>
-      {healthbar}
+      {redSVG}
       {/* <button onClick={() => setHealth(health - 10)}>Ouch</button> */}
     </div>
   )
