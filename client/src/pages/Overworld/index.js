@@ -68,21 +68,21 @@ const Overworld = () => {
 
           </div>
         </Row>
-        <Row id ="instructions">
+        <Row id="instructions">
 
           <div className="card overInst">
             {/* <div className="overworld"> */}
-              {/* <div className="md:pl-4"> */}
-                <h3 className="italic">Instructions placeholder</h3>
-              {/* </div> */}
-              <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
-                onClick={() => {
-                  auth.signOut();
-                  setCharacterState({});
+            {/* <div className="md:pl-4"> */}
+            <h3 className="italic">Instructions placeholder</h3>
+            {/* </div> */}
+            <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
+              onClick={() => {
+                auth.signOut();
+                setCharacterState({});
 
-                  window.location.href = "/";
+                window.location.href = "/";
 
-                }}>Sign out</button>
+              }}>Sign out</button>
             {/* </div> */}
           </div>
 

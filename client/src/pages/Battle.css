@@ -25,14 +25,14 @@ body {
     align-items: center;
 }
 button.btn.btn-primary {
-    position: fixed;
+    position: relative;
     top: 1025px;
-    left: 220px;
+    left: 133px;
 }
 button.btn.btn-secondary {
-    position: fixed;
-    top: 1185px;
-    left: 1045px;
+    position: relative;
+    top: 977px;
+    left: 1004px;
 }
 #characterFight {
     width: 475px;

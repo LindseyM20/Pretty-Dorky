@@ -9,7 +9,7 @@ body {
     background-image: url(./images/background1.jpg);
     margin: 10%;
     position: absolute;
-    top: 40px;
+    top: 125px;
     z-index: -5;
     width: 950px;
     height: 630px;
@@ -20,7 +20,7 @@ body {
 #instructions {
     position: absolute;
     width: 950px;
-    top: 830px;
+    top: 975px;
     margin-left: 9%;
 }
 .card.overInst {
@@ -31,7 +31,7 @@ body {
 .signOut {
     position: absolute;
     top: 160px;
-    left: 830px;
+    left: 800px;
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
@@ -55,7 +55,7 @@ button.btn.btn-dark {
     position: relative;
     top: -497px;
     left: 10px;
-    width: 60px;
+    width: 75px;
 }
 .animate{
     animation: jump 475ms;
