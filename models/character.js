@@ -8,7 +8,8 @@ const characterSchema = new Schema({
   strength: { type: Number, required: true },
   currentHealth: {type: Number, required: true},
   maxHealth: {type: Number, required: true},
-  spriteImage: {type: String, required: false}
+  spriteImage: {type: String, required: false},
+  location: {type: String, required: false}
 
 
 });

@@ -32,8 +32,11 @@ function Application() {
     //     history.push(characterState.location)
     //     }
     // }
-
-
+let rootLocation = <Overworld />;
+   if (user && user.uid && !characterState.name) {
+    rootLocation = <SignIn />
+   } 
+ console.log(user, "user here")
     return (
         // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
         <CharContext.Provider value={{
@@ -45,9 +48,7 @@ function Application() {
                 <Router>
                     <Switch>
                         <Route exact path="/">
-                            {/* <Navbar /> */}
-                            <Overworld />
-                            {/* <NoMatch /> */}
+                           {rootLocation}
                         </Route>
           {/* the next 3 routes are for development purposes only. take them out later! */}
                         <Route exact path="/overworld">  
