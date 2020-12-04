@@ -1,42 +1,44 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth, generateUserDocument } from "../firebase";
-
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [displayName, setDisplayName] = useState("");  I think this was for character name? -Lindsey
+  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState(null);
+
   const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
     event.preventDefault();
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(email, password);
-      // generateUserDocument(user, { displayName });
+    try{
+      const {user} = await auth.createUserWithEmailAndPassword(email, password);
+      generateUserDocument(user, {displayName});
     }
-    catch (error) {
+    catch(error){
       setError('Error Signing up with email and password');
     }
-
+      
     setEmail("");
     setPassword("");
-    // setDisplayName("");
+    setDisplayName("");
   };
+
   const onChangeHandler = event => {
     const { name, value } = event.currentTarget;
+
     if (name === "userEmail") {
       setEmail(value);
     } else if (name === "userPassword") {
       setPassword(value);
-    // } else if (name === "displayName") {
-    //   setDisplayName(value);
+    } else if (name === "displayName") {
+      setDisplayName(value);
     }
-    // window.location.href="/landing";
   };
+
   return (
     <div className="mt-8">
-      <h1 className="text-3xl mb-2 text-center font-bold">Welcome, Traveler!</h1>
-      <h2 className="text-3xl mb-2 text-center font-bold">Sign up to begin your adventure. . .</h2>
+          <h1 className="text-3xl mb-2 text-center font-bold">Welcome, Traveler!</h1>
+       <h2 className="text-3xl mb-2 text-center font-bold">Sign up to begin your adventure. . .</h2>
       <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
         {error !== null && (
           <div className="py-4 bg-red-600 w-full text-white text-center mb-3">
@@ -45,16 +47,16 @@ const SignUp = () => {
         )}
         <form className="">
           {/* <label htmlFor="displayName" className="block">
-            Character Name:
-          </label>
-          <input
-            type="text"
-            className="my-1 p-1 w-full "
-            name="displayName"
-            value={displayName}
-            placeholder="Character Name"
-            id="displayName"
-            onChange={event => onChangeHandler(event)}
+            Display Name:
+          </label> */}
+          {/* <input
+            // type="text"
+            // className="my-1 p-1 w-full "
+            // name="displayName"
+            // value={displayName}
+            // placeholder="E.g: Faruq"
+            // id="displayName"
+            // onChange={event => onChangeHandler(event)}
           /> */}
           <label htmlFor="userEmail" className="block">
             Email:
@@ -64,7 +66,7 @@ const SignUp = () => {
             className="my-1 p-1 w-full"
             name="userEmail"
             value={email}
-            placeholder="fancyWizard@email.com"
+            placeholder="fancyWizard@mail.com"
             id="userEmail"
             onChange={event => onChangeHandler(event)}
           />
@@ -90,19 +92,16 @@ const SignUp = () => {
           </button>
         </form>
         <p className="text-center my-3">or</p>
-        {/* <button
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
-        >
-          Sign In with Google
-        </button> */}
         <p className="text-center my-3">
           Already started your adventure?{" "}
           <Link to="/" className="text-blue-500 hover:text-blue-600">
             Sign in here
-          </Link>
+          </Link>{" "}
         </p>
       </div>
     </div>
   );
 };
+
 export default SignUp;
+
