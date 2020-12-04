@@ -8,11 +8,12 @@ module.exports = {
   //   //   .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },
-  // findById: function(req, res) {
-  //   db.CreateCharacter.findById(req.params.id)
-  //   //   .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  findById: function(req, res) {
+    console.log("get request")
+    db.Character.findById(req.params.uid)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   create: function (req, res) {
     /*db.Character.find({ uid: req.body.uid })
       .then(dbModel => {
@@ -23,15 +24,15 @@ module.exports = {
         db.Character.create(req.body)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
-      }
+      },
      // )
 
  // },
-  // update: function(req, res) {
-  //   db.Character.findOneAndUpdate({ _id: req.params.id }, req.body)
-  //   //   .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+  update: function(req, res) {
+    db.Character.findOneAndUpdate({ uid: req.params.uid }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   // remove: function(req, res) {
   //   db.CreateCharacter.findById({ _id: req.params.id })
   //   //   .then(dbModel => dbModel.remove())

@@ -55,9 +55,7 @@ function Landing() {
               strength={characters.strength}
               maxHealth={characters.maxHealth}
               currentHealth={characters.currentHealth}
-
             />
-
           ))}
 
         </Row>

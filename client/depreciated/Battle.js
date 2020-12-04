@@ -1,6 +1,7 @@
 import React, { useContext, useEffect , useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import CharContext from "../utils/CharContext";
+import API from "../../utils/API";
 //import character 
 
 // import { Container } from "react-bootstrap/lib/Tab";
@@ -29,7 +30,22 @@ function Battle() {
     //     // //hitpoints is the value that changes out of total health
     //     this.maxHealth = hitpoints;
     // }
-    useEffect(() =>{
+    useEffect(() => {
+
+        //this could be redundant
+        API.getCharacter({
+            ...characterState, name: characterState.name,
+            level: characterState.level,
+            strength: characterState.strength,
+            maxHealth: characterState.maxHealth,
+            currentHealth: characterState.currentHealth,
+        }).then((res) => {
+            setCharacterState(res);
+            // window.location.href="/overworld"
+        }).catch((error) => {
+            console.log(error)
+        });
+
         setEnemystats({
             name: "Slime",
             level: 1,
@@ -45,9 +61,15 @@ function Battle() {
         // setScreentext(`A ${slime.name} appears to block your path Click on the options to initiate combat. `);
     }, []);
 
-    // useEffect(() =>{
-        //API.update
-    // }, [characterState.currentHealth]);
+    useEffect(() =>{
+        //does this update all stats if current is only changed
+        API.update({...characterState, currentHealth: characterState.currentHealth})
+        .then(() => {
+            // window.location.href="/overworld"
+         }).catch((error) => {
+           console.log(error)
+         })
+    }, [characterState.currentHealth]);
 
     // useEffect(() => {
     //     speedRead(screentext)
@@ -87,21 +109,41 @@ function Battle() {
         // setScreentext(dialogue);
         console.log(`${enemyState.currentHealth} after damage`);
         setEnemystats.currentHealth -= characterState.strength;
-        if (isAlive(enemyState) === false && isAlive(characterState) === true){
-            
+        if (isAlive(enemyState) === false /*&& isAlive(characterState) === true*/){
             levelUp();
-        }
-        if (isAlive(characterState) === false) {
-            setScreentext("You have been defeated GAME OVER").then(() => {
-                // speedRead(screentext, "You have been defeated GAME OVER")setScreentext(screentext, "You have been defeated GAME OVER");
-                window.location.href="localhost:3000/signin";
+            dialogue +=( " You have defeated Slime! You feel a new found power growing within you! " + 
+            characterState.name + " is now level " + characterState.age + ". Your Strength is now " + characterState.strength + 
+            ". Your Health is now " +  characterState.hitpoints + " out of " + characterState.maxHealth + " total. ");
+            setScreentext(dialogue).then(() => {
+                // setScreentext(screentext, "");
+                API.update({...characterState, currentHealth: characterState.currentHealth})
+                .then(() => {
+                    window.location.href="/overworld"
+                 }).catch((error) => {
+                   console.log(error)
+                 });
+                // window.location.href="localhost:3000/overworld";
             });
         }
+        // if (isAlive(characterState) === false) {
+        //     dialogue += ("You have been defeated GAME OVER");
+        //     speedRead(dialogue).then(() => {
+        //         // speedRead(screentext, "You have been defeated GAME OVER")setScreentext(screentext, "You have been defeated GAME OVER");
+        //         window.location.href="localhost:3000/signin";
+        //     });
+        // }
         else{
             //continue the fight
             dialogue += (enemyState.name + " readies an attack at " + characterState.name + " " + enemyState.name + " does " + enemyState.strength + " damage to " + characterState.name + ". ");
             setCharacterState.currentHealth -= enemyState.strength;
-            console.log(`${characterState.currentHealth} after damage`);
+            // console.log(`${characterState.currentHealth} after damage`);
+            if (isAlive(characterState) === false) {
+                dialogue += ("You have been defeated GAME OVER");
+                speedRead(dialogue).then(() => {
+                    // speedRead(screentext, "You have been defeated GAME OVER")setScreentext(screentext, "You have been defeated GAME OVER");
+                    window.location.href="/landing";
+                });
+            }
         }; 
         speedRead(dialogue).then((res) => {
             setTurnbase(res);
@@ -118,17 +160,14 @@ function Battle() {
         setCharacterState.strength += 5;
         setCharacterState.maxHealth += 25;
         setCharacterState.currentHealth += 25;
-        let dialogue = " You have defeated Slime! You feel a new found power growing within you! " + 
-            characterState.name + " is now level " + characterState.age + ". Your Strength is now " + characterState.strength + 
-            ". Your Health is now " +  characterState.hitpoints + " out of " + characterState.maxHealth + " total. ";
         // speedRead(screentext, dialogue).then(() => {
             // setScreentext(screentext, "");
             // window.location.href="localhost:3000/overworld";
         // });
-        setScreentext(dialogue).then(() => {
-            // setScreentext(screentext, "");
-            window.location.href="localhost:3000/overworld";
-        });
+        // setScreentext(dialogue).then(() => {
+        //     // setScreentext(screentext, "");
+        //     window.location.href="localhost:3000/overworld";
+        // });
     };
         
     // method which determines whether or not a character's "hitpoints" are less than zero
@@ -174,7 +213,6 @@ function Battle() {
             setTurnbase(false);
             //turn order is run
             if (btnName === "Fight") {
-                
                 attack();
             } 
             else {
