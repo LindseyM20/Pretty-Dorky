@@ -46,3 +46,6 @@ Beautiful sprite sheets were built with ease thanks to:
 
 This tutorial for animating sprites with arrow keys was super helpful in getting us going to wire the sprites to our page using React hooks!
 [Sprite Sheet Animation Tutorial](https://www.youtube.com/watch?v=DqpPgK13oEM)
+
+This tutorial helped us create an SVG pixel-art healthbar:
+[React Pixel to SVG tutorial](https://www.youtube.com/watch?v=GhjAxQtABtE)
