@@ -13,28 +13,59 @@ import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
 import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 const Overworld = () => {
   const { characterState, setCharacterState } = useContext(CharContext)
   console.log(characterState)
 
+
+  let history = useHistory();
+
+  // var enemy = document.getElementsByClassName("enemy");
+  const battleState = {...characterState,
+    location: "/battle",
+  };
+
+
+  // const data = {
+  //   y: -768,
+  //   x: 0,
+  //   h: 64,
+  //   w: 64,
+  // }
+
   const data = {
-    y: -768,
+    y: -1536,
     x: 0,
-    h: 64,
-    w: 64,
+    h: 128,
+    w: 128,
   }
 
-  const character = document.getElementById("character");
 
-  function jump() {
-    console.log(character)
-    character.classList.add("animate");
+  // function jump() {
+  //   console.log(character)
+  //   character.classList.add("animate");
 
-    setTimeout(function () {
-      character.classList.remove("animate");
-    }, 500);
-  }
+  //   setTimeout(function () {
+  //     character.classList.remove("animate");
+  //   }, 500);
+  // }
+
+  var checkCollision = setInterval(function () {
+
+    let characterPosition =
+        parseInt(window.getComputedStyle(document.getElementById("character")).getPropertyValue("top"));
+    let enemyHeight =
+        parseInt(window.getComputedStyle(document.getElementById("clippy")).getPropertyValue("top"));
+    let enemyPosition =
+        parseInt(window.getComputedStyle(document.getElementById("clippy")).getPropertyValue("left"));
+    if (enemyPosition < 20 && enemyPosition > 0 && (characterPosition - enemyHeight) < 20){
+      console.log("you hit something")
+      setCharacterState(battleState);
+      history.push(characterState.location);
+    }
+  }, 10);
 
   //Pass a function that calls setCharacterState
 
@@ -53,18 +84,18 @@ const Overworld = () => {
                 />
               </div>
             </div>
-            <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
-            <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
-            <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
-            <div id="exp"><img id="expImg" src={exp} alt="internet"></img></div>
+            {/* <div id="cat" className="enemy" value= "cat"><img id="catImg" src={cat} alt="cat" /> </div> */}
+            <div id="clippy"className="enemy" value= "clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
+            {/* <div id="bug" className="enemy" value= "bug"><img id="bugImg" src={bug} alt="moth"></img></div>
+            <div id="exp" className="enemy" value= "exp"><img id="expImg" src={exp} alt="internet"></img></div> */}
             <div id="tower1"><img src={tower} alt="server"></img></div>
             <div id="tower2"><img src={tower} alt="server"></img></div>
             <div id="tower3"><img src={tower} alt="server"></img></div>
 
             <div id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div>
             <div id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
-            <Button variant="dark" value="jump" onClick={e => jump(e.target.value)}>
-              Jump! </Button>
+            {/* <Button variant="dark" value="jump" onClick={e => jump(e.target.value)}>
+              Jump! </Button> */}
 
           </div>
         </Row>
