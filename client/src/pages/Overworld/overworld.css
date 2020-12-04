@@ -10,7 +10,12 @@ body {
     width: 950px;
     top: 845px;
     margin: 2%;
-
+    left: 147px;
+    border: solid 5px black;
+}
+.signOut {
+    position: relative;
+    top: 900px;
 }
 #game{
     background-image: url(./images/background1.jpg);
@@ -33,7 +38,7 @@ body {
 }
 button.btn.btn-dark {
     position: relative;
-    top: -493px;
+    top: -497px;
     left: 10px;
     width: 60px;
 }

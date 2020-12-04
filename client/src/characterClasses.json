@@ -9,7 +9,7 @@
         "strength": 30,
         "maxHealth": 100,
         "currentHealth": 100,
-        "spriteImage": "https://i.ibb.co/X7xbVZd/dm-spritesheet.png"
+        "spriteImage": "https://i.ibb.co/88b6jcH/Rogue.png"
       },
       {
         "id": 2,
@@ -20,7 +20,7 @@
         "strength": 25,
         "maxHealth": 100,
         "currentHealth": 100,
-        "spriteImage": "https://i.ibb.co/8d7H0pq/mj-spritesheet2.png"
+        "spriteImage": "https://i.ibb.co/7zntFhn/Warrior.png"
       },
       
     {
@@ -32,7 +32,7 @@
         "strength": 20,
         "maxHealth": 90,
         "currentHealth": 90,
-        "spriteImage": "https://i.ibb.co/xjMHkcy/ka-spritesheet.png"
+        "spriteImage": "https://i.ibb.co/WkpVbht/Wizard.png"
         
       },
       
@@ -45,6 +45,6 @@
         "strength": 20,
         "maxHealth": 100,
         "currentHealth": 100,
-        "spriteImage": "https://i.ibb.co/yg3Vrjg/ge-spritesheet.png"
+        "spriteImage": "https://i.ibb.co/yyyv7xC/Ranger.png"
       }
     ]

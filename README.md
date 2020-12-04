@@ -38,3 +38,11 @@ Start the application `npm start`
 ## Deploying
 
 When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+
+## Resources for Game Logic
+
+Beautiful sprite sheets were built with ease thanks to:
+[Sprite Sheet Generator](https://github.com/Gaurav0/Universal-LPC-Spritesheet-Character-Generator)
+
+This tutorial for animating sprites with arrow keys was super helpful in getting us going to wire the sprites to our page using React hooks!
+[Sprite Sheet Animation Tutorial](https://www.youtube.com/watch?v=DqpPgK13oEM)
