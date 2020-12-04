@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { auth } from "../../firebase";
+import Row from 'react-bootstrap/Row'
 import CharContext from "../../utils/CharContext";
 import Player from "../../components/player"
 import Header from "../../components/Header";
@@ -13,26 +14,29 @@ import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
 
 const Overworld = () => {
+  const {characterState, setCharacterState} = useContext(CharContext)
+  console.log(characterState)
 
   const data = {
-    y: -768,
-    x:0,
-    h: 64,
-    w: 64,
+    y: -1536,
+    x: 0,
+    h: 128,
+    w: 128,
   }
 
   //Pass a function that calls setCharacterState
 
   return (
+  <body>
     <div>
       <Header />
-
+  <Row>
       <div id="game">
 
         <div id="character">
         <div className="zone-container">
-      <Player
-      sprite={"url(https://i.ibb.co/yg3Vrjg/ge-spritesheet.png)"}
+        <Player
+      sprite={characterState.spriteImage}
       data ={data}
       />
       </div>
@@ -49,18 +53,27 @@ const Overworld = () => {
         <div id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
 
       </div>
+</Row>
+<Row>
 
-    </div >
-
-    //  <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
-    //    <div className="overworld">
-    //      <div className="md:pl-4">
-    //        <h3 className="italic">Instructions placeholder</h3>
-    //      </div>
-    //      <button className="w-full py-3 bg-red-600 mt-4 text-white" onClick={() => { auth.signOut() }}>Sign out</button>
-    //    </div>
-    //  </div>
-    
+     <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
+       <div className="overworld">
+         <div className="md:pl-4">
+           <h3 className="italic">Instructions placeholder</h3>
+         </div>
+         <button className="w-full py-3 bg-red-600 mt-4 text-white" 
+         onClick={() => { auth.signOut();
+          setCharacterState({});
+          
+          window.location.href="/";
+        
+          }}>Sign out</button>
+       </div>
+     </div>
+     
+</Row>    
+</div> 
+    </body>
   )
 }
 

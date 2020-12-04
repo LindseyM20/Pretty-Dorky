@@ -1,8 +1,8 @@
 #character {
-  height:64px;
-  width: 64px;
+  height:128px;
+  width: 128px;
   /* background: url('https://i.ibb.co/NZBGYH4/ba-spritesheet.png') 0px 0px; */
-  background: url('https://i.ibb.co/X7xbVZd/dm-spritesheet.png') 0px 128px;
+  background: url('https://i.ibb.co/TkHc96X/largerrogue.png') 128px 128px;
 
   position: relative;
   top: 266px;

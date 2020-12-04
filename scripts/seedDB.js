@@ -12,7 +12,8 @@ const userSeed = [
     level: 13,
     strength: 30,
     maxHealth: 100,
-    currentHealth: 100
+    currentHealth: 100,
+    spriteImage: ""
   }
 ];
 

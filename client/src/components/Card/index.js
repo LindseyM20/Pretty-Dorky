@@ -18,6 +18,7 @@ const [checked, setChecked] = useState(false);
       strength: props.strength,
       maxHealth: props.maxHealth,
       currentHealth: props.currentHealth,
+      spriteImage: props.spriteImage,
     })
 
   }
