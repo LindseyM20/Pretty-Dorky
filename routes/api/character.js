@@ -7,10 +7,10 @@ router
 //   .get(postsController.findAll)
   .post(statsController.create);
 
-// Matches with "/api/character/:id"
-// router
-//   .route("/:id")
-//   .get(postsController.findById)
+// Matches with "/api/character/:uid"
+router
+  .route("/:uid")
+  .get(statsController.findById)
 //   .put(postsController.update)
 //   .delete(postsController.remove);
 
