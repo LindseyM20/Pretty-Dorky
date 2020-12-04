@@ -52,8 +52,6 @@ function Battle() {
         this.age += 1;
         this.strength += 5;
         this.hitpoints += 25;
-        setCharacterState(levelupState);
-        history.push(characterState.location);
     };
     
     // method which determines whether or not a character's "hitpoints" are less than zero
@@ -80,9 +78,13 @@ function Battle() {
                     //continue the fight
                     rogue.attack(slime);
                     if(slime.isAlive() === true){
-                        slime.attack(rogue);
+                        rogue.levelUp();
+                        setCharacterState(levelupState);
+                        history.push(characterState.location);                        
                     }
-                    else{rogue.levelUp();}
+                    else{slime.attack(rogue);
+
+                    }
                 }
                 
                 console.log(`Your hitpoints ${rogue.hitpoints}`);
@@ -101,7 +103,6 @@ function Battle() {
             };
         }
     }
-
     return (
         <div>
             <Header />
