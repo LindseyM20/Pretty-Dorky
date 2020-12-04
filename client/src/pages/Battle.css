@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: rgb(80, 80, 80);
+}
+#fight{
+    background-image: url(./images/board2.gif);
+    margin: 10%;
+    position: absolute;
+    z-index: -5;
+    width: 950px;
+    height: 630px;
+    border: 1px solid black;
+    z-index: -10;
+    overflow: hidden;
+}
+#fightText {
+    position: absolute;
+    top: 1015px;
+    width: 950px;
+    height: 225px;
+    margin-left: 10%;
+    align-items: center;
+}
+button.btn.btn-primary {
+    position: fixed;
+    top: 1185px;
+    left: 220px;
+}
+button.btn.btn-secondary {
+    position: fixed;
+    top: 1185px;
+    left: 1045px;
+}
+#characterFight {
+    width: 475px;
+    height: 312px;
+    background-color: rgb(255, 255, 255, 0.7);
+    position: absolute;
+    top: 315px;
+    left: 0px;
+    border: solid 5px black;
+}
+#enemyFight {
+    width: 475px;
+    height: 312px;
+    background-color: rgb(255, 255, 255, 0.7);
+    position: absolute;
+    top: 0px;
+    left: 475px;
+    border: solid 5px black;
+}
+#enemy {
+    height: 245px;
+    position: relative;
+    left: 150px;
+    margin-top: 4%;
+}

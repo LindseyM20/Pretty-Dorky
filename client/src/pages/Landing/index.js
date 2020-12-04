@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
-// import CharContext from "../../utils/CharContext";
-// import CreateChar from "../../components/CreateChar";
-import Header from "../../components/Header";
 import Card from "../../components/Card";
 import Row from 'react-bootstrap/Row'
 import characterClasses from "../../characterClasses.json";
@@ -58,7 +55,6 @@ function Landing() {
 
   return (
     <body className="bodyStyle">
-      <Header />
       <h1>Choose Your Character</h1>
       <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
         <Row>

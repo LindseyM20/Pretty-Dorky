@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { auth } from "../../firebase";
-import Row from 'react-bootstrap/Row'
 import CharContext from "../../utils/CharContext";
 import Player from "../../components/player"
 import Header from "../../components/Header";
@@ -12,16 +11,29 @@ import exp from "./images/explorer.png";
 import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
+import { Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const Overworld = () => {
-  const {characterState, setCharacterState} = useContext(CharContext)
+  const { characterState, setCharacterState } = useContext(CharContext)
   console.log(characterState)
 
   const data = {
-    y: -1536,
+    y: -768,
     x: 0,
-    h: 128,
-    w: 128,
+    h: 64,
+    w: 64,
+  }
+
+  const character = document.getElementById("character");
+
+  function jump() {
+    console.log(character)
+    character.classList.add("animate");
+
+    setTimeout(function () {
+      character.classList.remove("animate");
+    }, 500);
   }
 
   
@@ -29,52 +41,55 @@ const Overworld = () => {
   //Pass a function that calls setCharacterState
 
   return (
-  <body>
-    <div>
-      <Header />
-  <Row>
-      <div id="game">
+    <body>
+      <div>
+        <Header />
+        <Row>
+          <div id="game" className="card">
 
-        <div id="character">
-        <div className="zone-container">
-        <Player
-      sprite={characterState.spriteImage}
-      data ={data}
-      />
+            <div id="character">
+              <div className="zone-container">
+                <Player
+                  sprite={characterState.spriteImage}
+                  data={data}
+                />
+              </div>
+            </div>
+            <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
+            <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
+            <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
+            <div id="exp"><img id="expImg" src={exp} alt="internet"></img></div>
+            <div id="tower1"><img src={tower} alt="server"></img></div>
+            <div id="tower2"><img src={tower} alt="server"></img></div>
+            <div id="tower3"><img src={tower} alt="server"></img></div>
+
+            <div id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div>
+            <div id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
+            <Button variant="dark" value="jump" onClick={e => jump(e.target.value)}>
+              Jump! </Button>
+
+          </div>
+        </Row>
+        <Row id ="instructions">
+
+          <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
+            {/* <div className="overworld"> */}
+              {/* <div className="md:pl-4"> */}
+                <h3 className="italic">Instructions placeholder</h3>
+              {/* </div> */}
+              <button className="w-full py-3 bg-red-600 mt-4 text-white"
+                onClick={() => {
+                  auth.signOut();
+                  setCharacterState({});
+
+                  window.location.href = "/";
+
+                }}>Sign out</button>
+            {/* </div> */}
+          </div>
+
+        </Row>
       </div>
-</div>
-        <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
-        <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
-        <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
-        <div id="exp"><img id="expImg" src={exp} alt="internet"></img></div>
-        <div id="tower1"><img src={tower} alt="server"></img></div>
-        <div id="tower2"><img src={tower} alt="server"></img></div>
-        <div id="tower3"><img src={tower} alt="server"></img></div>
-
-        <div id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div>
-        <div id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
-
-      </div>
-</Row>
-<Row>
-
-     <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
-       <div className="overworld">
-         <div className="md:pl-4">
-           <h3 className="italic">Instructions placeholder</h3>
-         </div>
-         <button className="w-full py-3 bg-red-600 mt-4 text-white" 
-         onClick={() => { auth.signOut();
-          setCharacterState({});
-          
-          window.location.href="/";
-        
-          }}>Sign out</button>
-       </div>
-     </div>
-     
-</Row>    
-</div> 
     </body>
   )
 }

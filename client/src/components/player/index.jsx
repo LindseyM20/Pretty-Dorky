@@ -6,7 +6,6 @@ import CharContext from "../../utils/CharContext";
 
 export default function Player() {
     const {characterState} = useContext(CharContext)
-    console.log(characterState)
     // we use 9, since the max "frames" in our sprite sheet has 9 images per cycle
     const { dir, step, walk } = useWalk(9)
     // this is the size of each "frame" in the sprtiesheet grid
