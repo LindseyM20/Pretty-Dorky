@@ -153,7 +153,7 @@ button.btn.btn-dark {
 #bean {
     width: 67px;
     height: 35px;
-    background-color: blue;
+    /* background-color: blue; */
     position: relative;
     animation: health 5s infinite;
 }
@@ -172,8 +172,10 @@ button.btn.btn-dark {
 }
 @keyframes health {
     from { 
-            left: 1100px;
-            top: -1100px; }
+            /* left: 1100px;
+            top: -1100px;  */
+            left: 900px; /* for presentation demo*/
+            top: -700px; /* for presentation demo*/}
     to   { 
             left: -150px;
             top: -550px; }
