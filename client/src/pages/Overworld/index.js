@@ -70,12 +70,12 @@ const Overworld = () => {
         </Row>
         <Row id ="instructions">
 
-          <div className="mx-auto w-11/12 md:w-2/4 py-8 px-4 md:px-8">
+          <div className="card overInst">
             {/* <div className="overworld"> */}
               {/* <div className="md:pl-4"> */}
                 <h3 className="italic">Instructions placeholder</h3>
               {/* </div> */}
-              <button className="w-full py-3 bg-red-600 mt-4 text-white"
+              <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
                 onClick={() => {
                   auth.signOut();
                   setCharacterState({});
