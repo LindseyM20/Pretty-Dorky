@@ -32,12 +32,26 @@ function Application() {
     //     history.push(characterState.location)
     //     }
     // }
-let rootLocation = <Overworld />;
-   if (user && user.uid && !characterState.name) {
-    rootLocation = <SignIn />
-   } 
- console.log(user, "user here")
-    return (
+    let rootLocation = <Overworld />;
+    if (user && user.uid && !characterState.name) {
+     rootLocation = <SignIn />
+    } 
+  console.log(user, "user here")
+     return (
+         // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
+         <CharContext.Provider value={{
+             userID: user ? user.uid : "User is not set yet",
+             characterState, setCharacterState, 
+             // handleInputChange: () => { } ** for name? may be set using state instead
+         }}>
+             {user ?
+                 <Router>
+                     <Switch>
+                         <Route exact path="/">
+                            {rootLocation}
+                         </Route>
+
+    {/* return (
         // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
         <CharContext.Provider value={{
             userID: user ? user.uid : "User is not set yet",
@@ -47,14 +61,10 @@ let rootLocation = <Overworld />;
             {user ?
                 <Router>
                     <Switch>
-<<<<<<< HEAD
-
-=======
                         <Route exact path="/">
                            {rootLocation}
                         </Route>
           {/* the next 3 routes are for development purposes only. take them out later! */}
->>>>>>> 7dffe715f176e262b71922ca4622d38c88bd2131
                         <Route exact path="/overworld">  
                             <Overworld />
                         </Route>
