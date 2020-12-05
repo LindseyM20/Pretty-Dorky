@@ -100,6 +100,8 @@ const Overworld = () => {
             <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
               onClick={() => {
                 auth.signOut();
+                // replace setCharacterState({}) (clears state) 
+                //with API.update to write to the database?
                 setCharacterState({});
 
                 window.location.href = "/";
