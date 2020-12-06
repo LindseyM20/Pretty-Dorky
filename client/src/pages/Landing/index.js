@@ -10,18 +10,18 @@ import API from "../../utils/API";
 import "./style.css";
 
 function Landing() {
-  const {setCharacterState, characterState} = useContext(CharContext)
+  const { setCharacterState, characterState } = useContext(CharContext)
   const user = useContext(UserContext)
 
 
   //This is what allows the endUser to navigate through pages while maintaining state
   let history = useHistory();
-    // if (window.location.pathname !== "/overworld") {
-    //     if (characterState.location === "/overworld") {
-    //     history.push(characterState.location)
-    //     }
-    // }
-    if (characterState.name)
+  // if (window.location.pathname !== "/overworld") {
+  //     if (characterState.location === "/overworld") {
+  //     history.push(characterState.location)
+  //     }
+  // }
+  if (characterState.name)
     history.push(characterState.location)
 
   function handleSubmit(event) {
@@ -31,9 +31,10 @@ function Landing() {
     // event.target.characterName.value = ""; 
     console.log(characterState)
     //  post character state values to mongo
-  // API.posst (calls the imported API)
+    // API.posst (calls the imported API)
 
-    const nextState = {...characterState,
+    const nextState = {
+      ...characterState,
       name: event.target.characterName.value,
       location: "/overworld",
     };
@@ -45,7 +46,7 @@ function Landing() {
       setCharacterState(nextState)
       //  window.location.href="/overworld" // this would overwrite state?
       // need a router to maintain state instead
-      
+
       console.log("would move to overworld")
     }).catch((error) => {
       console.log(error)
@@ -56,10 +57,10 @@ function Landing() {
   return (
     <body className="bodyStyle">
       <h1>Choose Your Character</h1>
-      <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
+      <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
         <Row>
           {characterClasses.map(characters => (
-            <Card 
+            <Card
               id={characters.id}
               key={characters.id}
               name={characters.name}
@@ -86,7 +87,7 @@ function Landing() {
             />
             <button className="createButton">
               Create Character
-          </button>
+            </button>
           </form>
         </Row>
 
