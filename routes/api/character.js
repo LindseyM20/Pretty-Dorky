@@ -11,7 +11,7 @@ router
 router
   .route("/:uid")
   .get(statsController.findById)
-//   .put(postsController.update)
+  .put(statsController.update)
 //   .delete(postsController.remove);
 
 module.exports = router;
