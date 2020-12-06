@@ -24,6 +24,19 @@ function Landing() {
   if (characterState.name)
     history.push(characterState.location)
 
+
+    // adding a button to trigger get API call test
+    //next step is to make this a check when the user signs in
+function testAPIGet(event) {
+  event.preventDefault();
+  API.getCharacter(user.uid)
+  .then(() => {
+    console.log("got request for character matching uid")}
+    
+  )
+}
+
+
   function handleSubmit(event) {
     event.preventDefault();
     // capture value from input field and set it to name value for charState
@@ -57,8 +70,8 @@ function Landing() {
   return (
     <body className="bodyStyle">
       <h1>Choose Your Character</h1>
-      <section style={{ marginLeft: "5%", marginBottom: "15%" }}>
-        <Row>
+      <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
+        <Row className="cardRow text-center">
           {characterClasses.map(characters => (
             <Card
               id={characters.id}
@@ -87,6 +100,12 @@ function Landing() {
             />
             <button className="createButton">
               Create Character
+            </button>
+          {/* test form */}
+          </form>
+          <form onSubmit={testAPIGet}>
+            <button className="createButton">
+              testAPIGet
             </button>
           </form>
         </Row>

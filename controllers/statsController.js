@@ -29,15 +29,18 @@ module.exports = {
         db.Character.create(req.body)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
-      }
-     // )
-
- // },
-  // update: function(req, res) {
-  //   db.Character.findOneAndUpdate({ _id: req.params.id }, req.body)
-  //   //   .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
+      },
+// Brooklynne:
+// ** tested in postman
+  update: function(req, res) {
+    console.log("updating here")
+    db.Character.findOneAndUpdate({uid:req.params.uid}, req.body)
+      .then(dbModel => {
+        console.log(dbModel);
+        res.json(dbModel);
+      })
+      .catch(err => res.status(422).json(err));
+  },
   // remove: function(req, res) {
   //   db.CreateCharacter.findById({ _id: req.params.id })
   //   //   .then(dbModel => dbModel.remove())
