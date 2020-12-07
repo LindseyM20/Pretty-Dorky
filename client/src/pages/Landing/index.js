@@ -31,7 +31,7 @@ function Landing() {
     // event.target.characterName.value = ""; 
     console.log(characterState)
     //  post character state values to mongo
-  // API.posst (calls the imported API)
+  // API.post (calls the imported API)
 
     const nextState = {...characterState,
       name: event.target.characterName.value,

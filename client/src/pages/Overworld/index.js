@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { auth } from "../../firebase";
+import { useHistory } from "react-router-dom";
 import CharContext from "../../utils/CharContext";
 import Player from "../../components/player"
 import Header from "../../components/Header";
@@ -17,6 +18,18 @@ import { Button } from "react-bootstrap";
 const Overworld = () => {
   const { characterState, setCharacterState } = useContext(CharContext)
   console.log(characterState)
+  let history = useHistory();
+
+  var character = document.getElementById("character");
+  var enemy = document.getElementsByClassName("enemy");
+  const battleState = {...characterState,
+    location: "/battle",
+  };
+  // useEffect(() =>{
+  //   checkCollision();
+  // },[]);
+  
+
 
   const data = {
     y: -768,
@@ -27,7 +40,7 @@ const Overworld = () => {
 
   const character = document.getElementById("character");
 
-  function jump() {
+  function jump(character) {
     console.log(character)
     character.classList.add("animate");
 
@@ -36,7 +49,20 @@ const Overworld = () => {
     }, 500);
   }
 
-  
+  let checkCollision = setInterval(function () {
+    let characterPosition =
+        parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+    let enemyHeight =
+        parseInt(window.getComputedStyle(enemy).getPropertyValue("top"));
+    let enemyPosition =
+        parseInt(window.getComputedStyle(enemy).getPropertyValue("left"));
+    if (enemyPosition < 20 && enemyPosition > 0 && (characterPosition - enemyHeight) < 20){
+      console.log("you hit something")
+      setCharacterState(battleState);
+      history.push(characterState.location);
+
+    }
+  }, 10);
 
   //Pass a function that calls setCharacterState
 
@@ -55,11 +81,11 @@ const Overworld = () => {
                 />
               </div>
             </div>
-            <div id="cat"><img id="catImg" src={cat} alt="cat" /> </div>
-            <div id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
-            <div id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
-            <div id="exp"><img id="expImg" src={exp} alt="internet"></img></div>
-            <div id="tower1"><img src={tower} alt="server"></img></div>
+            <div id="cat" className="enemy" value= "cat"><img id="catImg" src={cat} alt="cat" /> </div>
+            <div id="clippy"className="enemy" value= "clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
+            <div id="bug" className="enemy" value= "bug"><img id="bugImg" src={bug} alt="moth"></img></div>
+            <div id="exp" className="enemy" value= "exp"><img id="expImg" src={exp} alt="internet"></img></div>
+            <div id="tower1" ><img src={tower} alt="server"></img></div>
             <div id="tower2"><img src={tower} alt="server"></img></div>
             <div id="tower3"><img src={tower} alt="server"></img></div>
 
