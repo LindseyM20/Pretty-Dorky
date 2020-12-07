@@ -1,11 +1,10 @@
 import React, { useContext, useEffect , useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import CharContext from "../utils/CharContext";
-// import Healthbar from "../components/Healthbar";
 import { useHistory } from "react-router-dom";
 import "./Battle.css";
 import enemy from "./Overworld/images/evilClippy.png";
+import hero from "./images/rougeBattle.png";
 import Header from "../components/Header";
 
 // import { Container } from "react-bootstrap/lib/Tab";
@@ -110,8 +109,10 @@ function Battle() {
             <Header />
             <Row>
                 <div className="card" id="fight">
+
                     <div id="characterFight">
                     <img id="hero" src={battleImage} alt="hero"></img>                        
+
                     </div>
                     <div id="enemyFight" >
                         <img id="enemy" src={enemy} alt="enemy"></img>
