@@ -7,7 +7,7 @@ body {
 }
 #game{
     background-image: url(./images/background1.jpg);
-    margin: 10%;
+    margin: 4% 10%;
     position: absolute;
     top: 125px;
     z-index: -5;
@@ -20,7 +20,7 @@ body {
 #instructions {
     position: absolute;
     width: 950px;
-    top: 975px;
+    top: 800px;
     margin-left: 9%;
 }
 .card.overInst {

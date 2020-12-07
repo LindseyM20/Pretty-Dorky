@@ -15,12 +15,12 @@ export default {
 //   },
 //   // Saves a post to the database
   createCharacter: function(characterData) {
-    return axios.post("/api/character", characterData);
+    return axios.post("/api/character/", characterData);
   },
   // Brooklynne:
   // in postman, I am able to change a key value to this uid
   // then run a get to return the onject by uid with the change
-  updateCharacter: function(uid) {
-    return axios.put("/api/character" + uid)
+  updateCharacter: function(uid, data) {
+    return axios.put("/api/character/" + uid, data)
   },
 };
