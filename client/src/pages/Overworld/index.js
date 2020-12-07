@@ -64,8 +64,8 @@ const Overworld = () => {
     document.getElementById("tower2").classList.remove("holdUp");
     document.getElementById("tower3").classList.remove("holdUp");
 
-    document.getElementById("play").classList.add("hide");
-    document.getElementById("pause").classList.add("show");
+    document.getElementById("pause").classList.remove("hide");
+    document.getElementById("play").classList.remove("show");
 
   }
 
