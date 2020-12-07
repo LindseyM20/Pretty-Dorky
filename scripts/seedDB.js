@@ -13,7 +13,8 @@ const userSeed = [
     strength: 30,
     maxHealth: 100,
     currentHealth: 100,
-    spriteImage: ""
+    spriteImage: "",
+    location:""
   }
 ];
 

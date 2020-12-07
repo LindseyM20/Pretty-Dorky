@@ -9,9 +9,14 @@ module.exports = {
   //     .catch(err => res.status(422).json(err));
   // },
   findById: function(req, res) {
-    console.log("get request")
-    db.Character.findById(req.params.uid)
-      .then(dbModel => res.json(dbModel))
+    console.log("getting character here")
+    db.Character.findOne({uid:req.params.uid})
+      .then(dbModel => {
+        console.log(dbModel);
+        console.log(req.params.uid);
+        return res.json(dbModel)
+      }
+        )
       .catch(err => res.status(422).json(err));
   },
   create: function (req, res) {
@@ -20,17 +25,20 @@ module.exports = {
           console.log(dbModel);
         if (dbModel) dbModel.remove()})
       .then(() => {*/
-        console.log("here")
+        console.log("create here")
         db.Character.create(req.body)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
-     // )
-
- // },
+// Brooklynne:
+// ** tested in postman
   update: function(req, res) {
-    db.Character.findOneAndUpdate({ uid: req.params.uid }, req.body)
-      .then(dbModel => res.json(dbModel))
+    console.log("updating here")
+    db.Character.findOneAndUpdate({uid:req.params.uid}, req.body)
+      .then(dbModel => {
+        console.log(dbModel);
+        res.json(dbModel);
+      })
       .catch(err => res.status(422).json(err));
   },
   // remove: function(req, res) {

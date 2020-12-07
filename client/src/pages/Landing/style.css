@@ -23,6 +23,10 @@ h1 {
   color: white;
 }
 
+.cardRow {
+  align-items: center;
+}
+
 /* These are for landing page on character select */
 .deviantIcon2 {
   background: url('https://i.ibb.co/DpFjML4/deviant2.png');

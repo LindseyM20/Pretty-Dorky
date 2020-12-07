@@ -7,11 +7,11 @@ router
 //   .get(postsController.findAll)
   .post(statsController.create);
 
-// Matches with "/api/character/:id"
+// Matches with "/api/character/:uid"
 router
-  .route("/:id")
+  .route("/:uid")
   .get(statsController.findById)
   .put(statsController.update)
-  // .delete(postsController.remove);
+//   .delete(postsController.remove);
 
 module.exports = router;

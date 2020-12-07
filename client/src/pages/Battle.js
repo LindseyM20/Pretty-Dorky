@@ -80,9 +80,13 @@ function Battle() {
                     //continue the fight
                     rogue.attack(slime);
                     if(slime.isAlive() === true){
-                        slime.attack(rogue);
+                        rogue.levelUp();
+                        setCharacterState(levelupState);
+                        history.push(characterState.location);                        
                     }
-                    else{rogue.levelUp();}
+                    else{slime.attack(rogue);
+
+                    }
                 }
                 
                 console.log(`Your hitpoints ${rogue.hitpoints}`);
@@ -101,7 +105,6 @@ function Battle() {
             };
         }
     }
-
     return (
         <div>
             <Header />
