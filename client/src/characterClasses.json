@@ -19,7 +19,7 @@
         "level": 1,
         "strength": 25,
         "maxHealth": 100,
-        "currentHealth": 100,
+        "currentHealth": 50,
         "spriteImage": "https://i.ibb.co/7zntFhn/Warrior.png"
       },
       
