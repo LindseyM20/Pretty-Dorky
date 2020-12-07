@@ -1,10 +1,13 @@
-import React, { useEffect , useState } from "react";
+import React, { useEffect , useState, useContext } from "react";
 import { Button, Col, Row } from "react-bootstrap";
+import CharContext from "../utils/CharContext"
 //import character 
 
 // import { Container } from "react-bootstrap/lib/Tab";
 
 function Battle() {
+
+    const activeCharacter = useContext(CharContext)
     //activates button and sets turn over should be false while dialogue is displaying
     const [turnbase, setTurnbase] = useState(false);
     const [screentext, setScreentext] = useState("");    
@@ -126,6 +129,7 @@ function Battle() {
                 }
                 else{
                     slime.attack(rogue);
+                    activeCharacter.currentHealth -= slime.hitpoints;
                 };
             });
             console.log(`Your hitpoints ${rogue.hitpoints}`);

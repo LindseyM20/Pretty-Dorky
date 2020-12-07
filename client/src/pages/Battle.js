@@ -1,6 +1,7 @@
 import React, { useContext, useEffect , useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import CharContext from "../utils/CharContext";
+// import Healthbar from "../components/Healthbar";
 import { useHistory } from "react-router-dom";
 import "./Battle.css";
 import enemy from "./Overworld/images/evilClippy.png";
@@ -18,6 +19,8 @@ function Battle() {
 
     // useContext
     const {characterState,setCharacterState} = useContext(CharContext);
+    const battleImage = characterState.battleImage
+        console.log(battleImage)
 
     const returnState = {...characterState,
         currentHealth: rogue.hitpoints,
@@ -107,19 +110,14 @@ function Battle() {
             <Header />
             <Row>
                 <div className="card" id="fight">
-
                     <div id="characterFight">
-                    <img id="hero" src={hero} alt="hero"></img>                        
+                    <img id="hero" src={battleImage} alt="hero"></img>                        
                     </div>
                     <div id="enemyFight" >
                         <img id="enemy" src={enemy} alt="enemy"></img>
                     </div>
-
-
                 </div>
             </Row>
-
-
             <Row>
                 <div className="card" id="fightText">
                     <h1 className="text-center">A Slime appears to block your path</h1>
@@ -136,7 +134,6 @@ function Battle() {
                     <Button variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
                 </Col>
             </Row>
-
         </div>
     );
 }

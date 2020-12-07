@@ -4,20 +4,21 @@ import Healthbar from "../Healthbar";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-// import "./style.css";
-// Here will be the character name, level, game name, and healthbar.
+import "./style.css";
+
+// Here we display the character name, level, game name, and healthbar.
 const Header = () => {
   const {characterState} = useContext(CharContext)
   return (
     <Container style= {{ height: 0, backgroundColor: "grey" }} className="headerContainer">
       <Row>
-        <Col>
-          <Row>Character Name {characterState.name}</Row>
-          <Row>Level {characterState.level}</Row>
+        <Col className="characterInfo">
+          <Row><div className="name">Character Name {characterState.name}</div></Row>
+          <Row><div className="level">Level {characterState.level}</div></Row>
         </Col>
-        <Col xs={5}><h1>Pretty Dorky</h1></Col>
-        <Col>
-          <div id="healthbar">
+        <Col><h1 className="dork">Pretty Dorky</h1></Col>
+        <Col className="healthbarCol">
+          <div className="healthbarDiv" id="healthbar">
             <Healthbar />
           </div>
         </Col>
