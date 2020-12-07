@@ -4,6 +4,7 @@ html {
 
 .headerContainer {
   width: 100%;
+  background: gray;
 } 
 
 .characterInfo, .dork {

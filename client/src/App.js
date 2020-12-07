@@ -5,9 +5,12 @@ import UserProvider from "./providers/UserProvider";
 
 function App() {
   return (
+    <div className="bg" >
     <UserProvider>
-      <Application />
+      <Application  />
     </UserProvider>
+    </div>
+
 
 
     

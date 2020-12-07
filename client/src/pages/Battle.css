@@ -10,7 +10,7 @@ html {
 } */
 #fight{
     background-image: url(./images/board2.gif);
-    margin: 10%;
+    margin: 8%;
     position: absolute;
     z-index: -5;
     width: 950px;
@@ -24,10 +24,22 @@ html {
     top: 820px;
     width: 950px;
     height: 255px;
-    margin-left: 10%;
+    margin-left: 8%;
     align-items: center;
 }
-button.btn.btn-primary {
+
+.buttons {
+    padding: 1%;
+    width: 90%;
+    text-align: center;
+}
+
+.button {
+    margin: 0 3%;
+    width: 100px;
+}
+
+/* button.btn.btn-primary {
     position: relative;
     top: 1025px;
     left: 133px;
@@ -36,23 +48,23 @@ button.btn.btn-secondary {
     position: relative;
     top: 977px;
     left: 1004px;
-}
+} */
 #characterFight {
     width: 475px;
-    height: 312px;
+    height: 315px;
     background-color: rgb(255, 255, 255, 0.5);
     position: absolute;
-    top: 315px;
-    left: 0px;
+    top: 314px;
+    left: -1px;
     border: solid 5px black;
 }
 #enemyFight {
     width: 475px;
-    height: 312px;
+    height: 315px;
     background-color: rgb(255, 255, 255, 0.5);
     position: absolute;
-    top: 0px;
-    left: 475px;
+    top: -1px;
+    left: 474px;
     border: solid 5px black;
 }
 #enemy {
@@ -66,4 +78,22 @@ button.btn.btn-secondary {
     position: relative;
     left: 150px;
     margin-top: 4%;
+}
+
+@media screen and (max-width: 1400px) {
+    .header {
+        padding-bottom: 3%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .header {
+        padding-bottom: 8%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding-bottom: 12%;
+    }
 }

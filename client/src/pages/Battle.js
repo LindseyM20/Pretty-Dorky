@@ -1,5 +1,8 @@
 import React, { useContext, useEffect , useState } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import CharContext from "../utils/CharContext";
 import { useHistory } from "react-router-dom";
 import enemy from "./Overworld/images/evilClippy.png";
@@ -105,8 +108,11 @@ function Battle() {
         }
     }
     return (
-        <div>
+        <Container>
+            <div className="header">
             <Header />
+            </div>
+            
             <Row>
                 <div className="card" id="fight">
 
@@ -123,10 +129,15 @@ function Battle() {
                 <div className="card" id="fightText">
                     <h1 className="text-center">A Slime appears to block your path</h1>
                     <p className="text-center h3">Click on the options to initiate combat</p>
+                    <div className="buttons">
+                        <Button className="button" variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
+                        <Button className="button" variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
+                    </div>
+
                 </div>
             </Row>
 
-            <Row>
+            {/* <Row>
                 <Col className="col-6">
                     <Button variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
                 </Col>
@@ -134,8 +145,8 @@ function Battle() {
                 <Col className="col-6">
                     <Button variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
                 </Col>
-            </Row>
-        </div>
+            </Row> */}
+        </Container>
     );
 }
 
