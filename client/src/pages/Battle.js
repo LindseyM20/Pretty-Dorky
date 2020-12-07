@@ -44,9 +44,6 @@ function Battle() {
     Character.prototype.attack = function(character2) {
         console.log(`${this.name} readies an attack at ${character2.name}`);
         character2.hitpoints -= this.strength;
-
-        activeCharacter.hitpoints -= this.strength;
-        
         console.log(`${this.name} does ${this.strength} damage to ${character2.name}`);
     };
       

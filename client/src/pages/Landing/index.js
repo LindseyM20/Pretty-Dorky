@@ -73,7 +73,7 @@ function testAPIGet(event) {
       <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
         <Row className="cardRow text-center">
           {characterClasses.map(characters => (
-            <Card
+            <Card className="text-center"
               id={characters.id}
               key={characters.id}
               name={characters.name}
