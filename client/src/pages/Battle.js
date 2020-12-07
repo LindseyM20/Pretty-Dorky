@@ -135,7 +135,6 @@ function Battle() {
                     <Button variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
                 </Col>
             </Row>
-
         </div>
     );
 }

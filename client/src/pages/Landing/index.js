@@ -10,18 +10,18 @@ import API from "../../utils/API";
 import "./style.css";
 
 function Landing() {
-  const {setCharacterState, characterState} = useContext(CharContext)
+  const { setCharacterState, characterState } = useContext(CharContext)
   const user = useContext(UserContext)
 
 
   //This is what allows the endUser to navigate through pages while maintaining state
   let history = useHistory();
-    // if (window.location.pathname !== "/overworld") {
-    //     if (characterState.location === "/overworld") {
-    //     history.push(characterState.location)
-    //     }
-    // }
-    if (characterState.name)
+  // if (window.location.pathname !== "/overworld") {
+  //     if (characterState.location === "/overworld") {
+  //     history.push(characterState.location)
+  //     }
+  // }
+  if (characterState.name)
     history.push(characterState.location)
 
 
@@ -46,9 +46,10 @@ function testAPIGet(event) {
     // event.target.characterName.value = ""; 
     console.log(characterState)
     //  post character state values to mongo
-  // API.posst (calls the imported API)
+    // API.posst (calls the imported API)
 
-    const nextState = {...characterState,
+    const nextState = {
+      ...characterState,
       name: event.target.characterName.value,
       location: "/overworld",
     };
@@ -60,7 +61,7 @@ function testAPIGet(event) {
       setCharacterState(nextState)
       //  window.location.href="/overworld" // this would overwrite state?
       // need a router to maintain state instead
-      
+
       console.log("would move to overworld")
     }).catch((error) => {
       console.log(error)
@@ -74,7 +75,7 @@ function testAPIGet(event) {
       <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
         <Row className="cardRow text-center">
           {characterClasses.map(characters => (
-            <Card 
+            <Card className="text-center"
               id={characters.id}
               key={characters.id}
               name={characters.name}
@@ -101,13 +102,13 @@ function testAPIGet(event) {
             />
             <button className="createButton">
               Create Character
-          </button>
+            </button>
           {/* test form */}
           </form>
           <form onSubmit={testAPIGet}>
             <button className="createButton">
               testAPIGet
-          </button>
+            </button>
           </form>
         </Row>
 

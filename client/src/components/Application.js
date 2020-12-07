@@ -15,15 +15,15 @@ function Application() {
     const user = useContext(UserContext);
     // sets up character state on highest level application - so that it is available to other components.
     // currently empty placeholder for state
-   const [characterState, setCharacterState] = useState({
-    name: "",
-    level: 0,
-    strength: 0,
-    maxHealth: 0,
-    currentHealth: 0, 
-    spriteImage: "",
-    location: ""
-   })
+    const [characterState, setCharacterState] = useState({
+        name: "",
+        level: 0,
+        strength: 0,
+        maxHealth: 0,
+        currentHealth: 0,
+        spriteImage: "",
+        location: ""
+    })
     console.log((user ? user.uid : "User is not set yet"), characterState);
 
     // let history = useHistory();
@@ -34,24 +34,24 @@ function Application() {
     // }
     let rootLocation = <Overworld />;
     if (user && user.uid && !characterState.name) {
-     rootLocation = <SignIn />
-    } 
-  console.log(user, "user here")
-     return (
-         // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
-         <CharContext.Provider value={{
-             userID: user ? user.uid : "User is not set yet",
-             characterState, setCharacterState, 
-             // handleInputChange: () => { } ** for name? may be set using state instead
-         }}>
-             {user ?
-                 <Router>
-                     <Switch>
-                         <Route exact path="/">
+        rootLocation = <SignIn />
+    }
+    console.log(user, "user here")
+    return (
+        // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
+        <CharContext.Provider value={{
+            userID: user ? user.uid : "User is not set yet",
+            characterState, setCharacterState,
+            // handleInputChange: () => { } ** for name? may be set using state instead
+        }}>
+            {user ?
+                <Router>
+                    <Switch>
+                        <Route exact path="/">
                             {rootLocation}
-                         </Route>
+                        </Route>
 
-    {/* return (
+                        {/* return (
         // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
         <CharContext.Provider value={{
             userID: user ? user.uid : "User is not set yet",
@@ -65,7 +65,7 @@ function Application() {
                            {rootLocation}
                         </Route>
           {/* the next 3 routes are for development purposes only. take them out later! */}
-                        <Route exact path="/overworld">  
+                        <Route exact path="/overworld">
                             <Overworld />
                         </Route>
                         <Route exact path="/signUp">
@@ -75,12 +75,11 @@ function Application() {
                             <SignIn />
                         </Route>
                         <Route exact path="/battle">
-                            {/* <Navbar /> */}
                             <Battle />
                         </Route>
                         <Route exact path="/landing">
                             <Landing />
-                            </Route>
+                        </Route>
                     </Switch>
                 </Router>
                 :
@@ -94,22 +93,20 @@ function Application() {
                         </Route>
                         <Route exact path="/landing">
                             <Landing />
-                        {/* <Route exact path="/passwordReset">
+                            {/* <Route exact path="/passwordReset">
                             <PasswordReset /> */}
                         </Route>
-                        <Route exact path="/overworld">  
-                            {/* <Navbar /> */}
+                        <Route exact path="/overworld">
                             <Overworld />
                             {/* <NoMatch /> */}
                         </Route>
                         <Route exact path="/battle">
-                            {/* <Navbar /> */}
                             <Battle />
                         </Route>
                     </Switch>
                 </Router>}
-                {/* this is a development test to see that we have character state on clicks from landig page */}
-                {/* <h1>
+            {/* this is a development test to see that we have character state on clicks from landig page */}
+            {/* <h1>
                     {characterState.maxHealth}
                     {characterState.name}
                 </h1> */}
