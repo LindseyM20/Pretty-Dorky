@@ -30,8 +30,10 @@ function Landing() {
 function testAPIGet(event) {
   event.preventDefault();
   API.getCharacter(user.uid)
-  .then(() => {
-    console.log("got request for character matching uid")}
+  .then((res) => {
+    console.log("got request for character matching uid")
+  console.log(res)
+}
     
   )
 }
