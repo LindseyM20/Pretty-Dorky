@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 const Header = () => {
   const {characterState} = useContext(CharContext)
   return (
-    <Container style= {{ height: 0 }} className="headerContainer">
+    <Container style= {{ height: 0, backgroundColor: "grey" }} className="headerContainer">
       <Row>
         <Col>
           <Row>Character Name {characterState.name}</Row>

@@ -44,22 +44,27 @@ const Overworld = () => {
   function pause() {
     console.log("Quick pause")
 
-    document.getElementsByClassName("enemy").classList.add("pause")
-    document.getElementsByClassName("health").classList.add("pause");
-    document.getElementsByClassName("tower").classList.add("pause");
-    document.getElementById("play").show();
-    document.getElementById("pause").hide();
+    document.getElementById("clippy").classList.add("holdUp");
+    document.getElementById("tower1").classList.add("holdUp");
+    document.getElementById("tower2").classList.add("holdUp");
+    document.getElementById("tower3").classList.add("holdUp");
+    document.getElementById("bean").classList.add("holdUp");
+
+    // document.getElementById("pause").hide();
 
   }
 
   function play() {
     console.log("back to work")
 
-    document.getElementsByClassName("enemy").classList.add("pause")
-    document.getElementsByClassName("health").classList.add("pause");
-    document.getElementsByClassName("tower").classList.add("pause");
-    document.getElementById("pause").show();
-    document.getElementById("play").hide();
+    document.getElementById("clippy").classList.remove("holdUp");
+    document.getElementById("bean").classList.remove("holdUp");
+    document.getElementById("tower1").classList.remove("holdUp");
+    document.getElementById("tower2").classList.remove("holdUp");
+    document.getElementById("tower3").classList.remove("holdUp");
+
+    // document.getElementById("pause").show();
+    // document.getElementById("play").hide();
 
   }
 
@@ -95,12 +100,12 @@ const Overworld = () => {
               </div>
             </div>
             {/* <div class= "enemy" id="cat"><img id="catImg" src={cat} alt="cat" /> </div> */}
-            <div class="enemy" id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
+            <div class="enemy enemyRun" id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
             {/* <div class= "enemy" id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
             <div class= "enemy" id="exp"><img id="expImg" src={exp} alt="internet"></img></div> */}
-            <div class="tower" id="tower1"><img src={tower} alt="server"></img></div>
-            <div class="tower" id="tower2"><img src={tower} alt="server"></img></div>
-            <div class="tower" id="tower3"><img src={tower} alt="server"></img></div>
+            <div class="tower1" id="tower1"><img src={tower} alt="server"></img></div>
+            <div class="tower2" id="tower2"><img src={tower} alt="server"></img></div>
+            <div class="tower3" id="tower3"><img src={tower} alt="server"></img></div>
 
             {/* <div class= "health" id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div> */}
             <div class="health" id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
@@ -109,7 +114,7 @@ const Overworld = () => {
             <Button id="pause" variant="dark" value="pause" onClick={e => pause(e.target.value)}>
               Tiny Human </Button>
             <Button id="play" variant="dark" value="play" onClick={e => play(e.target.value)}>
-              Attack!! </Button>
+              Crisis Averted </Button>
           </div>
         </Row>
         <Row id="instructions">

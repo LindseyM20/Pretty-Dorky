@@ -104,7 +104,9 @@ button#play {
     top: 167px; /*for demo only*/
     left: -103px;
     z-index: -1;
-    animation: move 10s infinite linear; 
+}
+.tower1 {
+    animation: move 10s infinite linear;
 }
 #tower2 {
     width: 1000px;
@@ -113,7 +115,9 @@ button#play {
     top: -129px; /*for demo only*/
     left: -143px;
     z-index: -2;
-    animation: move 11s infinite linear; 
+}
+.tower2 {
+    animation: move 11s infinite linear;
 }
 #tower3 {
     width: 1000px;
@@ -122,7 +126,9 @@ button#play {
     top: -425px;
     left: -183px; /*for demo only*/
     z-index: -3;
-    animation: move 12s infinite linear; 
+}
+.tower3 {
+    animation: move 12s infinite linear;
 }
 #cat {
     width: 100px;
@@ -130,7 +136,7 @@ button#play {
     background-color: blue;
     position: relative;
     top: 395px;
-    animation: block 4s infinite linear;
+    /* animation: block 4s infinite linear; */
 }
 #catImg {
     height: 84px;
@@ -142,7 +148,7 @@ button#play {
     position: relative;
     /* top: 267px; */
     top: 360px; /* for presentation demo*/
-    animation: block 5s infinite linear;
+    /* animation: block 5s infinite linear; */
 }
 #clippyImg {
     height: 100px;
@@ -153,7 +159,7 @@ button#play {
     background-color: blue;
     position: relative;
     top: 100px;
-    animation: block 3s infinite linear;
+    /* animation: block 3s infinite linear; */
 }
 #bugImg {
     height: 80px;
@@ -164,7 +170,7 @@ button#play {
     background-color: blue;
     position: relative;
     top: 109px;
-    animation: block 3s infinite linear;
+    /* animation: block 3s infinite linear; */
 }
 #expImg {
     height: 80px;
@@ -174,7 +180,6 @@ button#play {
     height: 50px;
     background-color: blue;
     position: relative;
-    animation: health 5s infinite;
 }
 #tartImg {
     height: 50px;
@@ -184,10 +189,18 @@ button#play {
     height: 35px;
     /* background-color: blue; */
     position: relative;
-    animation: health 5s infinite;
 }
 #beanImg {
     height: 35px;
+}
+.health {
+    animation: health 5s infinite;
+}
+.enemyRun {
+    animation: block 5s infinite linear;
+}
+.holdUp {
+    animation-play-state: paused;
 }
 
 @keyframes block {
@@ -208,7 +221,4 @@ button#play {
     to   { 
             left: -150px;
             top: -550px; }
-}
-.pause {
-    animation-play-state: paused;
 }
