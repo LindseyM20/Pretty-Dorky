@@ -86,6 +86,7 @@ function testAPIGet(event) {
               maxHealth={characters.maxHealth}
               currentHealth={characters.currentHealth}
               spriteImage={characters.spriteImage}
+              battleImage={characters.battleImage}
             />
 
           ))}

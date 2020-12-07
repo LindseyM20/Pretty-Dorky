@@ -9,6 +9,7 @@ const characterSchema = new Schema({
   currentHealth: {type: Number, required: true},
   maxHealth: {type: Number, required: true},
   spriteImage: {type: String, required: false},
+  battleImage: {type: String, required: false},
   location: {type: String, required: false}
 
 
