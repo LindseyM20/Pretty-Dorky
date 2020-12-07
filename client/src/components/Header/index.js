@@ -10,7 +10,12 @@ import "./style.css";
 const Header = () => {
   const {characterState} = useContext(CharContext)
   return (
-    <Container style= {{ height: 0, backgroundColor: "grey" }} className="headerContainer">
+    <Container 
+    style= {{ 
+      height: 0, 
+    backgroundColor: "gray" }}
+     className="headerContainer"
+     >
       <Row>
         <Col className="characterInfo">
           <Row><div className="name">Character Name {characterState.name}</div></Row>
