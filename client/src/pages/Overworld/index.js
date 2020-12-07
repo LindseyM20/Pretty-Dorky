@@ -50,7 +50,8 @@ const Overworld = () => {
     document.getElementById("tower3").classList.add("holdUp");
     document.getElementById("bean").classList.add("holdUp");
 
-    // document.getElementById("pause").hide();
+    document.getElementById("pause").classList.add("hide");
+    document.getElementById("play").classList.add("show");
 
   }
 
@@ -63,8 +64,8 @@ const Overworld = () => {
     document.getElementById("tower2").classList.remove("holdUp");
     document.getElementById("tower3").classList.remove("holdUp");
 
-    // document.getElementById("pause").show();
-    // document.getElementById("play").hide();
+    document.getElementById("play").classList.add("hide");
+    document.getElementById("pause").classList.add("show");
 
   }
 
@@ -111,24 +112,24 @@ const Overworld = () => {
             <div class="health" id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
             <Button id="jump" variant="dark" value="jump" onClick={e => jump(e.target.value)}>
               Jump! </Button>
-            <Button id="pause" variant="dark" value="pause" onClick={e => pause(e.target.value)}>
-              Tiny Human </Button>
-            <Button id="play" variant="dark" value="play" onClick={e => play(e.target.value)}>
-              Crisis Averted </Button>
-          </div>
-        </Row>
-        <Row id="instructions">
-          <Button variant="dark" onClick={() => {
+              <Button id="temp" variant="dark" onClick={() => {
             setCharacterState(battleState);
             history.push(characterState.location);
           }}>
             Fight! </Button>
+          </div>
+        </Row>
+        <Row id="instructions">
+
           <div className="card overInst">
             {/* <div className="overworld"> */}
             {/* <div className="md:pl-4"> */}
             <h3 style={{ fontSize: 20 }} className="italic">Use the arrow keys to run toward the enemy or away if it is too scary. Hint - if you run away you aren't fast enough so it's really best to face your fears. If your timing is right you can use the jump button to jump higher than your enemy, because they can't jump. They are filled with so much rage they can barely see straight, so jumping is hard for them. If you're low on health you can jump towards a health item as it passes by. As a coder few things will keep you moving, so hopefully you get a good one.</h3>
             {/* </div> */}
-
+            <Button id="pause" variant="dark" value="pause" onClick={e => pause(e.target.value)}>
+              Tiny Human </Button>
+            <Button id="play" className= "hide" variant="dark" value="play" onClick={e => play(e.target.value)}>
+              Crisis Averted </Button>
             <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
               onClick={() => {
                 auth.signOut();
