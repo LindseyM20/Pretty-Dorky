@@ -15,15 +15,18 @@ function Application() {
     const user = useContext(UserContext);
     // sets up character state on highest level application - so that it is available to other components.
     // currently empty placeholder for state
-    const [characterState, setCharacterState] = useState({
-        name: "",
-        level: 0,
-        strength: 0,
-        maxHealth: 0,
-        currentHealth: 0,
-        spriteImage: "",
-        location: ""
-    })
+
+   const [characterState, setCharacterState] = useState({
+    name: "",
+    level: 0,
+    strength: 0,
+    maxHealth: 0,
+    currentHealth: 0, 
+    spriteImage: "",
+    battleImage: "",
+    location: ""
+   })
+
     console.log((user ? user.uid : "User is not set yet"), characterState);
 
     // let history = useHistory();

@@ -14,7 +14,7 @@
 
 We used this [walkthrough](https://blog.logrocket.com/user-authentication-firebase-react-apps/) from the [LogRocket Blog](https://logrocket.com/) as a guideline to build a firebase authentication.
 We chose to use `react-router-dom` in place of `@reach/router`
-The sign-in generates a unique UID that we pass to state with React, then write into out collection in Mongo as our "key" to retrieve the character for the signed in user.
+The sign-in generates a unique UID that we pass to state with React, then write into our collection in Mongo as our "key" to retrieve the character for the signed in user.
 
 ### MongoDB 
 * POST Creates a collection with character data.
@@ -47,7 +47,7 @@ Beautiful sprite sheets were built with ease thanks to:
 This tutorial for animating sprites with arrow keys was super helpful in getting us going to wire the sprites to our page using React hooks!
 [Sprite Sheet Animation Tutorial](https://www.youtube.com/watch?v=DqpPgK13oEM)
 
-This tutorial helped us create an SVG pixel-art healthbar:
+This tutorial helped us create an SVG pixel-art healthbar that is responsive to our React state:
 [React Pixel to SVG tutorial](https://www.youtube.com/watch?v=GhjAxQtABtE)
 
 Our overworld was inspired by what we believed to be [The Easiest JavaScript Game Ever](https://www.youtube.com/watch?v=bG2BmmYr9NQ&list=WL&index=6&t=272s). We followed this HTML/CSS/JavaScript tutorial and refactored the logic to fit our React App and design.
