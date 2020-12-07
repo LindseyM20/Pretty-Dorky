@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import CharContext from "../utils/CharContext";
 import Healthbar from "../components/Healthbar";
 import { useHistory } from "react-router-dom";
-import "./Battle.css";
 import enemy from "./Overworld/images/evilClippy.png";
 import Header from "../components/Header";
+import "./Battle.css";
 
 // import { Container } from "react-bootstrap/lib/Tab";
 
