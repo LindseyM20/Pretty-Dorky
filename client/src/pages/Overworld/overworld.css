@@ -51,12 +51,41 @@ body {
     top: 441px;
     left: 50px;
 }
-button.btn.btn-dark {
+button#jump {
     position: relative;
     /* top: -497px; */
     top: -206px; /*for demo only*/
     left: 10px;
     width: 75px;
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    display: inline-block;
+    font-weight: 400;
+}
+button#pause {
+    position: relative;
+    /* top: -497px; */
+    top: -262px; /*for demo only*/
+    left: 100px;
+    width: 75px;
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    display: inline-block;
+    font-weight: 400;
+}
+button#play {
+    position: relative;
+    /* top: -497px; */
+    top: -310px; /*for demo only*/
+    left: 190px;
+    width: 104px;
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+    display: inline-block;
+    font-weight: 400;
 }
 .animate{
     animation: jump 481ms;
@@ -75,7 +104,7 @@ button.btn.btn-dark {
     top: 167px; /*for demo only*/
     left: -103px;
     z-index: -1;
-    animation: move 5s infinite linear; 
+    animation: move 10s infinite linear; 
 }
 #tower2 {
     width: 1000px;
@@ -84,7 +113,7 @@ button.btn.btn-dark {
     top: -129px; /*for demo only*/
     left: -143px;
     z-index: -2;
-    animation: move 6s infinite linear; 
+    animation: move 11s infinite linear; 
 }
 #tower3 {
     width: 1000px;
@@ -93,7 +122,7 @@ button.btn.btn-dark {
     top: -425px;
     left: -183px; /*for demo only*/
     z-index: -3;
-    animation: move 7s infinite linear; 
+    animation: move 12s infinite linear; 
 }
 #cat {
     width: 100px;
@@ -179,4 +208,7 @@ button.btn.btn-dark {
     to   { 
             left: -150px;
             top: -550px; }
+}
+.pause {
+    animation-play-state: paused;
 }
