@@ -19,6 +19,8 @@ function Battle() {
 
     // useContext
     const {characterState,setCharacterState} = useContext(CharContext);
+    const battleImage = characterState.battleImage
+        console.log(battleImage)
 
     const returnState = {...characterState,
         currentHealth: rogue.hitpoints,
@@ -108,17 +110,14 @@ function Battle() {
             <Header />
             <Row>
                 <div className="card" id="fight">
-
-                    <div id="characterFight"></div>
-                    <div id="enemyFight">
+                    <div id="characterFight">
+                    <img id="hero" src={battleImage} alt="hero"></img>                        
+                    </div>
+                    <div id="enemyFight" >
                         <img id="enemy" src={enemy} alt="enemy"></img>
                     </div>
-
-
                 </div>
             </Row>
-
-
             <Row>
                 <div className="card" id="fightText">
                     <h1 className="text-center">A Slime appears to block your path</h1>

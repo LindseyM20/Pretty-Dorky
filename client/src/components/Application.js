@@ -22,6 +22,7 @@ function Application() {
     maxHealth: 0,
     currentHealth: 0, 
     spriteImage: "",
+    battleImage: "",
     location: ""
    })
     console.log((user ? user.uid : "User is not set yet"), characterState);
