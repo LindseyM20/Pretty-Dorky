@@ -4,8 +4,6 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Overworld from "../pages/Overworld";
 import { UserContext } from "../providers/UserProvider";
-import PasswordReset from "./PasswordReset";
-import NoMatch from "../pages/NoMatch";
 import Battle from "../pages/Battle";
 import CharContext from "../utils/CharContext";
 import Landing from "../pages/Landing/index";
@@ -33,6 +31,7 @@ function Application() {
     //     history.push(characterState.location)
     //     }
     // }
+
     let rootLocation = <Overworld />;
     if (user && user.uid && !characterState.name) {
         rootLocation = <SignIn />
@@ -43,7 +42,6 @@ function Application() {
         <CharContext.Provider value={{
             userID: user ? user.uid : "User is not set yet",
             characterState, setCharacterState,
-            // handleInputChange: () => { } ** for name? may be set using state instead
         }}>
             {user ?
                 <Router>
@@ -51,21 +49,6 @@ function Application() {
                         <Route exact path="/">
                             {rootLocation}
                         </Route>
-
-                        {/* return (
-        // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
-        <CharContext.Provider value={{
-            userID: user ? user.uid : "User is not set yet",
-            characterState, setCharacterState, 
-            // handleInputChange: () => { } ** for name? may be set using state instead
-        }}>
-            {user ?
-                <Router>
-                    <Switch>
-                        <Route exact path="/">
-                           {rootLocation}
-                        </Route>
-          {/* the next 3 routes are for development purposes only. take them out later! */}
                         <Route exact path="/overworld">
                             <Overworld />
                         </Route>
@@ -94,12 +77,9 @@ function Application() {
                         </Route>
                         <Route exact path="/landing">
                             <Landing />
-                            {/* <Route exact path="/passwordReset">
-                            <PasswordReset /> */}
                         </Route>
                         <Route exact path="/overworld">
                             <Overworld />
-                            {/* <NoMatch /> */}
                         </Route>
                         <Route exact path="/battle">
                             <Battle />

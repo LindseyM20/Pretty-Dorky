@@ -1,13 +1,28 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import CharContext from "../../utils/CharContext";
+import Overworld from "../../pages/Overworld";
 import { auth } from "../../firebase";
+import { UserContext } from "../../providers/UserProvider";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import API from "../../utils/API";
 import "./style.css";
 
 const SignIn = () => {
+    const user = useContext(UserContext);
+    const { characterState, setCharacterState } = useContext(CharContext);
+    let history = useHistory();
+
+    const checkInState = {
+      ...characterState,
+      location: "/overworld",
+    };
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -25,7 +40,25 @@ const SignIn = () => {
         setError("Error signing in with password and email!");
         console.error("Error signing in with password and email", error);
       });
-      // window.location.href="/landing";
+
+
+   // test for api call to check for existing character at sign in
+
+            API.getCharacter(user.uid)
+      .then(data => {
+          console.log("getting character at sign in", {data});
+
+          // setCharacterState(**set to match the data objects**)
+
+              // let rootLocation = <Overworld />;
+              console.log(data.data.name + "name here") 
+  //             if (data.data.name) {
+  //             rootLocation = <SignIn />
+  // }
+    //       setCharacterState(checkInState);
+    // history.push(characterState.location)
+      })
+
     };
 // updates email and password in state variables
       const onChangeHandler = (event) => {
