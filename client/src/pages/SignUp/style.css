@@ -1,11 +1,12 @@
 .bodyStyle {
-  background-color: gray;
+  /* background-color: gray; */
   color: white;
   content: center;
 }
-html {
+
+/* html {
   background: gray;
-}
+} */
 
 h1 {
   text-align: center;
@@ -33,12 +34,12 @@ h1 {
 }
 
 .text {
-color:#23dffc; 
-filter: drop-shadow(0 0 0.05rem #6e6e6e);
+  color:#23dffc; 
+  filter: drop-shadow(0 0 0.05rem #6e6e6e);
 }
 
 .signUpBtn {
-padding: 0 2%;
-margin-bottom: 5%;
+  padding: 0 2%;
+  margin-bottom: 5%;
 }
 
