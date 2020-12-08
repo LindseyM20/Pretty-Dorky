@@ -26,24 +26,20 @@ const SignIn = () => {
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
     auth.signInWithEmailAndPassword(email, password)
-      //added in
       .then(() => {
         checkSaveData();
-        // window.location.href="/landing"
       }).catch((error) => {
         console.log(error)
       })
-      //below was previously continued from line 11
       .catch(error => {
         setError("Error signing in with password and email!");
         console.error("Error signing in with password and email", error);
       });
 
 
-    // test for api call to check for existing character at sign in
+    //  api call to check for existing character at sign in/
 
     function checkSaveData() {
-     
       API.getCharacter(user.uid)
         .then(data => {
           console.log("getting character at sign in", { data });
@@ -71,8 +67,6 @@ const SignIn = () => {
           console.log(error)
         }
       })
-
-       
     }
   };
   // updates email and password in state variables
@@ -96,7 +90,6 @@ const SignIn = () => {
       <h4 className="adventure">Continue Adventure</h4>
       <div className="border">
         {error !== null && <div className="py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
-
 
         <Form className="signInForm text-center">
           <Form.Row style={{ padding: "2%" }}>
@@ -141,9 +134,6 @@ const SignIn = () => {
 
         </span>
         <br />{" "}
-        {/* <Link to = "passwordReset" className="text-blue-500 hover:text-blue-600">
-              Forgot Password?
-              </Link> */}
       </p>
 
     </div>
