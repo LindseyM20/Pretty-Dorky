@@ -11,14 +11,14 @@ const Header = () => {
   const {characterState} = useContext(CharContext)
   return (
     <Container 
-    style= {{ 
-      height: 0, 
-    backgroundColor: "gray" }}
-     className="headerContainer"
+      style= {{ 
+        height: 0, 
+        backgroundColor: "gray" }}
+      className="headerContainer"
      >
       <Row>
         <Col className="characterInfo">
-          <Row><div className="name">Character Name {characterState.name}</div></Row>
+          <Row><div className="name">{characterState.name}</div></Row>
           <Row><div className="level">Level {characterState.level}</div></Row>
         </Col>
         <Col><h1 className="dork">Pretty Dorky</h1></Col>
