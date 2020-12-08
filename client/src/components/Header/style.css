@@ -1,3 +1,36 @@
+html {
+  background: gray;
+}
+
 .headerContainer {
   width: 100%;
+  background: gray;
 } 
+
+.characterInfo, .dork {
+  margin: auto;
+}
+
+.name, .level {
+  margin: auto;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(0 0 0.25rem #0a0a0a); 
+}
+
+.healthbarDiv {
+  padding-left: 28%;
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(0 0 0.25rem #0a0a0a); 
+}
+
+.dork {
+  font-size: 300%;
+  margin-top: 1%;
+}
+
+@media screen and (max-width: 930px) {
+  .healthbarDiv {
+    padding-left: 12%;
+  }
+}

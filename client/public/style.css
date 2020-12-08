@@ -3,8 +3,12 @@
     src: url('west-england.regular.ttf');
     } */
 * {
-    font-family: Courier, 'Courier-New', monospace
+    font-family: Courier, 'Courier-New', monospace;
 }
 h1 {
-   font-family: 'VT323', monospace;
+    font-family: 'VT323', monospace;
+}
+
+html {
+    background: gray;
 }

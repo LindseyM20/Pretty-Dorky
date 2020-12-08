@@ -9,7 +9,8 @@
         "strength": 30,
         "maxHealth": 100,
         "currentHealth": 100,
-        "spriteImage": "https://i.ibb.co/88b6jcH/Rogue.png"
+        "spriteImage": "https://i.ibb.co/88b6jcH/Rogue.png",
+        "battleImage": "https://i.ibb.co/xhqCZ1F/rouge-Battle.png"
       },
       {
         "id": 2,
@@ -20,7 +21,8 @@
         "strength": 25,
         "maxHealth": 100,
         "currentHealth": 50,
-        "spriteImage": "https://i.ibb.co/7zntFhn/Warrior.png"
+        "spriteImage": "https://i.ibb.co/7zntFhn/Warrior.png",
+        "battleImage": "https://i.ibb.co/f00dvcn/warrior-Battle1.png"
       },
       
     {
@@ -32,7 +34,8 @@
         "strength": 20,
         "maxHealth": 90,
         "currentHealth": 90,
-        "spriteImage": "https://i.ibb.co/WkpVbht/Wizard.png"
+        "spriteImage": "https://i.ibb.co/WkpVbht/Wizard.png",
+        "battleImage": "https://i.ibb.co/7XqWSSy/wizard-Battle.png"
         
       },
       
@@ -45,6 +48,7 @@
         "strength": 20,
         "maxHealth": 100,
         "currentHealth": 100,
-        "spriteImage": "https://i.ibb.co/yyyv7xC/Ranger.png"
+        "spriteImage": "https://i.ibb.co/yyyv7xC/Ranger.png",
+        "battleImage": "https://i.ibb.co/V9r7ZDM/ranger-Battle1.png"
       }
     ]

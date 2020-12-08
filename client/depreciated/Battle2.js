@@ -3,11 +3,11 @@ import Button from "react-bootstrap/Button";
 import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import CharContext from "../utils/CharContext";
+import CharContext from "../src/utils/CharContext";
 import { useHistory } from "react-router-dom";
 import enemy from "./Overworld/images/evilClippy.png";
 import hero from "./images/rougeBattle.png";
-import Header from "../components/Header";
+import Header from "../src/components/Header";
 import "./Battle.css";
 
 // import { Container } from "react-bootstrap/lib/Tab";

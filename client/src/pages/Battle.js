@@ -1,10 +1,14 @@
 import React, { useContext, useEffect , useState } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 import CharContext from "../utils/CharContext";
 import { useHistory } from "react-router-dom";
-import "./Battle.css";
 import enemy from "./Overworld/images/evilClippy.png";
+import hero from "./images/rougeBattle.png";
 import Header from "../components/Header";
+import "./Battle.css";
 
 // import { Container } from "react-bootstrap/lib/Tab";
 
@@ -28,14 +32,13 @@ function Battle() {
 
     let history = useHistory();
     if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-        history.push("/overworld",characterState);
+        history.push("/overworld",{...characterState,location:"/overworld"});
     }
 
     useEffect(() => {
         console.log("stats at start of render/battle ",characterState);
         if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-            history.push("/overworld",characterState);
-        }
+            history.push("/overworld",{...characterState,location:"/overworld"});        }
         if (characterState.level <2) {
             setBattleState ({turnbase: true, 
                 screentext: `Clippy appears to block your path. The power of 'stache fuels his hatred. `,
@@ -85,15 +88,13 @@ function Battle() {
             console.log("wait for turn");
             console.log(turnbase);
         }, 1000);
-        
     }, []);
 
         // method which takes in a second object and decreases their "hitpoints" by this character's strength
     async function attack() {
-        // console.log(`${this.name} attacks ${character2.name}`)
         let dialogue = characterState.name + " readies an attack at " + enemyState.name + "! " + characterState.name + " does " + characterState.strength + " damage to " + enemyState.name + "! ";
         // player hits foe
-        console.log("Enemy health: ",enemyState.currentHealth-characterState.currentHealth);
+        console.log("Enemy health: ",enemyState.currentHealth-characterState.strength);
         if (enemyState.currentHealth - characterState.strength <= 0) {
             //enemy foe is defeated
             levelUp(dialogue);
@@ -211,8 +212,7 @@ function Battle() {
         // Get the title of the clicked button
         const btnName = event.target.getAttribute("data-value");
         if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-            history.push(characterState.location);
-        }
+            history.push("/overworld",{...characterState,location:"/overworld"});        }
         if (turnbase === true){
             setBattleState({turnbase:false, screentext: "", enemyState:enemyState,});
             //turn order is run
@@ -229,20 +229,23 @@ function Battle() {
         };
     }
     return (
-        <div>
+        <Container>
+            <div className="header">
             <Header />
+            </div>
+            
             <Row>
                 <div className="card" id="fight">
 
-                    <div id="characterFight"></div>
-                    <div id="enemyFight">
+                    <div id="characterFight">
+                    <img id="hero" src={battleImage} alt="hero"></img>                        
+
+                    </div>
+                    <div id="enemyFight" >
                         <img id="enemy" src={enemy} alt="enemy"></img>
                     </div>
-
                 </div>
             </Row>
-
-
             <Row>
                 <div className="card" id="fightText">
                     <h1 className="text-center">{screentext}</h1>
@@ -259,14 +262,9 @@ function Battle() {
                 <Col className="col-6">
                     <Button variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
                 </Col>
-                <Col></Col>
             </Row>
-
-            <Row><Col><br/></Col></Row>
-
-        </div>
+        </Container>
     );
 }
-
 
 export default Battle;

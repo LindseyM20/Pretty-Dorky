@@ -34,7 +34,7 @@ module.exports = {
     // ** tested in postman
   update: function(req, res) {
     console.log("updating here")
-    db.Character.findOneAndUpdate({uid:req.params.uid}, req.body)
+    db.Character.findOneAndUpdate({uid:req.params.uid}, req.body, {"new": true})
       .then(dbModel => {
         console.log(dbModel);
         res.json(dbModel);

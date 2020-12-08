@@ -10,9 +10,8 @@ import API from "../../utils/API";
 import "./style.css";
 
 function Landing() {
-  const {setCharacterState, characterState} = useContext(CharContext)
+  const { setCharacterState, characterState } = useContext(CharContext)
   const user = useContext(UserContext)
-
 
   //This is what allows the endUser to navigate through pages while maintaining state
   let history = useHistory();
@@ -22,21 +21,7 @@ function Landing() {
   //     }
   // }
   if (characterState.name)
-    history.push(characterState.location);
-
-
-  // adding a button to trigger get API call test
-  //next step is to make this a check when the user signs in
-  function testAPIGet(event) {
-    event.preventDefault();
-    API.getCharacter(user.uid)
-      .then(() => {
-        console.log("got request for character matching uid")
-      }
-
-      )
-  }
-
+    history.push(characterState.location)
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -45,12 +30,24 @@ function Landing() {
     // event.target.characterName.value = ""; 
     console.log(characterState)
     //  post character state values to mongo
-  // API.post (calls the imported API)
+    // API.posst (calls the imported API)
 
-    const nextState = {...characterState,
+    if (!characterState.currentHealth) {
+      alert("Please select a character")
+      return;
+    }
+
+    if (event.target.characterName.value === "") {
+      alert("Please name your character")
+      return;
+    }
+
+    const nextState = {
+      ...characterState,
       name: event.target.characterName.value,
       location: "/overworld",
     };
+
     API.createCharacter({
       ...nextState,
       uid: user.uid
@@ -59,7 +56,7 @@ function Landing() {
       setCharacterState(nextState)
       //  window.location.href="/overworld" // this would overwrite state?
       // need a router to maintain state instead
-      
+
       console.log("would move to overworld")
     }).catch((error) => {
       console.log(error)
@@ -73,7 +70,7 @@ function Landing() {
       <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
         <Row className="cardRow text-center">
           {characterClasses.map(characters => (
-            <Card 
+            <Card className="text-center"
               id={characters.id}
               key={characters.id}
               name={characters.name}
@@ -84,6 +81,7 @@ function Landing() {
               maxHealth={characters.maxHealth}
               currentHealth={characters.currentHealth}
               spriteImage={characters.spriteImage}
+              battleImage={characters.battleImage}
             />
           ))}
 
@@ -99,13 +97,8 @@ function Landing() {
             />
             <button className="createButton">
               Create Character
-          </button>
-          {/* test form */}
-          </form>
-          <form onSubmit={testAPIGet}>
-            <button className="createButton">
-              testAPIGet
-          </button>
+            </button>
+
           </form>
         </Row>
 
