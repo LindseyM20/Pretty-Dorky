@@ -27,16 +27,16 @@ function Landing() {
 
     // adding a button to trigger get API call test
     //next step is to make this a check when the user signs in
-function testAPIGet(event) {
-  event.preventDefault();
-  API.getCharacter(user.uid)
-  .then((res) => {
-    console.log("got request for character matching uid")
-  console.log(res)
-}
+// function testAPIGet(event) {
+//   event.preventDefault();
+//   API.getCharacter(user.uid)
+//   .then((res) => {
+//     console.log("got request for character matching uid")
+//   console.log(res)
+// }
     
-  )
-}
+//   )
+// }
 
 
   function handleSubmit(event) {
@@ -115,13 +115,12 @@ function testAPIGet(event) {
             <button className="createButton">
               Create Character
             </button>
-          {/* test form */}
           </form>
-          <form onSubmit={testAPIGet}>
+          {/* <form onSubmit={testAPIGet}>
             <button className="createButton">
               testAPIGet
             </button>
-          </form>
+          </form> */}
         </Row>
 
       </section>

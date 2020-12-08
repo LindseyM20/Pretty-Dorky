@@ -17,15 +17,16 @@ import { Button } from "react-bootstrap";
 
 const Overworld = () => {
   const { characterState, setCharacterState } = useContext(CharContext)
-  console.log(characterState)
+  // console.log(characterState)
   let history = useHistory();
 
   // var character = document.getElementById("character");
   // var enemy = document.getElementsByClassName("enemy");
-  const battleState = {
-    ...characterState,
-    location: "/battle",
-  };
+
+  // const battleState = {
+  //   ...characterState,
+  //   location: "/battle",
+  // };
 
   const data = {
     y: -1536,
@@ -35,33 +36,29 @@ const Overworld = () => {
   }
 
 
-  // const [clippyPosition, setClippyPosition] = useState({
-  //   y: 0,
-  //   x: 0,
-  // }) 
+  const [position, setPosition] = useState({
+    enemy: {},
+    character: {},
+  })
 
-  // setInterval(() => {
-  //   let position = document.getElementById("clippy").getBoundingClientRect();
-  //   setClippyPosition({x: position.x, y: position.y});
-  //   // Decrease the 2000 milliseconds later - I just set this to a big number to not overwhelm my laptop!
-  // }, 2000)
-
-  // // Do similar to above for character. store object (like lines 30-35) in a useState. look at how Y axis changes.
-  // // useEffect: every time clippy's state changes, check to see if clippy's x axis = our x axis (may require math)
-  // // if so, call function for what happens
-
-  // const [characterPosition, setCharacterPosition] = useState({
-  //   y: 0,
-  //   x: 0,
-  // }) 
-
-  // setInterval(() => {
-  //   let position = document.getElementById("character").getBoundingClientRect();
-  //   setCharacterPosition({x: position.x, y: position.y});
-  //   // Decrease the 2000 milliseconds later - I just set this to a big number to not overwhelm my laptop!
-  // }, 2000)
-
-
+  if (characterState.location === "/overworld") {
+    setInterval(() => {
+      let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
+      let characterPosition = document.getElementById("character").getBoundingClientRect();
+      setPosition({
+        enemy: enemyPosition,
+        character: characterPosition
+      })
+      if (position.enemy.x < position.character.x + position.character.width &&
+        position.enemy.x + position.enemy.width > position.character.x &&
+        position.enemy.y < position.character.y + position.character.height &&
+        position.enemy.y + position.enemy.height > position.character.y) {
+        console.log("collision detected")
+      }
+      // console.log("enemy: ", enemyPosition);
+      // console.log("character: ", characterPosition);
+    }, 2000)
+  }
 
 
   function jump() {
@@ -80,8 +77,7 @@ const Overworld = () => {
     document.getElementById("tower3").classList.add("holdUp");
     document.getElementById("bean").classList.add("holdUp");
 
-    document.getElementById("pause").classList.add("hide");
-    document.getElementById("play").classList.add("show");
+    // document.getElementById("pause").hide();
 
   }
 
@@ -94,8 +90,8 @@ const Overworld = () => {
     document.getElementById("tower2").classList.remove("holdUp");
     document.getElementById("tower3").classList.remove("holdUp");
 
-    document.getElementById("pause").classList.remove("hide");
-    document.getElementById("play").classList.remove("show");
+    // document.getElementById("pause").show();
+    // document.getElementById("play").hide();
 
   }
 
@@ -142,24 +138,24 @@ const Overworld = () => {
             <div class="health" id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
             <Button id="jump" variant="dark" value="jump" onClick={e => jump(e.target.value)}>
               Jump! </Button>
-              <Button id="temp" variant="dark" onClick={() => {
-            setCharacterState(battleState);
-            history.push(characterState.location);
-          }}>
-            Fight! </Button>
+            <Button id="pause" variant="dark" value="pause" onClick={e => pause(e.target.value)}>
+              Tiny Human </Button>
+            <Button id="play" variant="dark" value="play" onClick={e => play(e.target.value)}>
+              Crisis Averted </Button>
           </div>
         </Row>
         <Row id="instructions">
-
+          <Button variant="dark" onClick={() => {
+            // setCharacterState(battleState);
+            history.push("/battle", characterState);
+          }}>
+            Fight! </Button>
           <div className="card overInst">
             {/* <div className="overworld"> */}
             {/* <div className="md:pl-4"> */}
             <h3 style={{ fontSize: 20 }} className="italic">Use the arrow keys to run toward the enemy or away if it is too scary. Hint - if you run away you aren't fast enough so it's really best to face your fears. If your timing is right you can use the jump button to jump higher than your enemy, because they can't jump. They are filled with so much rage they can barely see straight, so jumping is hard for them. If you're low on health you can jump towards a health item as it passes by. As a coder few things will keep you moving, so hopefully you get a good one.</h3>
             {/* </div> */}
-            <Button id="pause" variant="dark" value="pause" onClick={e => pause(e.target.value)}>
-              Tiny Human </Button>
-            <Button id="play" className= "hide" variant="dark" value="play" onClick={e => play(e.target.value)}>
-              Crisis Averted </Button>
+
             <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
               onClick={() => {
                 auth.signOut();
