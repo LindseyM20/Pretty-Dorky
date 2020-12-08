@@ -44,11 +44,12 @@ body {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 #character {
-    width: 74px;
+    width: 75px;
     height: 100px;
     position: relative;
     top: 455px;
     left: 50px;
+    /* background-color: red; */
 }
 button#jump {
     position: relative;
@@ -100,7 +101,7 @@ button#play {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .animate{
-    animation: jump 481ms;
+    animation: jump 490ms;
     z-index: 1;
 }
 @keyframes jump {
@@ -154,9 +155,11 @@ button#play {
     height: 98px;
     position: relative;
     top: 360px;
+    /* background-color: blue; */
 }
 #clippyImg {
     max-height: 100px;
+    /* background-color: blue; */
 }
 /* #bug {
     width: 73px;
