@@ -41,8 +41,12 @@ const Overworld = () => {
 
 // collision check
 
-  if (characterState.location === "/overworld") {
+  if (window.location.pathname === '/overworld') {
     setInterval(() => {
+      // console.log(window.location.pathname)
+      if (window.location.pathname === '/battle') {
+        return;
+      }
       let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
       let characterPosition = document.getElementById("character").getBoundingClientRect();
       let itemPosition = document.getElementById("bean").getBoundingClientRect();
@@ -54,8 +58,9 @@ const Overworld = () => {
         position.enemy.y < position.character.y + 100 &&
         position.enemy.y + position.enemy.height > position.character.y) {
         console.log("collision detected", enemyPosition, characterPosition);
-        setCharacterState({...characterState, location: "/battle"})
-        .then(() => {history.push("/battle", characterState)})
+        // setCharacterState({...characterState, location: "/battle"})
+        history.push("/battle", characterState);
+        return;
       } else if (position.item.x < position.character.x + 75 &&
         position.item.x + position.item.width > position.character.x &&
         position.item.y < position.character.y + 100 &&
