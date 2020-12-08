@@ -30,8 +30,8 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
-// Brooklynne:
-// ** tested in postman
+    // Brooklynne:
+    // ** tested in postman
   update: function(req, res) {
     console.log("updating here")
     db.Character.findOneAndUpdate({uid:req.params.uid}, req.body, {"new": true})

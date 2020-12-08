@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { auth } from "../../firebase";
+import { useHistory } from "react-router-dom";
 import CharContext from "../../utils/CharContext";
 import { UserContext } from "../../providers/UserProvider";
 import Player from "../../components/player"
@@ -12,7 +13,6 @@ import exp from "./images/explorer.png";
 import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
-import { useHistory } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
@@ -23,14 +23,6 @@ const Overworld = () => {
   const { characterState, setCharacterState } = useContext(CharContext)
   console.log(characterState)
   let history = useHistory();
-
-  // var character = document.getElementById("character");
-  // var enemy = document.getElementsByClassName("enemy");
-
-  // const battleState = {
-  //   ...characterState,
-  //   location: "/battle",
-  // };
 
   const data = {
     y: -1536,
@@ -108,8 +100,6 @@ const Overworld = () => {
 
   }
 
-
-
   return (
       <div>
         <Header />
@@ -146,11 +136,11 @@ const Overworld = () => {
           
         </Row>
         <Row id="instructions">
-          <Button variant="dark" onClick={() => {
+          {/* <Button variant="dark" onClick={() => {
             // setCharacterState(battleState);
             history.push("/battle", characterState);
           }}>
-            Fight! </Button>
+            Fight! </Button> */}
           <div className="card overInst">
             {/* <div className="overworld"> */}
             {/* <div className="md:pl-4"> */}
