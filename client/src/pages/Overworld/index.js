@@ -16,14 +16,14 @@ import "./overworld.css";
 import API from "../../utils/API";
 import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import API from "../../utils/API";
+ 
 
 const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
-  // console.log(characterState)
+  console.log(characterState)
   let history = useHistory();
-  if (characterState.location === "/battle"){history.push(characterState.location)}
+  // if (characterState.location === "/battle"){history.push("/battle",{...characterState,location:"/battle"})}
   // var character = document.getElementById("character").getBoundingClientRect();
   // var enemy = document.getElementById("clippy").getBoundingClientRect();
 
@@ -45,25 +45,25 @@ const Overworld = () => {
     enemy: {},
     character: {},
   })
-  if (characterState.location === "/overworld") {
-    setInterval(() => {
-      let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
-      let characterPosition = document.getElementById("character").getBoundingClientRect();
-      setPosition({
-        enemy: enemyPosition,
-        character: characterPosition
-      })
-      if (position.enemy.x < position.character.x + 75 /*front hitbox*/&&
-        position.enemy.x + position.enemy.width > position.character.x /*tailend of enemy*/&&
-        position.enemy.y < position.character.y + 100 &&
-        position.enemy.y + position.enemy.height > position.character.y) {
-        console.log("collision detected", enemyPosition, characterPosition)
+  // if (window.location.pathname === "/overworld") {
+  //   setInterval(() => {
+  //     let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
+  //     let characterPosition = document.getElementById("character").getBoundingClientRect();
+  //     setPosition({
+  //       enemy: enemyPosition,
+  //       character: characterPosition
+  //     })
+  //     if (position.enemy.x < position.character.x + 75 /*front hitbox*/&&
+  //       position.enemy.x + position.enemy.width > position.character.x /*tailend of enemy*/&&
+  //       position.enemy.y < position.character.y + 100 &&
+  //       position.enemy.y + position.enemy.height > position.character.y) {
+  //       console.log("collision detected", enemyPosition, characterPosition)
 
-      }
-      // console.log("enemy: ", enemyPosition);
-      // console.log("character: ", characterPosition);
-    }, 3050)
-  }
+  //     }
+  //     // console.log("enemy: ", enemyPosition);
+  //     // console.log("character: ", characterPosition);
+  //   }, 3050)
+  // }
 
 // end collision check
 
@@ -130,7 +130,7 @@ const Overworld = () => {
             <Button id="jump" variant="dark" value="jump" onClick={e => jump(e.target.value)}>
               Jump! </Button>
               <Button id="temp" variant="dark" onClick={() => {
-            setCharacterState(battleState);
+            // setCharacterState(battleState);
             history.push("/battle",{...characterState,location:"/battle"});
           }}>
             Fight! </Button>

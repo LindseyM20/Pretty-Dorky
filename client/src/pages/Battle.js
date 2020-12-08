@@ -9,12 +9,17 @@ import enemy from "./Overworld/images/evilClippy.png";
 import hero from "./images/rougeBattle.png";
 import Header from "../components/Header";
 import "./Battle.css";
-
+import Clippy from "./Overworld/images/evilClippy.png";
+import Econ from "./Overworld/images/explorer.png";
+import Bugg from "./Overworld/images/moth.png";
+import Skinny_Cat from "./Overworld/images/cat.png";
 // import { Container } from "react-bootstrap/lib/Tab";
 
 function Battle() {
     // useContext
     const {characterState,setCharacterState} = useContext(CharContext);
+    const battleImage = characterState.battleImage
+    
     //combine into one state
     const [battleState, setBattleState] = useState({
         turnbase: false, 
@@ -28,17 +33,17 @@ function Battle() {
     });
     const {turnbase, screentext, enemyState} = battleState;
  
+
     console.log("rendering battle", turnbase,screentext,enemyState);
 
     let history = useHistory();
-    if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-        history.push("/overworld",{...characterState,location:"/overworld"});
-    }
+    // if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
+    //     history.push("/overworld",{...characterState,location:"/overworld"});
+    // }
 
     useEffect(() => {
         console.log("stats at start of render/battle ",characterState);
-        if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-            history.push("/overworld",{...characterState,location:"/overworld"});        }
+
         if (characterState.level <2) {
             setBattleState ({turnbase: true, 
                 screentext: `Clippy appears to block your path. The power of 'stache fuels his hatred. `,
@@ -76,20 +81,23 @@ function Battle() {
             setBattleState ({turnbase: true, 
                 screentext: `A Skinned Cat appears to block your path. There are many ways to skin a cat some consider to be... unnatural. `,
                 enemyState:{
-                    name: "Skinned Cat",
-                    strength: 20,
+                    name: "Skinny_Cat",
+                    strength: 50,
                     maxHealth: 200,
                     currentHealth: 200,
                 },
             });
         };
         console.log(enemyState);
+        if (battleState.enemyState.currentHealth <0){
+            history.push("/overworld",characterState);
+        }
         setTimeout(function(){ 
             console.log("wait for turn");
             console.log(turnbase);
         }, 1000);
     }, []);
-
+    const enemyImage = battleState.enemyState.name
         // method which takes in a second object and decreases their "hitpoints" by this character's strength
     async function attack() {
         let dialogue = characterState.name + " readies an attack at " + enemyState.name + "! " + characterState.name + " does " + characterState.strength + " damage to " + enemyState.name + "! ";
@@ -136,13 +144,13 @@ function Battle() {
             //math checks out no damage return to overworld
             dialogue += "You ran away successfully! ";
             console.log(`${dialogue} prestate call ${characterState.location}`);
-            await setCharacterState({
-                ...characterState,
-                location: "/overworld"
-            });
+            // await setCharacterState({
+            //     ...characterState,
+            //     location: "/overworld"
+            // });
             setBattleState({ turnbase: turnbase, screentext: dialogue, enemyState: enemyState, });
-            if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-                history.push(characterState.location);
+            if (battleState.enemyState.currentHealth <0){
+                history.push("/overworld",characterState);
             }
             setTimeout(function () {
                 console.log(characterState);
@@ -181,11 +189,10 @@ function Battle() {
             strength: characterState.strength += 5,
             maxHealth: characterState.maxHealth += 25,
             currentHealth: characterState.currentHealth += characterState.level*5,
-            location: "/overworld",
         });
         setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
-        if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-            history.push(characterState.location);
+        if (battleState.enemyState.currentHealth <0){
+            history.push("/overworld",characterState);
         }
         setTimeout(function(){ 
             console.log("After level-up ",characterState);
@@ -211,8 +218,9 @@ function Battle() {
         event.preventDefault();
         // Get the title of the clicked button
         const btnName = event.target.getAttribute("data-value");
-        if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
-            history.push("/overworld",{...characterState,location:"/overworld"});        }
+        if (battleState.enemyState.currentHealth <0){
+            history.push("/overworld",characterState);
+        }        
         if (turnbase === true){
             setBattleState({turnbase:false, screentext: "", enemyState:enemyState,});
             //turn order is run
@@ -242,7 +250,7 @@ function Battle() {
 
                     </div>
                     <div id="enemyFight" >
-                        <img id="enemy" src={enemy} alt="enemy"></img>
+                        <img id= {enemyImage} src={enemy} alt="enemy"></img>
                     </div>
                 </div>
             </Row>
