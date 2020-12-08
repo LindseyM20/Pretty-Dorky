@@ -25,20 +25,6 @@ function Landing() {
     history.push(characterState.location)
 
 
-    // adding a button to trigger get API call test
-    //next step is to make this a check when the user signs in
-function testAPIGet(event) {
-  event.preventDefault();
-  API.getCharacter(user.uid)
-  .then((res) => {
-    console.log("got request for character matching uid")
-  console.log(res)
-}
-    
-  )
-}
-
-
   function handleSubmit(event) {
     event.preventDefault();
     // capture value from input field and set it to name value for charState
@@ -48,11 +34,22 @@ function testAPIGet(event) {
     //  post character state values to mongo
     // API.posst (calls the imported API)
 
+    if (!characterState.currentHealth) {
+      alert("Please select a character")
+      return;
+    }
+
+    if (event.target.characterName.value === "") {
+      alert("Please name your character")
+      return;
+    }
+
     const nextState = {
       ...characterState,
       name: event.target.characterName.value,
       location: "/overworld",
     };
+
     API.createCharacter({
       ...nextState,
       uid: user.uid
@@ -70,7 +67,7 @@ function testAPIGet(event) {
   }
 
   return (
-    <body className="bodyStyle">
+    <div className="bodyStyle">
       <h1>Choose Your Character</h1>
       <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
         <Row className="cardRow text-center">
@@ -104,17 +101,12 @@ function testAPIGet(event) {
             <button className="createButton">
               Create Character
             </button>
-          {/* test form */}
-          </form>
-          <form onSubmit={testAPIGet}>
-            <button className="createButton">
-              testAPIGet
-            </button>
+
           </form>
         </Row>
 
       </section>
-    </body>
+    </div>
   )
 }
 export default Landing;
