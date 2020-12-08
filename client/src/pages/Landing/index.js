@@ -68,9 +68,9 @@ function Landing() {
     <div className="bodyStyle">
       <h1>Choose Your Character</h1>
       <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
-        <Row className="cardRow text-center">
+        <Row className="cardRow" style={{"justify-content":"center"}}>
           {characterClasses.map(characters => (
-            <Card className="text-center"
+            <Card  
               id={characters.id}
               key={characters.id}
               name={characters.name}
