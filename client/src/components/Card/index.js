@@ -44,7 +44,7 @@ const [checked, setChecked] = useState(false);
           type="submit" 
           onClick = {captureStats}
           className="cardBtn" >
-          Select {props.description}
+          {props.description}
         </Button>
         {/* <Button variant="secondary"
           type="submit" 
