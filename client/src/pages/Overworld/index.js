@@ -43,7 +43,6 @@ const Overworld = () => {
 
   if (window.location.pathname === '/overworld') {
     setInterval(() => {
-      // console.log(window.location.pathname)
       if (window.location.pathname === '/battle') {
         return;
       }
