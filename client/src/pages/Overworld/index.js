@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { auth } from "../../firebase";
 import CharContext from "../../utils/CharContext";
+import { UserContext } from "../../providers/UserProvider";
 import Player from "../../components/player"
 import Header from "../../components/Header";
 import tower from "./images/tower.gif";
@@ -14,8 +15,10 @@ import "./overworld.css";
 import { useHistory } from "react-router-dom";
 import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import API from "../../utils/API";
 
 const Overworld = () => {
+  const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
   // console.log(characterState)
   let history = useHistory();
@@ -145,15 +148,26 @@ const Overworld = () => {
             <button className="signOut w-full py-3 bg-red-600 mt-4 text-white"
               onClick={() => {
                 auth.signOut();
-                // replace setCharacterState({}) (clears state) 
-                //with API.update to write to the database?
-                setCharacterState({});
-
+                saveData();
+                function saveData() {
+                  const nextState = {
+                    ...characterState,
+                  };
+              
+                  API.updateCharacter(user.uid, {
+                    ...nextState
+                    // update character by current user uid
+                  }).then(() => {
+                    setCharacterState(nextState)
+                    console.log("saved " + characterState)
+                  }).catch((error) => {
+                    console.log(error)
+                  })
+                  
+                }
                 window.location.href = "/";
 
               }}>Sign out</button>
-
-            {/* </div> */}
           </div>
 
         </Row>
