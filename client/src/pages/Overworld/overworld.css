@@ -101,7 +101,11 @@ button#play {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .animate{
+<<<<<<< HEAD
     animation: jump 490ms;
+=======
+    animation: jump 500ms;
+>>>>>>> b8cb2a0f74bdb816370c5903a079be73d3113c77
     z-index: 1;
 }
 @keyframes jump {

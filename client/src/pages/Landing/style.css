@@ -21,16 +21,20 @@ h1 {
   padding-top: 30px;
 }
 
-.createButton {
+.formControl {
+  margin: 0;
+}
+
+/* .createButton {
   margin-bottom: 8px;
   margin: 5px;
   background-color: #4d565f;
   color: white;
-}
-
-/* .cardRow {
-  align-items: center;
 } */
+
+.cardRow {
+  align-items: center;
+}
 
 /* These are for landing page on character select */
 .deviantIcon2 {
