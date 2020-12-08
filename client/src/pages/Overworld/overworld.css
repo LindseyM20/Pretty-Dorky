@@ -7,7 +7,7 @@ body {
 }
 #game{
     background-image: url(./images/background1.jpg);
-    margin: 4% 10%;
+    margin: 2% 25% 2% 25%;
     position: absolute;
     top: 125px;
     z-index: -5;
@@ -20,17 +20,17 @@ body {
 #instructions {
     position: absolute;
     width: 950px;
-    top: 800px;
-    margin-left: 9%;
+    top: 780px;
+    margin-left: 24%;
 }
 .card.overInst {
     width: 950px;
-    height: 275px;
+    height: 280px;
     padding: 2%;
 }
 .signOut {
     position: absolute;
-    top: 180px;
+    top: 191px;
     left: 800px;
     color: #fff;
     background-color: #6c757d;
@@ -63,29 +63,43 @@ button#jump {
     display: inline-block;
     font-weight: 400;
 }
-button#pause {
+#temp {
     position: relative;
-    /* top: -497px; */
-    top: -262px; /*for demo only*/
+    top: -239px;
     left: 100px;
-    width: 75px;
+    width: 77px;
+}
+button#pause {
+    position: absolute;
+    top: 215px;
+    left: 20px;
+    height: 58px;
     color: #fff;
-    background-color: #343a40;
-    border-color: #343a40;
-    display: inline-block;
-    font-weight: 400;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 button#play {
-    position: relative;
-    /* top: -497px; */
-    top: -310px; /*for demo only*/
-    left: 190px;
-    width: 104px;
+    position: absolute;
+    top: 215px;
+    left: 155px;
+    height: 58px;
     color: #fff;
-    background-color: #343a40;
-    border-color: #343a40;
-    display: inline-block;
-    font-weight: 400;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .animate{
     animation: jump 481ms;
@@ -201,6 +215,12 @@ button#play {
 }
 .holdUp {
     animation-play-state: paused;
+}
+.hide{
+    visibility: hidden;
+}
+.show {
+    visibility: visible;
 }
 
 @keyframes block {
