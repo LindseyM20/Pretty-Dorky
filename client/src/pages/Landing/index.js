@@ -38,7 +38,6 @@ function testAPIGet(event) {
   )
 }
 
-
   function handleSubmit(event) {
     event.preventDefault();
     // capture value from input field and set it to name value for charState
