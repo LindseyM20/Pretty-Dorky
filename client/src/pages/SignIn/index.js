@@ -1,13 +1,32 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React, { useState, useContext } from "react";
+>>>>>>> 3dd90cc49d52bace3c36e982ee0d463283ccb3bd
 import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import CharContext from "../../utils/CharContext";
+import Overworld from "../../pages/Overworld";
 import { auth } from "../../firebase";
+import { UserContext } from "../../providers/UserProvider";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import API from "../../utils/API";
 import "./style.css";
 
 const SignIn = () => {
+<<<<<<< HEAD
+=======
+  const user = useContext(UserContext);
+  const { characterState, setCharacterState } = useContext(CharContext);
+  let history = useHistory();
+
+
+
+>>>>>>> 3dd90cc49d52bace3c36e982ee0d463283ccb3bd
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -16,7 +35,8 @@ const SignIn = () => {
     auth.signInWithEmailAndPassword(email, password)
       //added in
       .then(() => {
-        window.location.href = "/landing"
+        checkSaveData();
+        // window.location.href="/landing"
       }).catch((error) => {
         console.log(error)
       })
@@ -25,7 +45,34 @@ const SignIn = () => {
         setError("Error signing in with password and email!");
         console.error("Error signing in with password and email", error);
       });
-    // window.location.href="/landing";
+
+
+    // test for api call to check for existing character at sign in
+
+    function checkSaveData() {
+      API.getCharacter(user.uid)
+        .then(data => {
+          console.log("getting character at sign in", { data });
+
+          const nextState = {
+            ...characterState,
+            battleImage: data.data.battleImage,
+            currentHealth: data.data.currentHealth,
+            level: data.data.level,
+            location: "/overworld",
+            maxHealth: data.data.maxHealth,
+            name: data.data.name,
+            spriteImage: data.data.spriteImage,
+            strength: data.data.strength
+          };
+
+          setCharacterState(nextState);
+          console.log(characterState);
+          console.log(" name here" + data.data.name);
+
+          history.push("/overworld", characterState)
+        })
+    }
   };
   // updates email and password in state variables
   const onChangeHandler = (event) => {
@@ -46,11 +93,9 @@ const SignIn = () => {
 
       <h1 className="text-3xl mb-2 text-center font-bold">Pretty Dorky</h1>
       <h4 className="adventure">Continue Adventure</h4>
-      <div className="border text-center"
-      /*border-white-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8"*/
-      >
+      <div className="border">
         {error !== null && <div className="py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
-        {/* <Row> */}
+
 
         <Form className="signInForm text-center">
           <Form.Row style={{ padding: "2%" }}>
@@ -82,40 +127,6 @@ const SignIn = () => {
             Sign In
         </Button>
         </Form>
-
-        {/* <form className="">
-          <label htmlFor="userEmail" className="blockEmail">
-            Email:
-          </label>
-          <input
-            type="email"
-            className="my-1 p-1 w-full"
-            name="userEmail"
-            value = {email}
-            placeholder="fancyWizard@email.com"
-            id="userEmail"
-            onChange = {(event) => onChangeHandler(event)}
-          />
-          
-          <label htmlFor="userPassword" className="blockPassword">
-            Password:
-          </label>
-          <input
-            type="password"
-            className="mt-1 mb-3 p-1 w-full"
-            name="userPassword"
-            value = {password}
-            placeholder="Secret Password"
-            id="userPassword"
-            onChange = {(event) => onChangeHandler(event)}
-          />
-        </form>
-         
-         </Row>  */}
-
-        {/* <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
-            Sign in
-          </button> */}
       </div>
 
       <p className="text-center my-3">or</p>

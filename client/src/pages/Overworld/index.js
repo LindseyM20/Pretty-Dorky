@@ -95,21 +95,7 @@ const Overworld = () => {
 
   }
 
-  // let checkCollision = setInterval(function () {
-  //   let characterPosition =
-  //       parseInt(window.getComputedStyle(document.getElementById("character")).getPropertyValue("top"));
-  //   let enemyHeight =
-  //       parseInt(window.getComputedStyle(document.getElementById("clippy")).getPropertyValue("top"));
-  //   let enemyPosition =
-  //       parseInt(window.getComputedStyle(document.getElementById("clippy")).getPropertyValue("left"));
-  //   //     console.log(enemyPosition);
-  //   // console.log(characterPosition);
-  //   if (enemyPosition < 120 && enemyPosition > 100 && ((characterPosition+enemyHeight)/2 <= 50)){
-  //     console.log("you hit something");
-  //     setCharacterState(battleState);
-  //     history.push(characterState.location);
-  //   }
-  // }, 10);
+
 
   return (
     <body>
