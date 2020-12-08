@@ -80,19 +80,6 @@ const SignUp = () => {
             }}>
             Sign up
           </Button>
-<<<<<<< HEAD
-     
-      </Form>
-        <p className="text-center my-3">Awesome.</p>
-        <p className="text-center my-3">
-        <span className="signIp">
-        Ready to{" "}
-          <Link to="/" className="text" style={{ textDecoration: 'none' }}>
-            Sign in here ?
-          </Link>{" "}
-        </span>
-        </p>
-=======
         </Form>
 
         <div id="linkToSignIn" className="hide">
@@ -110,7 +97,6 @@ const SignUp = () => {
             </Link>{" "} */}
           </p>
         </div>
->>>>>>> b11b3c2becc9df56e9b57b7dcc24ec7085e65aa3
       </div>
     </div>
   );

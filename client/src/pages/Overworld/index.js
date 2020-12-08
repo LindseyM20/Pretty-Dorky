@@ -72,6 +72,10 @@ const Overworld = () => {
         position.item.y < position.character.y + 100 &&
         position.item.y + position.item.height > position.character.y) {
         console.log("health item!")
+        setCharacterState({
+          ...characterState,
+          currentHealth: characterState.currentHealth += 2})
+
       } else {
         // console.log("no collision");
       }
