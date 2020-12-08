@@ -21,7 +21,7 @@ import API from "../../utils/API";
 const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
-  console.log(characterState);
+  // console.log(characterState)
   let history = useHistory();
   if (characterState.location === "/battle"){history.push(characterState.location)}
   // var character = document.getElementById("character").getBoundingClientRect();
@@ -39,32 +39,33 @@ const Overworld = () => {
     w: 128,
   }
 
+// collision check
 
-  // const [clippyPosition, setClippyPosition] = useState({
-  //   y: 0,
-  //   x: 0,
-  // }) 
+  const [position, setPosition] = useState({
+    enemy: {},
+    character: {},
+  })
+  if (characterState.location === "/overworld") {
+    setInterval(() => {
+      let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
+      let characterPosition = document.getElementById("character").getBoundingClientRect();
+      setPosition({
+        enemy: enemyPosition,
+        character: characterPosition
+      })
+      if (position.enemy.x < position.character.x + 75 /*front hitbox*/&&
+        position.enemy.x + position.enemy.width > position.character.x /*tailend of enemy*/&&
+        position.enemy.y < position.character.y + 100 &&
+        position.enemy.y + position.enemy.height > position.character.y) {
+        console.log("collision detected", enemyPosition, characterPosition)
 
-  // setInterval(() => {
-  //   let position = document.getElementById("clippy").getBoundingClientRect();
-  //   setClippyPosition({x: position.x, y: position.y});
-  //   // Decrease the 2000 milliseconds later - I just set this to a big number to not overwhelm my laptop!
-  // }, 2000)
+      }
+      // console.log("enemy: ", enemyPosition);
+      // console.log("character: ", characterPosition);
+    }, 3050)
+  }
 
-  // // Do similar to above for character. store object (like lines 30-35) in a useState. look at how Y axis changes.
-  // // useEffect: every time clippy's state changes, check to see if clippy's x axis = our x axis (may require math)
-  // // if so, call function for what happens
-
-  // const [characterPosition, setCharacterPosition] = useState({
-  //   y: 0,
-  //   x: 0,
-  // }) 
-
-  // setInterval(() => {
-  //   let position = document.getElementById("character").getBoundingClientRect();
-  //   setCharacterPosition({x: position.x, y: position.y});
-  //   // Decrease the 2000 milliseconds later - I just set this to a big number to not overwhelm my laptop!
-  // }, 2000)
+// end collision check
 
   function jump() {
     document.getElementById("character").classList.add("animate");
