@@ -35,20 +35,32 @@ const Overworld = () => {
   }
 
 
-  const [clippyPosition, setClippyPosition] = useState({
-    y: 0,
-    x: 0,
-  }) 
+  // const [clippyPosition, setClippyPosition] = useState({
+  //   y: 0,
+  //   x: 0,
+  // }) 
 
-  setInterval(() => {
-    let position = document.getElementById("clippy").getBoundingClientRect();
-    setClippyPosition({x: position.x, y: position.y});
-    // Decrease the 2000 milliseconds later - I just set this to a big number to not overwhelm my laptop!
-  }, 2000)
+  // setInterval(() => {
+  //   let position = document.getElementById("clippy").getBoundingClientRect();
+  //   setClippyPosition({x: position.x, y: position.y});
+  //   // Decrease the 2000 milliseconds later - I just set this to a big number to not overwhelm my laptop!
+  // }, 2000)
 
-  // Do similar to above for character. store object (like lines 30-35) in a useState. look at how Y axis changes.
-  // useEffect: every time clippy's state changes, check to see if clippy's x axis = our x axis (may require math)
-  // if so, call function for what happens
+  // // Do similar to above for character. store object (like lines 30-35) in a useState. look at how Y axis changes.
+  // // useEffect: every time clippy's state changes, check to see if clippy's x axis = our x axis (may require math)
+  // // if so, call function for what happens
+
+  // const [characterPosition, setCharacterPosition] = useState({
+  //   y: 0,
+  //   x: 0,
+  // }) 
+
+  // setInterval(() => {
+  //   let position = document.getElementById("character").getBoundingClientRect();
+  //   setCharacterPosition({x: position.x, y: position.y});
+  //   // Decrease the 2000 milliseconds later - I just set this to a big number to not overwhelm my laptop!
+  // }, 2000)
+
 
 
 

@@ -48,11 +48,22 @@ function testAPIGet(event) {
     //  post character state values to mongo
     // API.posst (calls the imported API)
 
+    if (!characterState.currentHealth) {
+      alert("Please select a character")
+      return;
+    }
+
+    if (event.target.characterName.value === "") {
+      alert("Please name your character")
+      return;
+    }
+
     const nextState = {
       ...characterState,
       name: event.target.characterName.value,
       location: "/overworld",
     };
+
     API.createCharacter({
       ...nextState,
       uid: user.uid
