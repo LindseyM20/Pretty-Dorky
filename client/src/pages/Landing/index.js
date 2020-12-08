@@ -85,12 +85,11 @@ function Landing() {
               spriteImage={characters.spriteImage}
               battleImage={characters.battleImage}
             />
-
           ))}
 
         </Row>
         <Row>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="inputForm">
             <input
               type="name"
               className="characterName"

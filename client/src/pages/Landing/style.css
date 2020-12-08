@@ -16,6 +16,10 @@ h1 {
   font-weight: 700;
 }
 
+.inputForm {
+  margin: 0 auto;
+}
+
 .createButton {
   margin-bottom: 8px;
   margin: 5px;
