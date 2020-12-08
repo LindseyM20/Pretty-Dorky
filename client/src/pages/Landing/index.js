@@ -13,7 +13,6 @@ function Landing() {
   const { setCharacterState, characterState } = useContext(CharContext)
   const user = useContext(UserContext)
 
-
   //This is what allows the endUser to navigate through pages while maintaining state
   let history = useHistory();
   // if (window.location.pathname !== "/overworld") {
@@ -23,7 +22,6 @@ function Landing() {
   // }
   if (characterState.name)
     history.push(characterState.location)
-
 
   function handleSubmit(event) {
     event.preventDefault();

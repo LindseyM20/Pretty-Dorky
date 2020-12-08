@@ -17,7 +17,7 @@
 #instructions {
     position: absolute;
     width: 950px;
-    top: 780px;
+    top: 785px;
     margin-left: 24%;
 }
 .card.overInst {
@@ -85,7 +85,7 @@ button#pause {
 button#play {
     position: absolute;
     top: 215px;
-    left: 155px;
+    left: 20px;
     height: 58px;
     color: #fff;
     background-color: #6c757d;

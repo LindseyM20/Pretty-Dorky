@@ -3,14 +3,12 @@ import CharContext from "../utils/CharContext"
 
 
 const Healthbar = () => {
-  const {characterState} = useContext(CharContext)
-
+  const {characterState} = useContext(CharContext);
 
   const fullWidth = 110;
   const percent = characterState.currentHealth / characterState.maxHealth;
   const pixelFill = Math.floor(fullWidth * percent);
   let healthbar;
-
 
   const greenSVG = <svg xmlns="http://www.w3.org/2000/svg" width={160} viewBox="0 -0.5 160 120" shapeRendering="crispEdges">
     {/* <metadata> "Made with Pixels to Svg https://codepen.io/shshaw/pen/XbxvNj" </metadata> */}
@@ -18,7 +16,6 @@ const Healthbar = () => {
     <path stroke="#000000" d="M25 45h110M25 46h110M25 47h110M25 48h110M25 49h110M20 50h5M135 50h5M20 51h5M135 51h5M20 52h5M135 52h5M20 53h5M135 53h5M20 54h5M135 54h5M20 55h5M135 55h5M20 56h5M135 56h5M20 57h5M135 57h5M20 58h5M135 58h5M20 59h5M135 59h5M20 60h5M135 60h5M20 61h5M135 61h5M20 62h5M135 62h5M20 63h5M135 63h5M20 64h5M135 64h5M25 65h110M25 66h110M25 67h110M25 68h110M25 69h110" />
     <path stroke="#313131" d="M25 50h110M25 51h110M25 52h110M25 53h110M25 54h110" />
     <path stroke="#585858" d="M25 55h110M25 56h110M25 57h110M25 58h110M25 59h110M25 60h110M25 61h110M25 62h110M25 63h110M25 64h110" />
-
     <rect fill="#189f08" x={25} y={49.5} width={pixelFill} height={15} />
     <rect fill="#28733c" x={25} y={49.5} width={pixelFill} height={5} />
   </svg>
@@ -29,7 +26,6 @@ const Healthbar = () => {
     <path stroke="#000000" d="M25 45h110M25 46h110M25 47h110M25 48h110M25 49h110M20 50h5M135 50h5M20 51h5M135 51h5M20 52h5M135 52h5M20 53h5M135 53h5M20 54h5M135 54h5M20 55h5M135 55h5M20 56h5M135 56h5M20 57h5M135 57h5M20 58h5M135 58h5M20 59h5M135 59h5M20 60h5M135 60h5M20 61h5M135 61h5M20 62h5M135 62h5M20 63h5M135 63h5M20 64h5M135 64h5M25 65h110M25 66h110M25 67h110M25 68h110M25 69h110" />
     <path stroke="#313131" d="M25 50h110M25 51h110M25 52h110M25 53h110M25 54h110" />
     <path stroke="#585858" d="M25 55h110M25 56h110M25 57h110M25 58h110M25 59h110M25 60h110M25 61h110M25 62h110M25 63h110M25 64h110" />
-
     <rect fill="#f54842" x={25} y={49.5} width={pixelFill} height={15} />
     <rect fill="#962f2c" x={25} y={49.5} width={pixelFill} height={5} />
   </svg>
@@ -48,7 +44,5 @@ const Healthbar = () => {
       {/* <button onClick={() => setHealth(health - 10)}>Ouch</button> */}
     </div>
   )
-
 }
-
 export default Healthbar;
