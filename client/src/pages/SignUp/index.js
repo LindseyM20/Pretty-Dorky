@@ -40,27 +40,27 @@ const SignUp = () => {
   };
 
   return (
-    <body className="bodyStyle">
+    <div className="bodyStyle">
     
       <h1 className="text-3xl mb-2 text-center font-bold">Pretty Dorky</h1>
-       <h4 className="begin"> Sign up to begin your adventure. . .</h4>
-        <div className="border">
-          {error !== null && <div className = "py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
+      <h4 className="begin"> Sign up to begin your adventure. . .</h4>
+      <div className="border">
+        {error !== null && <div className = "py-4 bg-red-600 w-full text-white text-center mb-3">{error}</div>}
         {/* <Row> */}
 
       <Form className="signUpForm text-center">
         <Form.Row style={{padding:"2%"}}>
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" placeholder="fancyWizard@email.com" 
-               type="email"
-               className="my-1 p-1 w-full"
-               name="userEmail"
-               value={email}
-               placeholder="fancyWizard@mail.com"
-               id="userEmail"
-               onChange={event => onChangeHandler(event)} />
-            </Form.Group>
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="fancyWizard@email.com" 
+              type="email"
+              className="my-1 p-1 w-full"
+              name="userEmail"
+              value={email}
+              placeholder="fancyWizard@mail.com"
+              id="userEmail"
+              onChange={event => onChangeHandler(event)} />
+          </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Password</Form.Label>
@@ -144,7 +144,7 @@ const SignUp = () => {
           </Link>{" "} */}
         </p>
       </div>
-    </body>
+    </div>
   );
 };
 
