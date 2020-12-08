@@ -10,7 +10,6 @@ import cat from "./images/cat.png";
 import clippy from "./images/evilClippy.png";
 import bug from "./images/moth.png";
 import exp from "./images/explorer.png";
-import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
 import Row from "react-bootstrap/Row";
@@ -22,6 +21,21 @@ const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
   console.log(characterState)
+  let enemyImage;
+
+  if (characterState.level <2) {
+    enemyImage=clippy
+  }
+  else if (characterState.level <5){
+    enemyImage=exp
+  }
+  else if (characterState.level <7){
+    enemyImage=bug
+  }
+  else{
+    enemyImage=cat
+  };
+
   let history = useHistory();
 
   const data = {
@@ -57,6 +71,10 @@ const Overworld = () => {
         position.item.y < position.character.y + 100 &&
         position.item.y + position.item.height > position.character.y) {
         console.log("health item!")
+        setCharacterState({
+          ...characterState,
+          currentHealth: characterState.currentHealth += 2})
+
       } else {
         // console.log("no collision");
       }
@@ -115,31 +133,18 @@ const Overworld = () => {
               />
             </div>
           </div>
-          {/* <div class= "enemy" id="cat"><img id="catImg" src={cat} alt="cat" /> </div> */}
-          <div class="enemy enemyRun" id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
-          {/* <div class= "enemy" id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
-            <div class= "enemy" id="exp"><img id="expImg" src={exp} alt="internet"></img></div> */}
+          <div class="enemyRun" id="clippy"><img id="clippyImg" src={enemyImage} alt="clipy"></img></div>
           <div class="tower1" id="tower1"><img src={tower} alt="server"></img></div>
           <div class="tower2" id="tower2"><img src={tower} alt="server"></img></div>
           <div class="tower3" id="tower3"><img src={tower} alt="server"></img></div>
-
-          {/* <div class= "health" id="popTart"><img id="tartImg" src={popTart} alt="popTart"></img></div> */}
           <div class="health" id="bean"><img id="beanImg" src={bean} alt="coffeeBean"></img></div>
           <Button id="jump" variant="dark" value="jump" onClick={e => jump(e.target.value)}>
             Jump! </Button>
         </div>
       </Row>
       <Row id="instructions">
-        <Button variant="dark" onClick={() => {
-          // setCharacterState(battleState);
-          history.push("/battle", characterState);
-        }}>
-          Fight! </Button>
         <div className="card overInst">
-          {/* <div className="overworld"> */}
-          {/* <div className="md:pl-4"> */}
           <h3 style={{ fontSize: 20 }} className="italic">Use the arrow keys to run toward the enemy or away if it is too scary. Hint - if you run away you aren't fast enough so it's really best to face your fears. If your timing is right you can use the jump button to jump higher than your enemy, because they can't jump. They are filled with so much rage they can barely see straight, so jumping is hard for them. If you're low on health you can jump towards a health item as it passes by. As a coder few things will keep you moving, so hopefully you get a good one.</h3>
-          {/* </div> */}
           <Button id="pause" variant="dark" value="pause" onClick={e => pause(e.target.value)}>
             Tiny Human </Button>
           <Button id="play" className="hide" variant="dark" value="play" onClick={e => play(e.target.value)}>
