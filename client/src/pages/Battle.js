@@ -262,17 +262,6 @@ function Battle() {
                     </div>
                 </div>
             </Row>
-{/* 
-            <Row>
-                <div className="card" id="fightText">
-                    <h1 className="text-center">A Slime appears to block your path</h1>
-                    <p className="text-center h3">Click on the options to initiate combat</p>
-                    <div className="buttons">
-                        <Button className="button" variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
-                        <Button className="button" variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
-                    </div>
-                </div>
-            </Row> */}
         </Container>
     );
 }
