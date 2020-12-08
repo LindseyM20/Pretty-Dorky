@@ -20,7 +20,7 @@ body {
 #instructions {
     position: absolute;
     width: 950px;
-    top: 785px;
+    top: 800px;
     margin-left: 24%;
 }
 .card.overInst {
@@ -139,7 +139,7 @@ button#play {
 .tower3 {
     animation: move 12s infinite linear;
 }
-#cat {
+/* #cat {
     width: 100px;
     height: 86px;
     background-color: blue;
@@ -148,7 +148,7 @@ button#play {
 }
 #catImg {
     height: 84px;
-}
+} */
 #clippy {
     width: 49px;
     height: 98px;
@@ -186,7 +186,7 @@ button#play {
 }
 #tartImg {
     height: 50px;
-}
+} */
 #bean {
     width: 67px;
     height: 35px;
@@ -194,7 +194,7 @@ button#play {
 }
 #beanImg {
     height: 35px;
-} */
+}
 .health {
     animation: health 5s infinite;
 }

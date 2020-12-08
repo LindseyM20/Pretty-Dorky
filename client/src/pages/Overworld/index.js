@@ -10,7 +10,6 @@ import cat from "./images/cat.png";
 import clippy from "./images/evilClippy.png";
 import bug from "./images/moth.png";
 import exp from "./images/explorer.png";
-import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
 import Row from "react-bootstrap/Row";
