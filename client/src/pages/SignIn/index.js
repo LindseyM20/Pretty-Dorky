@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
 import React, { useState, useContext } from "react";
->>>>>>> 3dd90cc49d52bace3c36e982ee0d463283ccb3bd
 import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -18,15 +14,12 @@ import API from "../../utils/API";
 import "./style.css";
 
 const SignIn = () => {
-<<<<<<< HEAD
-=======
   const user = useContext(UserContext);
   const { characterState, setCharacterState } = useContext(CharContext);
   let history = useHistory();
 
 
 
->>>>>>> 3dd90cc49d52bace3c36e982ee0d463283ccb3bd
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
