@@ -4,9 +4,9 @@
 - Pretty dorky is a simple combination runner/RPG that pokes fun at developer themes.
 
 # Authors
-- [Amanda Anderson](https://github.com/aanderson120 "Amanda's Github")
-- [Brooklynne Audette](https://github.com/Izzle "Brooklynne's Github")
-- [Lindsey Bordner](https://github.com/LindseyM20 "Lindsey's Github")
+- [Amanda](https://github.com/aanderson120 "Amanda's Github")
+- [Brooklynne](https://github.com/Izzle "Brooklynne's Github")
+- [Lindsey](https://github.com/LindseyM20 "Lindsey's Github")
 - [Violet](https://github.com/violettaval "Violet's Github")
 
 ## Endpoints
