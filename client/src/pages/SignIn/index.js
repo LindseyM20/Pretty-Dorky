@@ -90,7 +90,7 @@ const SignIn = () => {
   };
 
   return (
-    <body className="bodyStyle">
+    <div className="bodyStyle">
 
       <h1 className="text-3xl mb-2 text-center font-bold">Pretty Dorky</h1>
       <h4 className="adventure">Continue Adventure</h4>
@@ -146,7 +146,7 @@ const SignIn = () => {
               </Link> */}
       </p>
 
-    </body>
+    </div>
   );
 };
 export default SignIn;

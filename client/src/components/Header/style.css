@@ -1,10 +1,10 @@
-html {
+/* html {
   background: gray;
-}
+} */
 
 .headerContainer {
   width: 100%;
-  background: gray;
+  /* background: gray; */
 } 
 
 .characterInfo, .dork {

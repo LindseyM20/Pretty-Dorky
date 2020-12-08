@@ -65,7 +65,7 @@ function Landing() {
   }
 
   return (
-    <body className="bodyStyle">
+    <div className="bodyStyle">
       <h1>Choose Your Character</h1>
       <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
         <Row className="cardRow text-center">
@@ -87,7 +87,7 @@ function Landing() {
 
         </Row>
         <Row>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="inputForm">
             <input
               type="name"
               className="characterName"
@@ -103,7 +103,7 @@ function Landing() {
         </Row>
 
       </section>
-    </body>
+    </div>
   )
 }
 export default Landing;
