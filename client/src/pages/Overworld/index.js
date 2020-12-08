@@ -1,5 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { auth } from "../../firebase";
+import { useHistory } from "react-router-dom";
 import CharContext from "../../utils/CharContext";
 import { UserContext } from "../../providers/UserProvider";
 import Player from "../../components/player"
@@ -12,24 +13,16 @@ import exp from "./images/explorer.png";
 import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
-import { useHistory } from "react-router-dom";
-import { Row } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { Button } from "react-bootstrap";
 import API from "../../utils/API";
 
 const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
-  // console.log(characterState)
+  console.log(characterState)
   let history = useHistory();
-
-  // var character = document.getElementById("character");
-  // var enemy = document.getElementsByClassName("enemy");
-
-  // const battleState = {
-  //   ...characterState,
-  //   location: "/battle",
-  // };
 
   const data = {
     y: -1536,
@@ -40,28 +33,35 @@ const Overworld = () => {
 
 // collision check
 
-  const [position, setPosition] = useState({
-    enemy: {},
-    character: {},
-  })
-  if (characterState.location === "/overworld") {
+  if (window.location.pathname === '/overworld') {
     setInterval(() => {
+      if (window.location.pathname === '/battle') {
+        return;
+      }
       let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
       let characterPosition = document.getElementById("character").getBoundingClientRect();
-      setPosition({
-        enemy: enemyPosition,
-        character: characterPosition
-      })
+      let itemPosition = document.getElementById("bean").getBoundingClientRect();
+
+      const position = {enemy: enemyPosition, character: characterPosition, item: itemPosition}
+      // If our character collides with the enemy, we will route to battle
       if (position.enemy.x < position.character.x + 75 &&
         position.enemy.x + position.enemy.width > position.character.x &&
         position.enemy.y < position.character.y + 100 &&
         position.enemy.y + position.enemy.height > position.character.y) {
-        console.log("collision detected", enemyPosition, characterPosition)
-
+        console.log("collision detected", enemyPosition, characterPosition);
+        // setCharacterState({...characterState, location: "/battle"})
+        history.push("/battle", characterState);
+        return;
+      } else if (position.item.x < position.character.x + 75 &&
+        position.item.x + position.item.width > position.character.x &&
+        position.item.y < position.character.y + 100 &&
+        position.item.y + position.item.height > position.character.y) {
+        console.log("health item!")
+      } else {
+        // console.log("no collision");
       }
-      // console.log("enemy: ", enemyPosition);
-      // console.log("character: ", characterPosition);
-    }, 3050)
+
+    }, 500)
   }
 
 // end collision check
@@ -100,12 +100,11 @@ const Overworld = () => {
 
   }
 
-
-
   return (
       <div>
         <Header />
         <Row>
+          <Col>
           <div id="game" className="card">
 
             <div id="character">
@@ -133,13 +132,15 @@ const Overworld = () => {
             <Button id="play" variant="dark" value="play" onClick={e => play(e.target.value)}>
               Crisis Averted </Button>
           </div>
+          </Col>
+          
         </Row>
         <Row id="instructions">
-          <Button variant="dark" onClick={() => {
+          {/* <Button variant="dark" onClick={() => {
             // setCharacterState(battleState);
             history.push("/battle", characterState);
           }}>
-            Fight! </Button>
+            Fight! </Button> */}
           <div className="card overInst">
             {/* <div className="overworld"> */}
             {/* <div className="md:pl-4"> */}
