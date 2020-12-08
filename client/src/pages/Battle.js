@@ -14,12 +14,10 @@ import Econ from "./Overworld/images/explorer.png";
 import Bugg from "./Overworld/images/moth.png";
 import Skinny_Cat from "./Overworld/images/cat.png";
 // import { Container } from "react-bootstrap/lib/Tab";
-
 function Battle() {
     // useContext
     const {characterState,setCharacterState} = useContext(CharContext);
     const battleImage = characterState.battleImage
-    
     //combine into one state
     const [battleState, setBattleState] = useState({
         turnbase: false, 
@@ -32,23 +30,19 @@ function Battle() {
         }
     });
     const {turnbase, screentext, enemyState} = battleState;
- 
-
     console.log("rendering battle", turnbase,screentext,enemyState);
-
     let history = useHistory();
     // if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
     //     history.push("/overworld",{...characterState,location:"/overworld"});
     // }
-
     useEffect(() => {
         console.log("stats at start of render/battle ",characterState);
-
         if (characterState.level <2) {
             setBattleState ({turnbase: true, 
                 screentext: `Clippy appears to block your path. The power of 'stache fuels his hatred. `,
                 enemyState:{
                     name: "Clippy",
+                    img: Clippy,
                     strength: 5,
                     maxHealth: 60,
                     currentHealth: 60,
@@ -60,6 +54,7 @@ function Battle() {
                 screentext: `An Econ appears to block your path. This edgy explorer seems ready for a fight. `,
                 enemyState:{
                     name: "Econ",
+                    img:Econ,
                     strength: 10,
                     maxHealth: 70,
                     currentHealth: 70,
@@ -71,6 +66,7 @@ function Battle() {
                 screentext: `A Bugg appears to block your path. How did this moth get in here? `,
                 enemyState:{
                     name: "Bugg",
+                    img: Bugg,
                     strength: 20,
                     maxHealth: 100,
                     currentHealth: 100,
@@ -82,6 +78,7 @@ function Battle() {
                 screentext: `A Skinned Cat appears to block your path. There are many ways to skin a cat some consider to be... unnatural. `,
                 enemyState:{
                     name: "Skinny_Cat",
+                    img: Skinny_Cat,
                     strength: 50,
                     maxHealth: 200,
                     currentHealth: 200,
@@ -97,7 +94,8 @@ function Battle() {
             console.log(turnbase);
         }, 1000);
     }, []);
-    const enemyImage = battleState.enemyState.name
+    const enemyImage = battleState.enemyState.img;
+
         // method which takes in a second object and decreases their "hitpoints" by this character's strength
     async function attack() {
         let dialogue = characterState.name + " readies an attack at " + enemyState.name + "! " + characterState.name + " does " + characterState.strength + " damage to " + enemyState.name + "! ";
@@ -250,7 +248,7 @@ function Battle() {
 
                     </div>
                     <div id="enemyFight" >
-                        <img id= {enemyImage} src={enemy} alt="enemy"></img>
+                        <img class="enemy" id= {enemy} src={enemyImage} alt="enemy"></img>
                     </div>
                 </div>
             </Row>
@@ -262,14 +260,14 @@ function Battle() {
             </Row>
 
             <Row>
-                <Col></Col>
-                <Col className="col-6">
-                    <Button variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
-                </Col>
-                <Col></Col>
-                <Col className="col-6">
-                    <Button variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
-                </Col>
+            <div className="card" id="fightText">
+                    <h1 className="text-center">A Slime appears to block your path</h1>
+                    <p className="text-center h3">Click on the options to initiate combat</p>
+                    <div className="buttons">
+                        <Button className="button" variant="primary" size="lg" data-value="Fight" onClick={handleBtnClick} >Fight</Button>
+                        <Button className="button" variant="secondary" size="lg" data-value="Run" onClick={handleBtnClick} >Run</Button>
+                    </div>
+                </div>
             </Row>
         </Container>
     );
