@@ -1,11 +1,11 @@
 .bodyStyle {
-  background-color: gray;
+  /* background-color: gray; */
   color: white;
   content: center;
 }
-html {
+/* html {
   background: gray;
-}
+} */
 h1 {
   text-align: center;
   font-size: 46px;

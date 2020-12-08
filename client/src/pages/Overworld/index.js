@@ -101,7 +101,6 @@ const Overworld = () => {
 
 
   return (
-    <body>
       <div>
         <Header />
         <Row>
@@ -172,7 +171,6 @@ const Overworld = () => {
 
         </Row>
       </div>
-    </body>
   )
 }
 

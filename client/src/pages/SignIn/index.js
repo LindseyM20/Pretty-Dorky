@@ -43,6 +43,7 @@ const SignIn = () => {
     // test for api call to check for existing character at sign in
 
     function checkSaveData() {
+      if (characterState)
       API.getCharacter(user.uid)
         .then(data => {
           console.log("getting character at sign in", { data });
@@ -64,6 +65,8 @@ const SignIn = () => {
           console.log(" name here" + data.data.name);
 
           history.push("/overworld", characterState)
+        }).catch((res, error) => {
+          console.log(error)
         })
     }
   };
