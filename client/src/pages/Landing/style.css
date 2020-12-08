@@ -18,6 +18,7 @@ h1 {
 
 .inputForm {
   margin: 0 auto;
+  padding-top: 30px;
 }
 
 .createButton {
@@ -27,9 +28,9 @@ h1 {
   color: white;
 }
 
-.cardRow {
+/* .cardRow {
   align-items: center;
-}
+} */
 
 /* These are for landing page on character select */
 .deviantIcon2 {
