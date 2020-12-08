@@ -12,20 +12,22 @@ import exp from "./images/explorer.png";
 import popTart from "./images/poptart.png";
 import bean from "./images/coffeeBeans.png";
 import "./overworld.css";
-import { useHistory } from "react-router-dom";
+import API from "../../utils/API";
 import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
 const Overworld = () => {
   const { characterState, setCharacterState } = useContext(CharContext)
-  console.log(characterState)
+  console.log(characterState);
   let history = useHistory();
+  if (characterState.location === "/battle"){history.push(characterState.location)}
+  // var character = document.getElementById("character").getBoundingClientRect();
+  // var enemy = document.getElementById("clippy").getBoundingClientRect();
 
-  // var character = document.getElementById("character");
-  // var enemy = document.getElementsByClassName("enemy");
-  const battleState = {...characterState,
-    location: "/battle",
-  };
+  // const[position,setPosition]= useState({
+  //   y:0,
+  //   x:0,
+  // })
 
   const data = {
     y: -1536,
@@ -40,22 +42,23 @@ const Overworld = () => {
       document.getElementById("character").classList.remove("animate");
     }, 500);
   }
+  
 
-  // let checkCollision = setInterval(function () {
-  //   let characterPosition =
-  //       parseInt(window.getComputedStyle(document.getElementById("character")).getPropertyValue("top"));
-  //   let enemyHeight =
-  //       parseInt(window.getComputedStyle(document.getElementById("clippy")).getPropertyValue("top"));
-  //   let enemyPosition =
-  //       parseInt(window.getComputedStyle(document.getElementById("clippy")).getPropertyValue("left"));
-  //   //     console.log(enemyPosition);
-  //   // console.log(characterPosition);
-  //   if (enemyPosition < 120 && enemyPosition > 100 && ((characterPosition+enemyHeight)/2 <= 50)){
-  //     console.log("you hit something");
-  //     setCharacterState(battleState);
-  //     history.push(characterState.location);
-  //   }
-  // }, 10);
+  // setInterval(() => {
+  //   let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
+  //   console.log(enemyPosition.x);
+
+  //     let characterPosition = /*player y-axis*/
+  //     parseInt(window.getComputedStyle(document.getElementById("character")).getPropertyValue("top"));
+  //     let enemyPosition =/*enemy x-axis*/
+  //     parseInt(window.getComputedStyle(document.getElementById("clippy")).getPropertyValue("left"));
+  //     if (enemyPosition < 70 && enemyPosition > 50 && characterPosition<500){
+  //       console.log("you hit something");
+  //     //   setCharacterState(battleState);
+  //     //   history.push(characterState.location);
+  //     }
+  //   } while (characterState.location ==="/overworld");
+  // }, 500);
 
   return (
     <body>
@@ -88,8 +91,13 @@ const Overworld = () => {
         </Row>
         <Row id="instructions">
         <Button variant="dark" onClick={() => {
-                setCharacterState(battleState);
+                setCharacterState({...characterState,
+                  location: "/battle",});
                 history.push(characterState.location);
+                setTimeout(function(){ 
+                  console.log(characterState);
+                  history.push(characterState.location);
+                }, 1000);
               }}>
               Fight! </Button>
           <div className="card overInst">
@@ -104,9 +112,13 @@ const Overworld = () => {
                 // replace setCharacterState({}) (clears state) 
                 //with API.update to write to the database?
                 setCharacterState({});
+                // API.updateCharacter(characterState.uid)
+                // .then(() => {
 
-                window.location.href = "/";
-
+                  window.location.href = "/";
+                // }).catch((error) => {
+                //     console.log(error)
+                // });
               }}>Sign out</button>
         
             {/* </div> */}

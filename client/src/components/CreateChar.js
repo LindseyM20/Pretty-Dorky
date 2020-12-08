@@ -26,35 +26,35 @@ const CreateChar = () => {
     name: "",
     level: 1,
     strength: 30,
-    maxHealth: 100,
-    currentHealth: 100,
+    maxHealth: 250,
+    currentHealth: 250,
   })
 
   const [warrior, setWarrior] = useState({
     userID: user.uid,
     name: "",
     level: 1,
-    strength: 25,
-    maxHealth: 100,
-    currentHealth: 100,
+    strength: 30,
+    maxHealth: 290,
+    currentHealth: 290,
   })
 
   const [wizard, setWizard] = useState({
     userID: user.uid,
     name: "",
     level: 1,
-    strength: 20,
-    maxHealth: 90,
-    currentHealth: 90,
+    strength: 35,
+    maxHealth: 270,
+    currentHealth: 270,
   })
 
   const [ranger, setRanger] = useState({
     userID: user.uid,
     name: "",
     level: 1,
-    strength: 20,
-    maxHealth: 100,
-    currentHealth: 100,
+    strength: 25,
+    maxHealth: 300,
+    currentHealth: 300,
   })
 
   // On landing page, when a character's button is clicked, 

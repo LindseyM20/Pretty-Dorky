@@ -16,25 +16,26 @@ function Landing() {
 
   //This is what allows the endUser to navigate through pages while maintaining state
   let history = useHistory();
-    // if (window.location.pathname !== "/overworld") {
-    //     if (characterState.location === "/overworld") {
-    //     history.push(characterState.location)
-    //     }
-    // }
-    if (characterState.name)
-    history.push(characterState.location)
+  // if (window.location.pathname !== "/overworld") {
+  //     if (characterState.location === "/overworld") {
+  //     history.push(characterState.location)
+  //     }
+  // }
+  if (characterState.name)
+    history.push(characterState.location);
 
 
-    // adding a button to trigger get API call test
-    //next step is to make this a check when the user signs in
-function testAPIGet(event) {
-  event.preventDefault();
-  API.getCharacter(user.uid)
-  .then(() => {
-    console.log("got request for character matching uid")}
-    
-  )
-}
+  // adding a button to trigger get API call test
+  //next step is to make this a check when the user signs in
+  function testAPIGet(event) {
+    event.preventDefault();
+    API.getCharacter(user.uid)
+      .then(() => {
+        console.log("got request for character matching uid")
+      }
+
+      )
+  }
 
 
   function handleSubmit(event) {

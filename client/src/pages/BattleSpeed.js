@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import API from "../utils/API";
 import CharContext from "../utils/CharContext";
 import Header from "../components/Header";
@@ -23,11 +22,22 @@ function Battle() {
         currentHealth: 0,
     });
     const {characterState,setCharacterState} = useContext(CharContext);
-
+    let history = useHistory();
     const returnState = {...characterState,
         location: "/overworld",
-      };
+    };
+    
+    const damageState = {...characterState,
+        currentHealth: characterState.currentHealth-=enemyState.strength,
+    };
 
+    const levelupState = {...characterState,
+        level: characterState.level+=1,
+        strength: characterState.strength+=5,
+        maxHealth: characterState.maxHealth+=25,
+        currentHealth: characterState.hitpoints,
+        location: "/overworld", 
+    };
     // const slime = new Character("Nice Slime", 1, 10, 50, 50);
     // const rogue = new Character("Dodger", 1, 20, 100, 100);
 
@@ -40,20 +50,16 @@ function Battle() {
     //     this.maxHealth = hitpoints;
     // }
     useEffect(() => {
-
-        //this could be redundant
-        API.getCharacter(characterState.uid
-            /*...characterState, name: characterState.name,
-            level: characterState.level,
-            strength: characterState.strength,
-            maxHealth: characterState.maxHealth,
-            currentHealth: characterState.currentHealth,*/
-        ).then((res) => {
-            setCharacterState(res);
-            // window.location.href="/overworld"
-        }).catch((error) => {
-            console.log(error)
-        });
+        // API.getCharacter(characterState.uid)
+        // .then((res) => {
+        //     setCharacterState({...characterState,
+        //         level: res.level,
+        //         strength: res.strength,
+        //         maxHealth: res.maxHealth,
+        //         currentHealth: res.currentHealth});
+        // }).catch((error) => {
+        //     console.log(error)
+        // });
 
         setEnemystats({
             currentHealth: 50,
@@ -61,9 +67,10 @@ function Battle() {
         console.log(enemyState);
         speedRead(screentext, `A ${enemyState.name} appears to block your path Click on the options to initiate combat. `)
             .then((res) => {
+                console.log(res);
                 do {
                     setTimeout(() => {
-                        console.log("wait your turn")
+                        console.log("wait for dialogue")
                     }, 100);
                 } while (res === false);
                 setTurnbase(true);
@@ -74,9 +81,10 @@ function Battle() {
 
     useEffect(() =>{
         //does this update all stats if current is only changed
-        API.update({...characterState, currentHealth: characterState.currentHealth})
-        .then(() => {
-            // window.location.href="/overworld"
+        API.updateCharacter(characterState.uid)
+        .then((res) => {
+            console.log("update based on health change")
+            console.log(res)
          }).catch((error) => {
            console.log(error)
          })
@@ -116,11 +124,10 @@ function Battle() {
     function attack() {
         // console.log(`${this.name} attacks ${character2.name}`)
         let dialogue = (characterState.name + " readies an attack at " + enemyState.name + "! " + characterState.name + " does " + characterState.strength + " damage to " + enemyState.name + "! ");
-        // console.log(character2.currentHealth);
-        // setScreentext(dialogue);
         console.log(`${enemyState.currentHealth} after damage`);
         setEnemystats.currentHealth -= characterState.strength;
-        if (isAlive(enemyState) === false /*&& isAlive(characterState) === true*/){
+        if (isAlive(enemyState) === false){
+            //enemy foe is defeated
             levelUp();
             dialogue +=( " You have defeated Slime! You feel a new found power growing within you! " + 
             characterState.name + " is now level " + characterState.age + ". Your Strength is now " + characterState.strength + 
@@ -128,16 +135,16 @@ function Battle() {
             speedRead(screentext,dialogue).then((res) => {
                 do {
                     setTimeout(() => {
-                        console.log("wait your turn")
+                        console.log("wait for dialogue")
                     }, 100);
                 } while (res === false);
-                API.update({...characterState, currentHealth: characterState.currentHealth})
+                API.updateCharacter(characterState.uid)
                 .then(() => {
-                    // window.location.href="/overworld"
-                 }).catch((error) => {
-                   console.log(error)
-                 });
-                // window.location.href="localhost:3000/overworld";
+                    setCharacterState(returnState);
+                    history.push(characterState.location);
+                }).catch((error) => {
+                    console.log(error)
+                });
             });
         }
         // if (isAlive(characterState) === false) {
@@ -150,14 +157,15 @@ function Battle() {
         else{
             //continue the fight
             dialogue += (enemyState.name + " readies an attack at " + characterState.name + " " + enemyState.name + " does " + enemyState.strength + " damage to " + characterState.name + ". ");
-            setCharacterState.currentHealth -= enemyState.strength;
-            // console.log(`${characterState.currentHealth} after damage`);
+            setCharacterState(damageState); 
+            console.log(`${characterState.currentHealth} after damage`);
             if (isAlive(characterState) === false) {
+
                 dialogue += ("You have been defeated GAME OVER");
                 speedRead(screentext,dialogue).then((res) => {
                     do {
                         setTimeout(() => {
-                            console.log("wait your turn")
+                            console.log("wait for dialogue")
                         }, 100);
                     } while (res === false);
                     // speedRead(screentext, "You have been defeated GAME OVER")setScreentext(screentext, "You have been defeated GAME OVER");
@@ -168,7 +176,7 @@ function Battle() {
         speedRead(screentext,dialogue).then((res) => {
             do {
                 setTimeout(() => {
-                    console.log("wait your turn")
+                    console.log("wait for dialogue")
                 }, 100);
             } while (res === false);
             setTurnbase(true);
@@ -232,7 +240,7 @@ function Battle() {
     // }
     function handleBtnClick(event) {
         // Get the title of the clicked button
-                const btnName = event.target.getAttribute("data-value");
+        const btnName = event.target.getAttribute("data-value");
         if (turnbase === true){
             setScreentext("");
             setTurnbase(false);
@@ -283,10 +291,11 @@ function Battle() {
 
             <Row>
                 <div className="card" id="fightText">
-                    <h1 className="text-center">A Slime appears to block your path</h1>
+                <br/>
                     <p className="text-center h3">Click on the options to initiate combat</p>
                 </div>
             </Row>
+
 
             <Row>
                 <Col className="col-6">

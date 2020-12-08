@@ -12,6 +12,7 @@ function CardGroups(props) {
 const {setCharacterState} = useContext(CharContext)
 const [checked, setChecked] = useState(false);
   function captureStats() {
+    console.log(props);
     setCharacterState({
       name: "",
       level: props.level,

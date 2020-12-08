@@ -1,8 +1,6 @@
 import React, { useContext, useEffect , useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import CharContext from "../utils/CharContext";
-import Healthbar from "../components/Healthbar";
 import { useHistory } from "react-router-dom";
 import "./Battle.css";
 import enemy from "./Overworld/images/evilClippy.png";
@@ -11,99 +9,224 @@ import Header from "../components/Header";
 // import { Container } from "react-bootstrap/lib/Tab";
 
 function Battle() {
-    const [turnbase, setTurnbase] = useState(true);
-    let history = useHistory();
-    const slime = new Character("Nice Slime", 1, 10, 50);
-    const rogue = new Character("Dodger", 1, 20, 100);
-  
-
     // useContext
     const {characterState,setCharacterState} = useContext(CharContext);
+    //combine into one state
+    const [battleState, setBattleState] = useState({
+        turnbase: false, 
+        screentext: "", 
+        enemyState:{
+            name: "",
+            strength: 0,
+            maxHealth: 0,
+            currentHealth: 0,
+        }
+    });
+    const {turnbase, screentext, enemyState} = battleState;
+ 
+    console.log("rendering battle", turnbase,screentext,enemyState);
 
-    const returnState = {...characterState,
-        currentHealth: rogue.hitpoints,
-        location: "/overworld",
-    };
-
-    const levelupState = {...characterState,
-        level: characterState.level+=1,
-        strength: characterState.strength+=5,
-        maxHealth: characterState.maxHealth+=25,
-        currentHealth: rogue.hitpoints+=25,
-        location: "/overworld", 
-    };
-
-    function Character(name, age, strength, hitpoints) {
-        this.name = name;
-        this.age = age;
-        this.strength = strength;
-        this.hitpoints = hitpoints;
+    let history = useHistory();
+    if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
+        history.push("/overworld",characterState);
     }
 
+    useEffect(() => {
+        console.log("stats at start of render/battle ",characterState);
+        if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
+            history.push("/overworld",characterState);
+        }
+        if (characterState.level <2) {
+            setBattleState ({turnbase: true, 
+                screentext: `Clippy appears to block your path. The power of 'stache fuels his hatred. `,
+                enemyState:{
+                    name: "Clippy",
+                    strength: 5,
+                    maxHealth: 60,
+                    currentHealth: 60,
+                },
+            });
+        }
+        else if (characterState.level <5){
+            setBattleState ({turnbase: true, 
+                screentext: `An Econ appears to block your path. This edgy explorer seems ready for a fight. `,
+                enemyState:{
+                    name: "Econ",
+                    strength: 10,
+                    maxHealth: 70,
+                    currentHealth: 70,
+                },
+            });
+        }
+        else if (characterState.level <7){
+            setBattleState ({turnbase: true, 
+                screentext: `A Bugg appears to block your path. How did this moth get in here? `,
+                enemyState:{
+                    name: "Bugg",
+                    strength: 20,
+                    maxHealth: 100,
+                    currentHealth: 100,
+                },
+            });
+        }
+        else{
+            setBattleState ({turnbase: true, 
+                screentext: `A Skinned Cat appears to block your path. There are many ways to skin a cat some consider to be... unnatural. `,
+                enemyState:{
+                    name: "Skinned Cat",
+                    strength: 20,
+                    maxHealth: 200,
+                    currentHealth: 200,
+                },
+            });
+        };
+        console.log(enemyState);
+        setTimeout(function(){ 
+            console.log("wait for turn");
+            console.log(turnbase);
+        }, 1000);
+        
+    }, []);
+
         // method which takes in a second object and decreases their "hitpoints" by this character's strength
-    Character.prototype.attack = function(character2) {
-        console.log(`${this.name} readies an attack at ${character2.name}`);
-        character2.hitpoints -= this.strength;
-        console.log(`${this.name} does ${this.strength} damage to ${character2.name}`);
+    async function attack() {
+        // console.log(`${this.name} attacks ${character2.name}`)
+        let dialogue = characterState.name + " readies an attack at " + enemyState.name + "! " + characterState.name + " does " + characterState.strength + " damage to " + enemyState.name + "! ";
+        // player hits foe
+        console.log("Enemy health: ",enemyState.currentHealth-characterState.currentHealth);
+        if (enemyState.currentHealth - characterState.strength <= 0) {
+            //enemy foe is defeated
+            levelUp(dialogue);
+            //exit 
+        }
+        else {
+            console.log(enemyState.name + " is still alive! ");
+            dialogue += enemyState.name + " is still alive! ";
+            //continue the fight
+            dialogue += enemyState.name + " readies an attack at " + characterState.name + " " + enemyState.name + " does " + enemyState.strength + " damage to " + characterState.name + ". ";
+            //player gets hit
+            console.log("Player health: ", characterState.currentHealth-enemyState.strength);
+            if (characterState.currentHealth - enemyState.strength <= 0) {
+                //player is dead 
+                gameOver(dialogue);
+                //exit 
+            }
+            console.log(characterState.name + " is still alive! ");
+            dialogue +=characterState.name + " is still alive! ";
+        };
+        //combat is over both parties log damage to state
+        console.log(dialogue);
+        await setCharacterState({...characterState,
+            currentHealth: characterState.currentHealth - enemyState.strength,
+        });
+        setBattleState({turnbase: true, screentext: dialogue, enemyState:{...enemyState,
+            currentHealth: enemyState.currentHealth - characterState.strength,
+        }});
+        // new turn 
+        setTimeout(function(){ 
+            console.log("wait for turn");
+            console.log(turnbase);
+        }, 2000);
     };
-      
-    // method which increases this character's stats when called
-    Character.prototype.levelUp = function() {
-        this.age += 1;
-        this.strength += 5;
-        this.hitpoints += 25;
-        setCharacterState(levelupState);
-        history.push(characterState.location);
+
+    async function run() {
+        let dialogue = "You would like to run away. ";
+        if (Math.floor(Math.random() * 2) > 0) {
+            //math checks out no damage return to overworld
+            dialogue += "You ran away successfully! ";
+            console.log(`${dialogue} prestate call ${characterState.location}`);
+            await setCharacterState({
+                ...characterState,
+                location: "/overworld"
+            });
+            setBattleState({ turnbase: turnbase, screentext: dialogue, enemyState: enemyState, });
+            if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
+                history.push(characterState.location);
+            }
+            setTimeout(function () {
+                console.log(characterState);
+                history.push("/overworld",characterState);
+            }, 2000);
+        }
+        else {
+            //enemy opportunity attack
+            dialogue += enemyState.name + " readies an attack at " + characterState.name + " " + enemyState.name + " does " + enemyState.strength + " damage to " + characterState.name + ". ";
+            //player hit by enemy 
+            dialogue += `${characterState.currentHealth} after damage. `;
+            if (characterState.currentHealth - enemyState.strength <= 0) {
+                //player is dead
+                gameOver(dialogue);
+            }
+            console.log(`${dialogue} prestate call ${characterState.location}`);
+            await setCharacterState({
+                ...characterState,
+                currentHealth: characterState.currentHealth - enemyState.strength,
+            });
+            setBattleState({ turnbase: true, screentext: dialogue, enemyState: enemyState, });
+            // new turn
+            setTimeout(function () {
+                console.log("wait for turn");
+                console.log(turnbase);
+            }, 2000);
+        }
+    };
+
+    //end route takes back to overworld check character state
+    async function levelUp(dialogue) {
+        dialogue += ` You have defeated ${enemyState.name}. You feel a new found power growing within you! ${characterState.name} is now level ${characterState.level+1}. Your Strength is now ${characterState.strength+ 5}. Your Health is now ${characterState.currentHealth += characterState.level*5} out of ${characterState.maxHealth+25} total. `;
+        console.log(`${dialogue} prestate call ${characterState.location}`);
+        await setCharacterState({...characterState,
+            level: characterState.level += 1,
+            strength: characterState.strength += 5,
+            maxHealth: characterState.maxHealth += 25,
+            currentHealth: characterState.currentHealth += characterState.level*5,
+            location: "/overworld",
+        });
+        setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
+        if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
+            history.push(characterState.location);
+        }
+        setTimeout(function(){ 
+            console.log("After level-up ",characterState);
+            history.push("/overworld",characterState);
+        }, 2000);
     };
     
-    // method which determines whether or not a character's "hitpoints" are less than zero
-    // and returns true or false depending upon the outcome
-    Character.prototype.isAlive = function() {
-        if (this.hitpoints > 0) {
-            console.log(this.name + " is still alive!");
-            console.log("\n-------------\n");
-            return true;
-        }
-        console.log(this.name + " has died!");
-        return false;
+    //end route leaves you to landing without saving progress
+    //no need to change states
+    function gameOver(dialogue){
+        console.log(characterState.name + " has died!");
+        dialogue += characterState.name + " has died!";
+        dialogue += "You have been defeated GAME OVER";
+        console.log(dialogue);
+        setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
+        setTimeout(function(){ 
+            window.location.href="/landing";
+        }, 3000);
     };
-      
+
     function handleBtnClick(event) {
+        console.log(turnbase);
+        event.preventDefault();
         // Get the title of the clicked button
         const btnName = event.target.getAttribute("data-value");
-        if (btnName === "Fight") {
-            if (turnbase === true){
-                setTurnbase(false);
-                //turn order is run
-                
-                if (rogue.isAlive() === true && slime.isAlive() === true){
-                    //continue the fight
-                    rogue.attack(slime);
-                    if(slime.isAlive() === true){
-                        rogue.levelUp();
-                        setCharacterState(levelupState);
-                        history.push(characterState.location);                        
-                    }
-                    else{slime.attack(rogue);
-
-                    }
-                }
-                
-                console.log(`Your hitpoints ${rogue.hitpoints}`);
-                setTurnbase(true);
-
-            }
+        if (characterState.location === "/overworld" || battleState.enemyState.currentHealth <0){
+            history.push(characterState.location);
+        }
+        if (turnbase === true){
+            setBattleState({turnbase:false, screentext: "", enemyState:enemyState,});
+            //turn order is run
+            if (btnName === "Fight") {
+                attack();
+            } 
             else {
-                console.log("wait your turn");
-            }
-        } 
-        else {
-                if (Math.floor(Math.random()*2)>0){
-                console.log("You would like to run away");
-                setCharacterState(returnState);
-                history.push(characterState.location);
+                run();
             };
         }
+        else {
+            console.log("wait your turn");
+            console.log(turnbase);
+        };
     }
     return (
         <div>
@@ -116,15 +239,14 @@ function Battle() {
                         <img id="enemy" src={enemy} alt="enemy"></img>
                     </div>
 
-
                 </div>
             </Row>
 
 
             <Row>
                 <div className="card" id="fightText">
-                    <h1 className="text-center">A Slime appears to block your path</h1>
-                    <p className="text-center h3">Click on the options to initiate combat</p>
+                    <h1 className="text-center">{screentext}</h1>
+                    <p className="text-center h3">Click on the options to initiate combat.</p>
                 </div>
             </Row>
 
@@ -139,10 +261,12 @@ function Battle() {
                 </Col>
                 <Col></Col>
             </Row>
+
             <Row><Col><br/></Col></Row>
 
         </div>
-      );
+    );
 }
+
 
 export default Battle;
