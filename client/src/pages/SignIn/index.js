@@ -43,7 +43,7 @@ const SignIn = () => {
     // test for api call to check for existing character at sign in
 
     function checkSaveData() {
-      if (characterState)
+     
       API.getCharacter(user.uid)
         .then(data => {
           console.log("getting character at sign in", { data });
@@ -66,8 +66,13 @@ const SignIn = () => {
 
           history.push("/overworld", characterState)
         }).catch((res, error) => {
+        if (user && user.uid) {
+          history.push("/landing", user.uid)
           console.log(error)
-        })
+        }
+      })
+
+       
     }
   };
   // updates email and password in state variables

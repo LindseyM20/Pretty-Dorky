@@ -38,12 +38,12 @@ const Overworld = () => {
     w: 128,
   }
 
+// collision check
 
   const [position, setPosition] = useState({
     enemy: {},
     character: {},
   })
-
   if (characterState.location === "/overworld") {
     setInterval(() => {
       let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
@@ -52,17 +52,19 @@ const Overworld = () => {
         enemy: enemyPosition,
         character: characterPosition
       })
-      if (position.enemy.x < position.character.x + position.character.width &&
+      if (position.enemy.x < position.character.x + 75 &&
         position.enemy.x + position.enemy.width > position.character.x &&
-        position.enemy.y < position.character.y + position.character.height &&
+        position.enemy.y < position.character.y + 100 &&
         position.enemy.y + position.enemy.height > position.character.y) {
-        console.log("collision detected")
+        console.log("collision detected", enemyPosition, characterPosition)
+
       }
       // console.log("enemy: ", enemyPosition);
       // console.log("character: ", characterPosition);
-    }, 2000)
+    }, 3050)
   }
 
+// end collision check
 
   function jump() {
     document.getElementById("character").classList.add("animate");
