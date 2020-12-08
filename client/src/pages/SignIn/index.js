@@ -43,7 +43,6 @@ const SignIn = () => {
     // test for api call to check for existing character at sign in
 
     function checkSaveData() {
-     
       API.getCharacter(user.uid)
         .then(data => {
           console.log("getting character at sign in", { data });
