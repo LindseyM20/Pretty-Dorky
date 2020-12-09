@@ -89,7 +89,7 @@ const Overworld = () => {
     document.getElementById("character").classList.add("animate");
     setTimeout(function () {
       document.getElementById("character").classList.remove("animate");
-    }, 500);
+    },490);
   }
 
   function pause() {
