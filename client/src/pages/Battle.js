@@ -217,7 +217,7 @@ function Battle() {
             level: characterState.level += 1,
             strength: characterState.strength += 5,
             maxHealth: characterState.maxHealth += 25,
-            currentHealth: characterState.currentHealth += characterState.level*5,
+            currentHealth: characterState.currentHealth += 20,
         });
         setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
         saveData();
