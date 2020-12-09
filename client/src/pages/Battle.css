@@ -20,11 +20,10 @@
     position: absolute;
     top: 820px;
     width: 950px;
-    height: 255px;
+    height: 390px;
     margin-left: 8%;
     align-items: center;
 }
-
 .buttons {
     padding: 1%;
     width: 90%;
@@ -35,17 +34,6 @@
     margin: 0 3%;
     width: 100px;
 }
-
-/* button.btn.btn-primary {
-    position: relative;
-    top: 1025px;
-    left: 133px;
-}
-button.btn.btn-secondary {
-    position: relative;
-    top: 977px;
-    left: 1004px;
-} */
 #characterFight {
     width: 475px;
     height: 315px;
@@ -64,7 +52,7 @@ button.btn.btn-secondary {
     left: 474px;
     border: solid 5px black;
 }
-#enemy {
+.enemy {
     height: 245px;
     position: relative;
     left: 150px;

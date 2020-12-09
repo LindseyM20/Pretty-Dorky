@@ -2,6 +2,9 @@
     padding: 0;
     margin: 0;
 }
+body {
+    background-color: rgb(80, 80, 80);
+}
 #game{
     background-image: url(./images/background1.jpg);
     margin: 2% 25% 2% 25%;
@@ -17,7 +20,7 @@
 #instructions {
     position: absolute;
     width: 950px;
-    top: 780px;
+    top: 800px;
     margin-left: 24%;
 }
 .card.overInst {
@@ -41,17 +44,16 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 #character {
-    width: 74px;
+    width: 75px;
     height: 100px;
-    /* background-color: red; */
     position: relative;
-    top: 441px;
+    top: 455px;
     left: 50px;
+    /* background-color: red; */
 }
 button#jump {
     position: relative;
-    /* top: -497px; */
-    top: -206px; /*for demo only*/
+    top: -206px;
     left: 10px;
     width: 75px;
     color: #fff;
@@ -85,7 +87,7 @@ button#pause {
 button#play {
     position: absolute;
     top: 215px;
-    left: 155px;
+    left: 20px;
     height: 58px;
     color: #fff;
     background-color: #6c757d;
@@ -99,7 +101,7 @@ button#play {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .animate{
-    animation: jump 481ms;
+    animation: jump 490ms;
     z-index: 1;
 }
 @keyframes jump {
@@ -111,8 +113,7 @@ button#play {
 #tower1 {
     width: 1000px;
     position: relative;
-    /* top: -80px; */
-    top: 167px; /*for demo only*/
+    top: 167px;
     left: -103px;
     z-index: -1;
 }
@@ -122,8 +123,7 @@ button#play {
 #tower2 {
     width: 1000px;
     position: relative;
-    /* top: -383px; */
-    top: -129px; /*for demo only*/
+    top: -129px;
     left: -143px;
     z-index: -2;
 }
@@ -133,44 +133,40 @@ button#play {
 #tower3 {
     width: 1000px;
     position: relative;
-    /* top: -686px; */
     top: -425px;
-    left: -183px; /*for demo only*/
+    left: -183px;
     z-index: -3;
 }
 .tower3 {
     animation: move 12s infinite linear;
 }
-#cat {
+/* #cat {
     width: 100px;
     height: 86px;
     background-color: blue;
     position: relative;
     top: 395px;
-    /* animation: block 4s infinite linear; */
 }
 #catImg {
     height: 84px;
-}
+} */
 #clippy {
     width: 49px;
     height: 98px;
-    /* background-color: blue; */
     position: relative;
-    /* top: 267px; */
-    top: 360px; /* for presentation demo*/
-    /* animation: block 5s infinite linear; */
+    top: 360px;
+    /* background-color: blue; */
 }
 #clippyImg {
-    height: 100px;
+    max-height: 100px;
+    /* background-color: blue; */
 }
-#bug {
+/* #bug {
     width: 73px;
     height: 80px;
     background-color: blue;
     position: relative;
     top: 100px;
-    /* animation: block 3s infinite linear; */
 }
 #bugImg {
     height: 80px;
@@ -181,7 +177,6 @@ button#play {
     background-color: blue;
     position: relative;
     top: 109px;
-    /* animation: block 3s infinite linear; */
 }
 #expImg {
     height: 80px;
@@ -194,11 +189,10 @@ button#play {
 }
 #tartImg {
     height: 50px;
-}
+} */
 #bean {
     width: 67px;
     height: 35px;
-    /* background-color: blue; */
     position: relative;
 }
 #beanImg {

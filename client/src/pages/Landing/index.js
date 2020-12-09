@@ -2,9 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../providers/UserProvider";
 import { useHistory } from "react-router-dom";
 import Card from "../../components/Card";
-import Row from 'react-bootstrap/Row'
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import characterClasses from "../../characterClasses.json";
-// import Healthbar from "../../components/Healthbar"
 import CharContext from "../../utils/CharContext";
 import API from "../../utils/API";
 import "./style.css";
@@ -68,9 +70,9 @@ function Landing() {
     <div className="bodyStyle">
       <h1>Choose Your Character</h1>
       <section style={{ marginLeft: "5%", marginBottom: "15%"}}>
-        <Row className="cardRow text-center">
+        <Row className="cardRow" style={{"justify-content":"center"}}>
           {characterClasses.map(characters => (
-            <Card className="text-center"
+            <Card  
               id={characters.id}
               key={characters.id}
               name={characters.name}
@@ -87,6 +89,31 @@ function Landing() {
 
         </Row>
         <Row>
+
+        <Form onSubmit={handleSubmit} className="inputForm">
+          <Form.Row className="align-items-center">
+            <Col xs="auto">
+              <Form.Label htmlFor="inlineFormInput" srOnly>
+                Name
+              </Form.Label>
+              <Form.Control
+                type="name"
+                className="characterName"
+                name="characterName"
+                placeholder="Name"
+                id="characterName"
+              />
+            </Col>
+          
+            <Col xs="auto">
+              <Button type="submit" variant="dark" className="mb-2 createButton">
+                Create Character
+              </Button>
+            </Col>
+          </Form.Row>
+        </Form>
+
+{/* 
           <form onSubmit={handleSubmit} className="inputForm">
             <input
               type="name"
@@ -99,7 +126,7 @@ function Landing() {
               Create Character
             </button>
 
-          </form>
+          </form> */}
         </Row>
 
       </section>
