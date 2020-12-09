@@ -20,9 +20,38 @@ import API from "../../utils/API";
 const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
+  function checkSaveData() {
+    if (window.location.pathname === '/battle') {
+      return;
+    }
+    API.getCharacter(user.uid)
+      .then(data => {
+        // console.log("get on load", { data });
+        const nextState = {
+          ...characterState,
+          battleImage: data.data.battleImage,
+          currentHealth: data.data.currentHealth,
+          level: data.data.level,
+          location: "/overworld",
+          maxHealth: data.data.maxHealth,
+          name: data.data.name,
+          spriteImage: data.data.spriteImage,
+          strength: data.data.strength
+        };
+        setCharacterState(nextState);
+      }).catch((res, error) => {
+      if (user && user.uid) {
+        history.push("/landing", user.uid)
+        console.log(error)
+      }
+    })
+  }
+  useEffect(() =>  {
+    checkSaveData();
+  }, [characterState]);
   // console.log(characterState)
   let enemyImage;
-
+  let beanCollision= false;
   if (characterState.level <2) {
     enemyImage=clippy
   }
@@ -35,18 +64,14 @@ const Overworld = () => {
   else{
     enemyImage=cat
   };
-
   let history = useHistory();
-
   const data = {
     y: -1536,
     x: 0,
     h: 128,
     w: 128,
   }
-
   // collision check
-
   if (window.location.pathname === '/overworld') {
     setInterval(() => {
       if (window.location.pathname === '/battle') {
@@ -55,7 +80,6 @@ const Overworld = () => {
       let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
       let characterPosition = document.getElementById("character").getBoundingClientRect();
       let itemPosition = document.getElementById("bean").getBoundingClientRect();
-
       const position = {enemy: enemyPosition, character: characterPosition, item: itemPosition}
       // If our character collides with the enemy, we will route to battle
       if (position.enemy.x < position.character.x + 75 &&
@@ -71,22 +95,42 @@ const Overworld = () => {
         position.item.x + position.item.width > position.character.x &&
         position.item.y < position.character.y + 100 &&
         position.item.y + position.item.height > position.character.y) {
-        console.log("health item!", characterState.level)
-        setCharacterState({
-          ...characterState,
-          level: characterState.level += 0.5,
-          currentHealth: characterState.currentHealth += 2})
-          console.log(characterState.level, "after item")
-      } else {
-        // console.log("no collision");
-      }
-
+        document.getElementById("bean").classList.add("hide");
+        beanCollision = true
+        if (beanCollision === true && characterState.currentHealth<characterState.maxHealth){
+          updateData();
+          // setCharacterState({
+          //   ...characterState,
+          //   level: characterState.level,
+          //   currentHealth: characterState.currentHealth += 5})
+        }
+      } 
+      
     }, 500)
   }
+  function updateData() {
+    const nextState = {
+      ...characterState,
+      currentHealth: characterState.currentHealth += 5,
+    };
 
+    API.updateCharacter(user.uid, {
+      ...characterState,
+      currentHealth: characterState.currentHealth += 5,
+      // update character by current user uid
+    }).then(() => {
+      setCharacterState(nextState)
+      console.log("healed " , characterState)
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  }
   // end collision check
-
   function jump() {
+    if (window.location.pathname === '/battle') {
+      return;
+    }
     document.getElementById("character").classList.add("animate");
     console.log ("Can you fly like an eagle?")
     setTimeout(function () {

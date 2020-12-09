@@ -12,7 +12,7 @@ module.exports = {
     console.log("getting character here")
     db.Character.findOne({uid:req.params.uid})
       .then(dbModel => {
-        console.log(dbModel);
+        // console.log(dbModel);
         console.log(req.params.uid);
         return res.json(dbModel)
       }
@@ -41,10 +41,10 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
-  // remove: function(req, res) {
-  //   db.CreateCharacter.findById({ _id: req.params.id })
-  //   //   .then(dbModel => dbModel.remove())
-  //   //   .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // }
+  remove: function(req, res) {
+    db.Character.deleteOne({ uid:req.params.uid })
+      .then(dbModel => dbModel.remove())
+      // .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  }
 };

@@ -7,7 +7,7 @@ import CharContext from "../../utils/CharContext";
 export default function Player() {
 
     const {characterState} = useContext(CharContext)
-    console.log(characterState)
+    // console.log(characterState)
     // we use 9, since the max "frames" in our sprite sheet has 9 images per cycle
     const { dir, step, walk } = useWalk(9)
     // this is the size of each "frame" in the sprtiesheet grid
@@ -15,15 +15,6 @@ export default function Player() {
         h: 128,
         w: 128,
     };
-
-    // const checkCollision = setInterval(function () {
-    //     let characterPosition =
-    //         parseInt(window.getComputedStyle(character).getPropertyValue("top"));
-    //     let enemyPosition =
-    //         parseInt(window.getComputedStyle(enemy).getPropertyValue("left"));
-    //     if (enemyPosition < 20 && enemyPosition > 0 && characterPosition >= 130) {
-    //     }
-    // }, 10);
 
     useKeyPress((e) => {
         const dir = e.key.replace("Arrow", "").toLowerCase()
