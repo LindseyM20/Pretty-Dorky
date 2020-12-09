@@ -1,13 +1,18 @@
 # Pretty Dorky (Team-RPG)
 
 ## Summary
-- Pretty dorky is a simple combination runner/RPG that pokes fun at developer themes.
+Pretty dorky is a simple combination runner/RPG that pokes fun at developer themes.
 
-# Authors
+## Authors
 - [Amanda](https://github.com/aanderson120 "Amanda's Github")
 - [Brooklynne](https://github.com/Izzle "Brooklynne's Github")
 - [Lindsey](https://github.com/LindseyM20 "Lindsey's Github")
 - [Violet](https://github.com/violettaval "Violet's Github")
+
+
+![Game's signin page in browser](./client/public/images/PD-signin.png)
+![Game's landing page in browser](./client/public/images/PD-landing.png)
+![Gameplay](./client/public/images/Pretty-Dorky.gif)
 
 ## Endpoints
 ### Firebase/Firestore
