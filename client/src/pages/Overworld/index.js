@@ -66,7 +66,8 @@ const Overworld = () => {
         // setCharacterState({...characterState, location: "/battle"})
         history.push("/battle", characterState);
         return;
-      } else if (position.item.x < position.character.x + 75 &&
+      } 
+      else if (position.item.x < position.character.x + 75 &&
         position.item.x + position.item.width > position.character.x &&
         position.item.y < position.character.y + 100 &&
         position.item.y + position.item.height > position.character.y) {
