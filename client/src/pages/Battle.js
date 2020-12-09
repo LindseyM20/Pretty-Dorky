@@ -35,15 +35,14 @@ function Battle() {
     const {turnbase, screentext, enemyState} = battleState;
  
     function removeData() {
-        API.updateCharacter(user.uid, {
+        API.deleteCharacter(user.uid, {
             ...characterState
             // delete character by current user uid
         }).then(() => {
-            setCharacterState(characterState)
             console.log("removed " ,characterState)
         }).catch((error) => {
             console.log(error)
-        })
+        });
     };
 
     function saveData() {
@@ -73,9 +72,9 @@ function Battle() {
                 enemyState: {
                     name: "Clippy",
                     img: Clippy,
-                    strength: 5,
-                    maxHealth: 60,
-                    currentHealth: 60,
+                    strength: 10,
+                    maxHealth: 70,
+                    currentHealth: 70,
                 },
             });
         }
@@ -86,9 +85,9 @@ function Battle() {
                 enemyState: {
                     name: "Econ",
                     img: Econ,
-                    strength: 10,
-                    maxHealth: 70,
-                    currentHealth: 70,
+                    strength: 20,
+                    maxHealth: 100,
+                    currentHealth: 100,
                 },
             });
         }
@@ -99,9 +98,9 @@ function Battle() {
                 enemyState: {
                     name: "Bugg",
                     img: Bugg,
-                    strength: 20,
-                    maxHealth: 100,
-                    currentHealth: 100,
+                    strength: 30,
+                    maxHealth: 150,
+                    currentHealth: 150,
                 },
             });
         }
@@ -135,6 +134,7 @@ function Battle() {
         console.log("Enemy health: ", enemyState.currentHealth - characterState.strength);
         if (enemyState.currentHealth - characterState.strength <= 0) {
             //enemy foe is defeated
+            dialogue += ` You have defeated ${enemyState.name}. You feel a new found power growing within you! ${characterState.name} is now level ${characterState.level + 1}. Your Strength is now ${characterState.strength + 5}. Your Health is now ${characterState.currentHealth += 25} out of ${characterState.maxHealth + 25} total. `;
             levelUp(dialogue);
             //exit 
         }
@@ -177,11 +177,7 @@ function Battle() {
         if (Math.floor(Math.random() * 2) > 0) {
             //math checks out no damage return to overworld
             dialogue += "You ran away successfully! ";
-            console.log(`${dialogue} prestate call ${characterState.location}`);
-            // await setCharacterState({
-            //     ...characterState,
-            //     location: "/overworld"
-            // });
+            console.log(dialogue);
             setBattleState({ turnbase: turnbase, screentext: dialogue, enemyState: enemyState, });
             saveData();
             if (battleState.enemyState.currentHealth <0){
@@ -194,14 +190,13 @@ function Battle() {
         }
         else {
             //enemy opportunity attack
-            dialogue += enemyState.name + " readies an attack at " + characterState.name + " " + enemyState.name + " does " + enemyState.strength + " damage to " + characterState.name + ". ";
+            dialogue += enemyState.name + " finds an opportunity to attack " + characterState.name + " " + enemyState.name + " does " + enemyState.strength + " damage to " + characterState.name + ". ";
             //player hit by enemy 
-            dialogue += `${characterState.currentHealth} after damage. `;
+            console.log(`${characterState.currentHealth} after damage. `);
             if (characterState.currentHealth - enemyState.strength <= 0) {
                 //player is dead
                 gameOver(dialogue);
             }
-            console.log(`${dialogue} prestate call ${characterState.location}`);
             await setCharacterState({
                 ...characterState,
                 currentHealth: characterState.currentHealth - enemyState.strength,
@@ -217,13 +212,12 @@ function Battle() {
 
     //end route takes back to overworld check character state
      function levelUp(dialogue) {
-        dialogue += ` You have defeated ${enemyState.name}. You feel a new found power growing within you! ${characterState.name} is now level ${characterState.level + 1}. Your Strength is now ${characterState.strength + 5}. Your Health is now ${characterState.currentHealth += characterState.level * 5} out of ${characterState.maxHealth + 25} total. `;
-        console.log(`${dialogue} prestate call ${characterState.location}`);
+        console.log(dialogue);
         setCharacterState({
             ...characterState,
             level: characterState.level += 1,
             strength: characterState.strength += 5,
-            maxHealth: characterState.maxHealth += 25,
+            maxHealth: characterState.maxHealth += 20,
             currentHealth: characterState.currentHealth += 20,
         });
         setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
@@ -244,11 +238,11 @@ function Battle() {
         dialogue += characterState.name + " has died!";
         dialogue += "You have been defeated GAME OVER";
         console.log(dialogue);
-        setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
         removeData();
+        setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
         setTimeout(function(){ 
             window.location.href="/landing";
-        }, 3000);
+        }, 4000);
     };
 
     function handleBtnClick(event) {

@@ -21,9 +21,12 @@ const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
   function checkSaveData() {
+    if (window.location.pathname === '/battle') {
+      return;
+    }
     API.getCharacter(user.uid)
       .then(data => {
-        console.log("getting character at sign in", { data });
+        // console.log("get on load", { data });
         const nextState = {
           ...characterState,
           battleImage: data.data.battleImage,
@@ -36,7 +39,6 @@ const Overworld = () => {
           strength: data.data.strength
         };
         setCharacterState(nextState);
-        console.log(characterState, "inside checkSaveData");
       }).catch((res, error) => {
       if (user && user.uid) {
         history.push("/landing", user.uid)
@@ -44,11 +46,12 @@ const Overworld = () => {
       }
     })
   }
-  // useEffect(() =>  {
+  useEffect(() =>  {
     checkSaveData();
-  // }, [characterState]);
+  }, [characterState]);
   // console.log(characterState)
   let enemyImage;
+  let beanCollision= false;
   if (characterState.level <2) {
     enemyImage=clippy
   }
@@ -93,18 +96,41 @@ const Overworld = () => {
         position.item.y < position.character.y + 100 &&
         position.item.y + position.item.height > position.character.y) {
         document.getElementById("bean").classList.add("hide");
-        setCharacterState({
-          ...characterState,
-          level: characterState.level,
-          currentHealth: characterState.currentHealth += 2
-        })
-      } else {
-        // console.log("no collision");
-      }
+        beanCollision = true
+        if (beanCollision === true && characterState.currentHealth<characterState.maxHealth){
+          updateData();
+          // setCharacterState({
+          //   ...characterState,
+          //   level: characterState.level,
+          //   currentHealth: characterState.currentHealth += 5})
+        }
+      } 
+      
     }, 500)
+  }
+  function updateData() {
+    const nextState = {
+      ...characterState,
+      currentHealth: characterState.currentHealth += 5,
+    };
+
+    API.updateCharacter(user.uid, {
+      ...characterState,
+      currentHealth: characterState.currentHealth += 5,
+      // update character by current user uid
+    }).then(() => {
+      setCharacterState(nextState)
+      console.log("healed " , characterState)
+    }).catch((error) => {
+      console.log(error)
+    })
+
   }
   // end collision check
   function jump() {
+    if (window.location.pathname === '/battle') {
+      return;
+    }
     document.getElementById("character").classList.add("animate");
     console.log ("Can you fly like an eagle?")
     setTimeout(function () {

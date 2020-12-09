@@ -23,7 +23,7 @@ function Application() {
     battleImage: "",
     location: ""
    })
-    console.log((user ? user.uid : "User is not set yet"), characterState);
+    // console.log((user ? user.uid : "User is not set yet"), characterState);
 
     // let history = useHistory();
     // if (window.location.pathname !== "/overworld") {
@@ -36,7 +36,7 @@ function Application() {
     if (user && user.uid && !characterState.name) {
         rootLocation = <SignIn />
     }
-    console.log(user, "user here")
+    // console.log(user, "user here")
     return (
         // this provider provides context for character info to app, so that the characterState and setCharacterState can be accessed from within the app/provider 
         <CharContext.Provider value={{
