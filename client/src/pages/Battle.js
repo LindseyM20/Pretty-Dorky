@@ -187,10 +187,10 @@ function Battle() {
     };
 
     //end route takes back to overworld check character state
-    async function levelUp(dialogue) {
+     function levelUp(dialogue) {
         dialogue += ` You have defeated ${enemyState.name}. You feel a new found power growing within you! ${characterState.name} is now level ${characterState.level + 1}. Your Strength is now ${characterState.strength + 5}. Your Health is now ${characterState.currentHealth += characterState.level * 5} out of ${characterState.maxHealth + 25} total. `;
         console.log(`${dialogue} prestate call ${characterState.location}`);
-        await setCharacterState({
+        setCharacterState({
             ...characterState,
             level: characterState.level += 1,
             strength: characterState.strength += 5,

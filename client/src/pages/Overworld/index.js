@@ -20,7 +20,7 @@ import API from "../../utils/API";
 const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
-  console.log(characterState)
+  // console.log(characterState)
   let enemyImage;
 
   if (characterState.level <2) {
@@ -71,11 +71,12 @@ const Overworld = () => {
         position.item.x + position.item.width > position.character.x &&
         position.item.y < position.character.y + 100 &&
         position.item.y + position.item.height > position.character.y) {
-        console.log("health item!")
+        console.log("health item!", characterState.level)
         setCharacterState({
           ...characterState,
+          level: characterState.level += 0.5,
           currentHealth: characterState.currentHealth += 2})
-
+          console.log(characterState.level, "after item")
       } else {
         // console.log("no collision");
       }
@@ -87,37 +88,31 @@ const Overworld = () => {
 
   function jump() {
     document.getElementById("character").classList.add("animate");
+    console.log ("Can you fly like an eagle?")
     setTimeout(function () {
       document.getElementById("character").classList.remove("animate");
     },490);
+    console.log("The answer is no...you're not a bird")
   }
-
   function pause() {
-    console.log("Quick pause")
-
+    console.log("You put little Alex to bed twenty minuets ago, but they insist on a cup of water, even though they've had two.")
     document.getElementById("clippy").classList.add("holdUp");
     document.getElementById("tower1").classList.add("holdUp");
     document.getElementById("tower2").classList.add("holdUp");
     document.getElementById("tower3").classList.add("holdUp");
     document.getElementById("bean").classList.add("holdUp");
-
     document.getElementById("pause").classList.add("hide");
     document.getElementById("play").classList.add("show");
-
   }
-
   function play() {
-    console.log("back to work")
-
+    console.log("But as a tiny human they get whatever they demand they get their water and scurry on back to bed and you get back to coding.")
     document.getElementById("clippy").classList.remove("holdUp");
     document.getElementById("bean").classList.remove("holdUp");
     document.getElementById("tower1").classList.remove("holdUp");
     document.getElementById("tower2").classList.remove("holdUp");
     document.getElementById("tower3").classList.remove("holdUp");
-
     document.getElementById("pause").classList.remove("hide");
     document.getElementById("play").classList.remove("show");
-
   }
 
   return (
@@ -145,7 +140,7 @@ const Overworld = () => {
       </Row>
       <Row id="instructions">
         <div className="card overInst">
-          <h3 style={{ fontSize: 20 }} className="italic">Use the arrow keys to run toward the enemy or away if it is too scary. Hint - if you run away you aren't fast enough so it's really best to face your fears. If your timing is right you can use the jump button to jump higher than your enemy, because they can't jump. They are filled with so much rage they can barely see straight, so jumping is hard for them. If you're low on health you can jump towards a health item as it passes by. As a coder few things will keep you moving, so hopefully you get a good one.</h3>
+          <h3 style={{ fontSize: 20 }} className="italic">Use the arrow keys to run toward the enemy or away if it is too scary. Hint - if you run away you aren't fast enough so it's really best to face your fears. If your timing is right you can use the jump button to jump higher than your enemy, because they can't jump. They are filled with so much rage they can barely see straight, so jumping is hard for them. If you're low on health you can jump towards a health item as it passes by. As a coder few things will keep you moving, so hopefully you get a good one. Remember, the magic is in the console log!</h3>
           <Button id="pause" variant="dark" value="pause" onClick={e => pause(e.target.value)}>
             Tiny Human </Button>
           <Button id="play" className="hide" variant="dark" value="play" onClick={e => play(e.target.value)}>
