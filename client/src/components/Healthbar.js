@@ -30,14 +30,6 @@ const Healthbar = () => {
     <rect fill="#962f2c" x={25} y={49.5} width={pixelFill} height={5} />
   </svg>
 
-  // healthbar = greenSVG;
-  // if (percent > 30) {
-  //   healthbar = greenSVG;
-  // }
-  // if (percent < .30) {
-  //   healthbar = redSVG;
-  // }
-
   return (
     <div>
       {redSVG}

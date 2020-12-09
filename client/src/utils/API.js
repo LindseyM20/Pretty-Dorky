@@ -10,10 +10,10 @@ export default {
   getCharacter: function(uid) {
     return axios.get("/api/character/" + uid);
   },
-//   // Deletes the post with the given id
-//   deletePost: function(id) {
-//     return axios.delete("/api/posts/" + id);
-//   },
+  // Deletes the post with the given id
+  deleteCharacter: function(uid) {
+    return axios.delete("/api/character/" + uid);
+  },
 //   // Saves a post to the database
   createCharacter: function(characterData) {
     return axios.post("/api/character/", characterData);

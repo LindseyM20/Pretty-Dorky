@@ -13,13 +13,14 @@ import Clippy from "./Overworld/images/evilClippy.png";
 import Econ from "./Overworld/images/explorer.png";
 import Bugg from "./Overworld/images/moth.png";
 import Skinny_Cat from "./Overworld/images/cat.png";
-// import { Container } from "react-bootstrap/lib/Tab";
+import { UserContext } from "../providers/UserProvider";
+import API from "../utils/API";
 
 function Battle() {
     // useContext
     const {characterState,setCharacterState} = useContext(CharContext);
-    const battleImage = characterState.battleImage
-    
+    const battleImage = characterState.battleImage;
+    const user = useContext(UserContext);
     //combine into one state
     const [battleState, setBattleState] = useState({
         turnbase: false, 
@@ -33,6 +34,29 @@ function Battle() {
     });
     const {turnbase, screentext, enemyState} = battleState;
  
+    function removeData() {
+        API.updateCharacter(user.uid, {
+            ...characterState
+            // delete character by current user uid
+        }).then(() => {
+            setCharacterState(characterState)
+            console.log("removed " ,characterState)
+        }).catch((error) => {
+            console.log(error)
+        })
+    };
+
+    function saveData() {
+        API.updateCharacter(user.uid, {
+            ...characterState
+            // update character by current user uid
+        }).then(() => {
+            setCharacterState(characterState)
+            console.log("saved " + characterState)
+        }).catch((error) => {
+            console.log(error)
+        })
+    };
 
     console.log("rendering battle", turnbase,screentext,enemyState);
 
@@ -49,6 +73,7 @@ function Battle() {
                 screentext: `Clippy appears to block your path. The power of 'stache fuels his hatred. `,
                 enemyState:{
                     name: "Clippy",
+                    img: Clippy,
                     strength: 5,
                     maxHealth: 60,
                     currentHealth: 60,
@@ -60,6 +85,7 @@ function Battle() {
                 screentext: `An Econ appears to block your path. This edgy explorer seems ready for a fight. `,
                 enemyState:{
                     name: "Econ",
+                    img:Econ,
                     strength: 10,
                     maxHealth: 70,
                     currentHealth: 70,
@@ -71,6 +97,7 @@ function Battle() {
                 screentext: `A Bugg appears to block your path. How did this moth get in here? `,
                 enemyState:{
                     name: "Bugg",
+                    img: Bugg,
                     strength: 20,
                     maxHealth: 100,
                     currentHealth: 100,
@@ -82,6 +109,7 @@ function Battle() {
                 screentext: `A Skinned Cat appears to block your path. There are many ways to skin a cat some consider to be... unnatural. `,
                 enemyState:{
                     name: "Skinny_Cat",
+                    img: Skinny_Cat,
                     strength: 50,
                     maxHealth: 200,
                     currentHealth: 200,
@@ -97,7 +125,7 @@ function Battle() {
             console.log(turnbase);
         }, 1000);
     }, []);
-    const enemyImage = battleState.enemyState.name
+    const enemyImage = battleState.enemyState.img;
         // method which takes in a second object and decreases their "hitpoints" by this character's strength
     async function attack() {
         let dialogue = characterState.name + " readies an attack at " + enemyState.name + "! " + characterState.name + " does " + characterState.strength + " damage to " + enemyState.name + "! ";
@@ -149,6 +177,7 @@ function Battle() {
             //     location: "/overworld"
             // });
             setBattleState({ turnbase: turnbase, screentext: dialogue, enemyState: enemyState, });
+            saveData();
             if (battleState.enemyState.currentHealth <0){
                 history.push("/overworld",characterState);
             }
@@ -191,6 +220,7 @@ function Battle() {
             currentHealth: characterState.currentHealth += characterState.level*5,
         });
         setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
+        saveData();
         if (battleState.enemyState.currentHealth <0){
             history.push("/overworld",characterState);
         }
@@ -199,7 +229,7 @@ function Battle() {
             history.push("/overworld",characterState);
         }, 2000);
     };
-    
+
     //end route leaves you to landing without saving progress
     //no need to change states
     function gameOver(dialogue){
@@ -208,6 +238,7 @@ function Battle() {
         dialogue += "You have been defeated GAME OVER";
         console.log(dialogue);
         setBattleState({turnbase:turnbase, screentext: dialogue, enemyState:enemyState,});
+        removeData();
         setTimeout(function(){ 
             window.location.href="/landing";
         }, 3000);
@@ -250,7 +281,7 @@ function Battle() {
 
                     </div>
                     <div id="enemyFight" >
-                        <img id= {enemyImage} src={enemy} alt="enemy"></img>
+                        <img id= {enemy} src={enemyImage} alt="enemy"></img>
                     </div>
                 </div>
             </Row>

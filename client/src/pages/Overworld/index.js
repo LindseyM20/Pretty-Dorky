@@ -21,18 +21,55 @@ import API from "../../utils/API";
 const Overworld = () => {
   const user = useContext(UserContext)
   const { characterState, setCharacterState } = useContext(CharContext)
-  console.log(characterState)
+  function checkSaveData() {
+    API.getCharacter(user.uid)
+      .then(data => {
+        console.log("getting character at sign in", { data });
+        const nextState = {
+          ...characterState,
+          battleImage: data.data.battleImage,
+          currentHealth: data.data.currentHealth,
+          level: data.data.level,
+          location: "/overworld",
+          maxHealth: data.data.maxHealth,
+          name: data.data.name,
+          spriteImage: data.data.spriteImage,
+          strength: data.data.strength
+        };
+        setCharacterState(nextState);
+        console.log(characterState, "inside checkSaveData");
+      }).catch((res, error) => {
+      if (user && user.uid) {
+        history.push("/landing", user.uid)
+        console.log(error)
+      }
+    })
+  }
+  // useEffect(() =>  {
+    checkSaveData();
+  // }, [characterState]);
+  // console.log(characterState)
+  let enemyImage;
+  if (characterState.level <2) {
+    enemyImage=clippy
+  }
+  else if (characterState.level <5){
+    enemyImage=exp
+  }
+  else if (characterState.level <7){
+    enemyImage=bug
+  }
+  else{
+    enemyImage=cat
+  };
   let history = useHistory();
-
   const data = {
     y: -1536,
     x: 0,
     h: 128,
     w: 128,
   }
-
-// collision check
-
+  // collision check
   if (window.location.pathname === '/overworld') {
     setInterval(() => {
       if (window.location.pathname === '/battle') {
@@ -41,7 +78,6 @@ const Overworld = () => {
       let enemyPosition = document.getElementById("clippy").getBoundingClientRect();
       let characterPosition = document.getElementById("character").getBoundingClientRect();
       let itemPosition = document.getElementById("bean").getBoundingClientRect();
-
       const position = {enemy: enemyPosition, character: characterPosition, item: itemPosition}
       // If our character collides with the enemy, we will route to battle
       if (position.enemy.x < position.character.x + 75 &&
@@ -56,16 +92,20 @@ const Overworld = () => {
         position.item.x + position.item.width > position.character.x &&
         position.item.y < position.character.y + 100 &&
         position.item.y + position.item.height > position.character.y) {
+        document.getElementById("bean").classList.add("hide");
         console.log("health item!")
+        console.log(characterState, "hereeeee");
+        setCharacterState({
+          ...characterState,
+          level: characterState.level,
+          currentHealth: characterState.currentHealth += 2
+        })
       } else {
         // console.log("no collision");
       }
-
     }, 500)
   }
-
-// end collision check
-
+  // end collision check
   function jump() {
     document.getElementById("character").classList.add("animate");
     setTimeout(function () {
@@ -116,7 +156,7 @@ const Overworld = () => {
               </div>
             </div>
             {/* <div class= "enemy" id="cat"><img id="catImg" src={cat} alt="cat" /> </div> */}
-            <div class="enemy enemyRun" id="clippy"><img id="clippyImg" src={clippy} alt="clipy"></img></div>
+            <div class="enemy enemyRun" id="clippy"><img id="clippyImg" src={enemyImage} alt="clipy"></img></div>
             {/* <div class= "enemy" id="bug"><img id="bugImg" src={bug} alt="moth"></img></div>
             <div class= "enemy" id="exp"><img id="expImg" src={exp} alt="internet"></img></div> */}
             <div class="tower1" id="tower1"><img src={tower} alt="server"></img></div>
