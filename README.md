@@ -3,6 +3,9 @@
 ## Summary
 Pretty dorky is a simple combination runner/RPG that pokes fun at developer themes.
 
+## Links
+[Deployment](https://pretty-dorky.herokuapp.com/overworld)
+
 ## Authors
 - [Amanda](https://github.com/aanderson120 "Amanda's Github")
 - [Brooklynne](https://github.com/Izzle "Brooklynne's Github")
