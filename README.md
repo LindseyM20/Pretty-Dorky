@@ -1,7 +1,7 @@
 # Pretty Dorky (Team-RPG)
 
 ## Summary
-Pretty dorky is a simple combination runner/RPG that pokes fun at developer themes.
+Pretty dorky is a classic combination runner/RPG that pokes fun at developer themes.
 
 ## Authors
 - [Amanda](https://github.com/aanderson120 "Amanda's Github")
