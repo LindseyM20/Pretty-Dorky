@@ -1,4 +1,4 @@
-# Pretty Dorky (Team-RPG)
+# Pretty Dorky
 
 ## Summary
 Pretty dorky is a classic combination runner/RPG that pokes fun at developer themes.
