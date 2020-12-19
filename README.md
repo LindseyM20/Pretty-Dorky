@@ -1,7 +1,7 @@
 # Pretty Dorky
 
 ## Summary
-Pretty dorky is a classic combination runner/RPG that pokes fun at developer themes.
+Pretty dorky is a classic combination runner/RPG that pokes fun at developer themes. <br>
 Deployment: https://pretty-dorky.herokuapp.com/
 
 ## Authors
