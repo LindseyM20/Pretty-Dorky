@@ -2,6 +2,7 @@
 
 ## Summary
 Pretty dorky is a classic combination runner/RPG that pokes fun at developer themes.
+Deployment: https://pretty-dorky.herokuapp.com/
 
 ## Authors
 - [Amanda](https://github.com/aanderson120 "Amanda's Github")
